@@ -11,6 +11,10 @@ const ProjectSubmission = () => {
     const [formData, setFormData] = useState({
         name: 'Dhiraj Chaudhari', // Pre-filled default
         email: '',
+        userImage: '',
+        bio: '',
+        githubLink: '',
+        instagramLink: '',
         projectTitle: '',
         description: '',
         videoLink: '',
@@ -24,7 +28,7 @@ const ProjectSubmission = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleImageUpload = async (e) => {
+    const handleImageUpload = async (e, fieldName) => {
         const file = e.target.files[0];
         if (!file) return;
 
@@ -39,7 +43,7 @@ const ProjectSubmission = () => {
             });
             const result = await response.json();
             if (result.success) {
-                setFormData(prev => ({ ...prev, image: result.data.url }));
+                setFormData(prev => ({ ...prev, [fieldName]: result.data.url }));
             } else {
                 alert('Image upload failed. Please try again.');
             }
@@ -62,9 +66,19 @@ const ProjectSubmission = () => {
         formBody.append("subject", `New Project Idea: ${formData.projectTitle}`);
         formBody.append("message", `
             Project Title: ${formData.projectTitle}
+            
+            USER DETAILS:
+            Name: ${formData.name}
+            Email: ${formData.email}
+            Bio: ${formData.bio}
+            User Photo: ${formData.userImage || 'N/A'}
+            GitHub: ${formData.githubLink || 'N/A'}
+            Instagram: ${formData.instagramLink || 'N/A'}
+
+            PROJECT DETAILS:
             Description: ${formData.description}
             Video Link: ${formData.videoLink || 'N/A'}
-            Image URL: ${formData.image || 'N/A'}
+            Project Image: ${formData.image || 'N/A'}
         `);
 
         try {
@@ -110,6 +124,10 @@ const ProjectSubmission = () => {
 
     return (
         <section className="project-submission-section">
+            <div className="glow-orb orb-1"></div>
+            <div className="glow-orb orb-2"></div>
+            <div className="glow-orb orb-3"></div>
+
             <div className="submission-container">
                 <div className="submission-card">
                     <div className="submission-header">
@@ -118,7 +136,38 @@ const ProjectSubmission = () => {
                     </div>
 
                     <form className="submission-form" onSubmit={handleSubmit}>
+                        {/* User Details Section */}
+                        <div className="form-group">
+                            <h3 style={{ marginBottom: '1rem', color: '#4b5563', borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem' }}>User Profile</h3>
+                        </div>
+
                         <div className="form-grid">
+                            <div className="form-group">
+                                <label>Your Photo</label>
+                                <div className={`image-upload-wrapper ${formData.userImage ? 'has-file' : ''}`} style={{ padding: '1rem' }}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        id="user-image-input"
+                                        hidden
+                                        onChange={(e) => handleImageUpload(e, 'userImage')}
+                                    />
+                                    <label htmlFor="user-image-input" style={{ width: '100%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                                        {formData.userImage ? (
+                                            <>
+                                                <img src={formData.userImage} alt="User" style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }} />
+                                                <span style={{ fontSize: '0.9rem', color: '#34A853' }}>Change</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span style={{ fontSize: '1.5rem' }}>👤</span>
+                                                <span style={{ fontSize: '0.9rem' }}>Upload Photo</span>
+                                            </>
+                                        )}
+                                    </label>
+                                </div>
+                            </div>
+
                             <div className="form-group">
                                 <label>Your Name</label>
                                 <input
@@ -129,7 +178,9 @@ const ProjectSubmission = () => {
                                     onChange={handleChange}
                                 />
                             </div>
+                        </div>
 
+                        <div className="form-grid">
                             <div className="form-group">
                                 <label>Email Address</label>
                                 <input
@@ -141,6 +192,45 @@ const ProjectSubmission = () => {
                                     onChange={handleChange}
                                 />
                             </div>
+                            <div className="form-group">
+                                <label>Short Bio</label>
+                                <textarea
+                                    name="bio"
+                                    rows="1" // Start small
+                                    placeholder="Developer @ SJCEM..."
+                                    value={formData.bio}
+                                    onChange={handleChange}
+                                    style={{ resize: 'none', height: '52px' }}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-grid">
+                            <div className="form-group">
+                                <label>GitHub Profile</label>
+                                <input
+                                    type="url"
+                                    name="githubLink"
+                                    placeholder="https://github.com/..."
+                                    value={formData.githubLink}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Instagram Handle / Link</label>
+                                <input
+                                    type="text"
+                                    name="instagramLink"
+                                    placeholder="@username or link"
+                                    value={formData.instagramLink}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Project Details Section */}
+                        <div className="form-group" style={{ marginTop: '1rem' }}>
+                            <h3 style={{ marginBottom: '1rem', color: '#4b5563', borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem' }}>Project Details</h3>
                         </div>
 
                         <div className="form-group">
@@ -176,7 +266,7 @@ const ProjectSubmission = () => {
                                         accept="image/*"
                                         id="project-image-input"
                                         hidden
-                                        onChange={handleImageUpload}
+                                        onChange={(e) => handleImageUpload(e, 'image')}
                                     />
                                     <label htmlFor="project-image-input" style={{ width: '100%', cursor: 'pointer', display: 'block' }}>
                                         {uploading ? (
