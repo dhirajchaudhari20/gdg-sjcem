@@ -23,6 +23,8 @@ import FAQ from './components/FAQ';
 import TeamDirectory from './components/TeamDirectory';
 import Blog from './components/Blog';
 import Newsletter from './components/Newsletter';
+import EventDetails from './components/EventDetails';
+import ProjectSubmission from './components/ProjectSubmission';
 
 import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
@@ -80,7 +82,9 @@ function App() {
               <Route path="/team-directory" element={<TeamDirectory />} />
               <Route path="/emails" element={<TeamEmails />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/events/:id" element={<EventDetails />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/submit-idea" element={<ProjectSubmission />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
             </Routes>
             <Footer />

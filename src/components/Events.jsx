@@ -1,58 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
-import EventModal from './EventModal';
 import './Events.css';
 import CountdownTimer from './CountdownTimer';
+import { upcomingEvents, pastEvents } from '../data/eventsData';
 
 const Events = () => {
-    const upcomingEvents = [
-        {
-            id: 1,
-            date: '13 Dec 2025',
-            type: 'Info session',
-            title: 'TechSprint Hackathon 2025 – Kick-Off Session | GDG on Campus SJCEM',
-            description: 'Welcome to the official Kick-Off Session of TechSprint 2025! Hosted by GDG on Campus – St. John College of Engineering &...',
-            image: 'https://i.ibb.co/bjc6f31T/Generated-Image-December-04-2025-8-46-PM.jpg',
-            showTimer: true,
-            buttons: [
-                {
-                    text: 'Register Team',
-                    link: 'https://hack2skill.com/',
-                    style: 'primary'
-                },
-                {
-                    text: 'Info Session',
-                    link: 'https://gdg.community.dev/gdg-on-campus-st-john-college-of-engineering-and-management-autonomous-palghar-india/',
-                    style: 'outline'
-                }
-            ]
-        }
-    ];
-
-    const pastEvents = [
-        {
-            id: 1,
-            date: '2 Oct 2025',
-            type: 'Info session',
-            title: 'Google Cloud Study Jams – Online Info Session',
-            location: 'GDG on Campus St. John College of Engineering and Management Autonomous - Palghar, India',
-            materialsLink: 'https://docs.google.com/presentation/d/1goUL1QPjTLqMbLyKFuzTORWKXmkiCJ7K_gBM2UG61z0/edit?usp=sharing',
-            registrations: 152,
-            image: 'https://i.ibb.co/Ng0NCJvj/blob-Pca-Hqc5.webp'
-        },
-        {
-            id: 2,
-            date: '24 Sept 2025',
-            type: 'Info session',
-            title: 'Info Session: GDG on Campus – SJCEM | Kick-off 2025',
-            location: 'GDG on Campus St. John College of Engineering and Management Autonomous - Palghar, India',
-            materialsLink: 'https://docs.google.com/presentation/d/1HUS16B9qQuLxBBUgkEHog2-ROPqccoG7b_ZpW4jS-y4/edit?usp=sharing',
-            registrations: 200,
-            image: 'https://i.ibb.co/nMk7f1mG/blob-Iq7f-MFD.webp'
-        }
-    ];
-
-    const [selectedEvent, setSelectedEvent] = React.useState(null);
+    // No more local state for modals
 
     return (
         <section id="events" className="section events-section">
@@ -95,27 +49,13 @@ const Events = () => {
                                         <p className="event-desc">{event.description}</p>
 
                                         <div className="event-buttons">
-                                            {event.buttons ? (
-                                                event.buttons.map((btn, i) => (
-                                                    <a
-                                                        key={i}
-                                                        href={btn.link}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className={`btn ${btn.style === 'primary' ? 'btn-primary' : 'btn-outline'} view-details-btn`}
-                                                        style={{ textAlign: 'center', textDecoration: 'none' }}
-                                                    >
-                                                        {btn.text}
-                                                    </a>
-                                                ))
-                                            ) : (
-                                                <button
-                                                    className="btn btn-outline view-details-btn"
-                                                    onClick={() => setSelectedEvent(event)}
-                                                >
-                                                    View details →
-                                                </button>
-                                            )}
+                                            <Link
+                                                to={`/events/${event.id}`}
+                                                className="btn btn-primary view-details-btn"
+                                                style={{ textAlign: 'center', textDecoration: 'none', width: '100%' }}
+                                            >
+                                                View Details →
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -153,22 +93,17 @@ const Events = () => {
                                 </div>
                             </div>
                             <div className="event-action-col">
-                                <button
+                                <Link
+                                    to={`/events/${event.id}`}
                                     className="btn-text"
-                                    onClick={() => setSelectedEvent(event)}
                                 >
-                                    View details
-                                </button>
+                                    View Details
+                                </Link>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-
-            <EventModal
-                event={selectedEvent}
-                onClose={() => setSelectedEvent(null)}
-            />
         </section>
     );
 };

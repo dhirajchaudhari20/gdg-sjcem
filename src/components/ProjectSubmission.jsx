@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import './ProjectIdeaModal.css';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './ProjectSubmission.css';
 
-const ProjectIdeaModal = ({ isOpen, onClose }) => {
+const ProjectSubmission = () => {
+    // Scroll to top on load
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [formData, setFormData] = useState({
-        name: '',
+        name: 'Dhiraj Chaudhari', // Pre-filled default
         email: '',
         projectTitle: '',
         description: '',
@@ -13,8 +19,6 @@ const ProjectIdeaModal = ({ isOpen, onClose }) => {
     const [uploading, setUploading] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-
-    if (!isOpen) return null;
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -82,32 +86,44 @@ const ProjectIdeaModal = ({ isOpen, onClose }) => {
         }
     };
 
-    return (
-        <div className="project-modal-overlay" onClick={onClose}>
-            <div className="project-modal-content" onClick={e => e.stopPropagation()}>
-                <button className="close-modal-btn" onClick={onClose}>&times;</button>
-
-                {submitted ? (
-                    <div className="success-content">
-                        <span className="success-icon">🚀</span>
-                        <h2 className="modal-title">Idea Submitted!</h2>
-                        <p>We've received your project idea. Our team will review it and get back to you shortly!</p>
-                        <button className="submit-btn" onClick={onClose}>Close</button>
-                    </div>
-                ) : (
-                    <>
-                        <div className="modal-header">
-                            <h2 className="modal-title">Submit Your Idea 💡</h2>
-                            <p className="modal-subtitle">Turn your vision into reality with GDG SJCEM</p>
+    if (submitted) {
+        return (
+            <section className="project-submission-section">
+                <div className="submission-container">
+                    <div className="submission-card">
+                        <div className="success-view">
+                            <span className="success-emoji">🚀</span>
+                            <h2 className="page-title">Idea Submitted!</h2>
+                            <p style={{ fontSize: '1.2rem', color: '#6b7280', marginBottom: '2rem' }}>
+                                Thanks <strong>{formData.name}</strong>! We've received your project idea.<br />
+                                Our team will review it and get back to you shortly.
+                            </p>
+                            <Link to="/projects" className="full-submit-btn" style={{ textDecoration: 'none', maxWidth: '300px', margin: '0 auto' }}>
+                                Back to Projects
+                            </Link>
                         </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
-                        <form className="modal-form" onSubmit={handleSubmit}>
+    return (
+        <section className="project-submission-section">
+            <div className="submission-container">
+                <div className="submission-card">
+                    <div className="submission-header">
+                        <h1 className="page-title">Submit Your Idea 💡</h1>
+                        <p className="page-subtitle">Turn your vision into reality with GDG SJCEM expert mentorship.</p>
+                    </div>
+
+                    <form className="submission-form" onSubmit={handleSubmit}>
+                        <div className="form-grid">
                             <div className="form-group">
                                 <label>Your Name</label>
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder="e.g. John Doe"
                                     required
                                     value={formData.name}
                                     onChange={handleChange}
@@ -125,51 +141,53 @@ const ProjectIdeaModal = ({ isOpen, onClose }) => {
                                     onChange={handleChange}
                                 />
                             </div>
+                        </div>
 
-                            <div className="form-group">
-                                <label>Project Title</label>
-                                <input
-                                    type="text"
-                                    name="projectTitle"
-                                    placeholder="e.g. Smart Campus App"
-                                    required
-                                    value={formData.projectTitle}
-                                    onChange={handleChange}
-                                />
-                            </div>
+                        <div className="form-group">
+                            <label>Project Title</label>
+                            <input
+                                type="text"
+                                name="projectTitle"
+                                placeholder="e.g. Smart Campus App"
+                                required
+                                value={formData.projectTitle}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                            <div className="form-group">
-                                <label>Description (MVP)</label>
-                                <textarea
-                                    name="description"
-                                    rows="4"
-                                    placeholder="Describe the core features and problem it solves..."
-                                    required
-                                    value={formData.description}
-                                    onChange={handleChange}
-                                ></textarea>
-                            </div>
+                        <div className="form-group">
+                            <label>Description (MVP Features)</label>
+                            <textarea
+                                name="description"
+                                rows="5"
+                                placeholder="Describe the core features and the problem it solves..."
+                                required
+                                value={formData.description}
+                                onChange={handleChange}
+                            ></textarea>
+                        </div>
 
+                        <div className="form-grid">
                             <div className="form-group">
                                 <label>Project Image / Sketch</label>
-                                <div className={`image-upload-box ${formData.image ? 'has-image' : ''}`}>
+                                <div className={`image-upload-wrapper ${formData.image ? 'has-file' : ''}`}>
                                     <input
                                         type="file"
                                         accept="image/*"
-                                        id="project-image"
+                                        id="project-image-input"
                                         hidden
                                         onChange={handleImageUpload}
                                     />
-                                    <label htmlFor="project-image" style={{ width: '100%', height: '100%', cursor: 'pointer', display: 'block' }}>
+                                    <label htmlFor="project-image-input" style={{ width: '100%', cursor: 'pointer', display: 'block' }}>
                                         {uploading ? (
                                             <span>Uploading...</span>
                                         ) : formData.image ? (
-                                            <>
-                                                <img src={formData.image} alt="Preview" className="image-preview" />
-                                                <span className="change-image-text">Click to Change</span>
-                                            </>
+                                            <div className="upload-content">
+                                                <img src={formData.image} alt="Preview" className="preview-img" />
+                                                <span style={{ color: '#34A853', fontWeight: 'bold' }}>Click to Change</span>
+                                            </div>
                                         ) : (
-                                            <div className="upload-placeholder">
+                                            <div className="upload-content">
                                                 <span className="upload-icon">📷</span>
                                                 <span>Click to Upload Image</span>
                                             </div>
@@ -187,18 +205,25 @@ const ProjectIdeaModal = ({ isOpen, onClose }) => {
                                     value={formData.videoLink}
                                     onChange={handleChange}
                                 />
-                                <small style={{ color: '#6b7280', fontSize: '0.8rem' }}>Please make sure the link is shareable.</small>
+                                <small style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '0.5rem', display: 'block' }}>
+                                    Please ensure the link is publicly accessible.
+                                </small>
                             </div>
+                        </div>
 
-                            <button type="submit" className="submit-btn" disabled={submitting || uploading}>
-                                {submitting ? 'Submitting...' : 'Submit Idea 🚀'}
-                            </button>
-                        </form>
-                    </>
-                )}
+                        <button type="submit" className="full-submit-btn" disabled={submitting || uploading}>
+                            {submitting ? (
+                                <>
+                                    <span className="loader-spinner" style={{ width: '24px', height: '24px', borderWidth: '3px' }}></span>
+                                    Submitting...
+                                </>
+                            ) : 'Submit Idea 🚀'}
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 
-export default ProjectIdeaModal;
+export default ProjectSubmission;

@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Projects.css';
 import Tilt from 'react-parallax-tilt';
-import ProjectIdeaModal from './ProjectIdeaModal';
 
 const Projects = ({ preview = false }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
+    const [isNavigating, setIsNavigating] = useState(false);
+
+    const handleSubmitClick = (e) => {
+        e.preventDefault();
+        setIsNavigating(true);
+        // Simulate loading for better UX before navigation
+        setTimeout(() => {
+            navigate('/submit-idea');
+        }, 800);
+    };
 
     const projects = [
         {
@@ -112,18 +122,20 @@ const Projects = ({ preview = false }) => {
                         </p>
                         <button
                             className="submit-btn"
-                            onClick={() => setIsModalOpen(true)}
+                            onClick={handleSubmitClick}
+                            disabled={isNavigating}
+                            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', margin: '1rem auto' }}
                         >
-                            Submit Your Idea
+                            {isNavigating ? (
+                                <>
+                                    <span className="loader-spinner" style={{ width: '20px', height: '20px', border: '3px solid white', borderBottomColor: 'transparent' }}></span>
+                                    Wait...
+                                </>
+                            ) : 'Submit Your Idea'}
                         </button>
                     </div>
                 </div>
             </div>
-
-            <ProjectIdeaModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-            />
         </section>
     );
 };
