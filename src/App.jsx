@@ -21,6 +21,7 @@ import Projects from './components/Projects';
 import Leaderboard from './components/Leaderboard';
 import FAQ from './components/FAQ';
 import TeamDirectory from './components/TeamDirectory';
+import Blog from './components/Blog';
 import Newsletter from './components/Newsletter';
 
 import ScrollProgress from './components/ScrollProgress';
@@ -78,6 +79,7 @@ function App() {
               <Route path="/join" element={<JoinTeam />} />
               <Route path="/team-directory" element={<TeamDirectory />} />
               <Route path="/emails" element={<TeamEmails />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
             </Routes>
@@ -91,3 +93,5 @@ function App() {
 }
 
 export default App;
+
+// Force HMR update

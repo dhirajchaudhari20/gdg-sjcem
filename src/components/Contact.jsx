@@ -57,11 +57,14 @@ const Contact = () => {
                         </div>
                     ) : (
                         <form
-                            onSubmit={handleSubmit}
+                            action="https://formsubmit.co/gdg@sjcem.edu.in"
+                            method="POST"
                             className="contact-form"
                         >
                             <input type="hidden" name="_subject" value="New Submission from GDG Website" />
                             <input type="hidden" name="_captcha" value="false" />
+                            {/* Redirect back to the same page after submission (optional, but good UX) */}
+                            <input type="hidden" name="_next" value="http://localhost:5173/#contact" />
 
                             <div className="form-group">
                                 <input type="text" name="name" placeholder="Your Name" required className="form-input" />
@@ -76,8 +79,8 @@ const Contact = () => {
                                 <textarea name="message" rows="5" placeholder="Your Message" required className="form-input"></textarea>
                             </div>
 
-                            <button type="submit" className="btn btn-primary submit-btn" disabled={loading}>
-                                {loading ? 'Sending...' : 'Send Message'}
+                            <button type="submit" className="btn btn-primary submit-btn">
+                                Send Message
                             </button>
                         </form>
                     )}

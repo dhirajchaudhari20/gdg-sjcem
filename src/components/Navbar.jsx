@@ -28,6 +28,7 @@ const Navbar = () => {
           <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
           <Link to="/leaderboard" onClick={() => setMenuOpen(false)}>Ranking</Link>
           <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
+          <Link to="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
           <Link to="/team" onClick={() => setMenuOpen(false)}>Team</Link>
           <a href="/#organizers" onClick={() => setMenuOpen(false)}>Organizers</a>
           <a href="/#contact" onClick={() => setMenuOpen(false)}>Contact</a>
