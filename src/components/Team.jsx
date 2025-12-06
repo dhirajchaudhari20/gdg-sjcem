@@ -135,7 +135,12 @@ const Team = () => {
         { name: 'Vidhisha Sonar', role: 'Design Member' },
         { name: 'Kushal Mali', role: 'Member', image: 'https://media.licdn.com/dms/image/v2/D4D03AQEnJP7XBOHz6w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1707369848628?e=1766620800&v=beta&t=tjxCvW6Wm9FvWWgvKd3B_rpR-hDgn5qWuui8xi8e6Ps' },
         { name: 'Juee Patil', role: 'Member' },
-        { name: 'Viraj Tamhanekar', role: 'Media Member' },
+        {
+            name: 'Viraj Tamhanekar',
+            role: 'Media Member',
+            image: 'https://media.licdn.com/dms/image/v2/D4D03AQHuJOwdR7GHIQ/profile-displayphoto-crop_800_800/B4DZqvjKeRIkAI-/0/1763881823603?e=1766620800&v=beta&t=bpxNqsH4OwnOTszb4C4Gd6hUe2yCYlfFqPZs3E3FZOE',
+            linkedin: 'https://www.linkedin.com/in/viraj-tamhanekar/'
+        },
         { name: 'Aarchi Pimple', role: 'Graphic Designer' },
         { name: 'Shivanshu Mishra', role: 'Media & Design Lead' },
         { name: 'Tanishka Gharat', role: 'Volunteer' },
@@ -145,7 +150,12 @@ const Team = () => {
 
     const contentTeam = [
         { name: 'Aleena Joji', role: 'Content Head' },
-        { name: 'Siddhi Akre', role: 'Coordinator' },
+        {
+            name: 'Siddhi Akre',
+            role: 'Coordinator',
+            image: 'https://media.licdn.com/dms/image/v2/D4D03AQH-31z--vjkSw/profile-displayphoto-scale_200_200/B4DZkfMzcHIEAY-/0/1757165075955?e=1766620800&v=beta&t=gKakyLie0g9SF8FrmGJLitpZhiOTb8kDfB9zBkqf-mc',
+            linkedin: 'https://www.linkedin.com/in/siddhi-akre-1199b5250/'
+        },
         { name: 'Rutuja Gharat', role: 'Technical Writer' },
         { name: 'Durvesh Vinherkar', role: 'Content Lead' },
         { name: 'Ilf Bhimani', role: 'Member' },
