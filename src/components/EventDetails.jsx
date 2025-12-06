@@ -8,12 +8,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './EventDetails.css';
 
+import AOS from 'aos';
+
 const EventDetails = () => {
     const { id } = useParams();
 
-    // Scroll to top on load
+    // Scroll to top and refresh animations on load
     useEffect(() => {
         window.scrollTo(0, 0);
+        setTimeout(() => {
+            AOS.refresh();
+        }, 500); // Small delay to ensure DOM is ready
     }, []);
 
     // Find event in either list
@@ -52,7 +57,7 @@ const EventDetails = () => {
             </div>
 
             <div className="event-details-container">
-                <div className="event-main-content" data-aos="fade-up" data-aos-delay="100">
+                <div className="event-main-content">
                     <div className="event-main-image">
                         <img src={event.image} alt={event.title} />
                     </div>
@@ -100,7 +105,7 @@ const EventDetails = () => {
                     )}
                 </div>
 
-                <div className="event-sidebar" data-aos="fade-left" data-aos-delay="200">
+                <div className="event-sidebar">
                     <div className="event-action-card">
                         <h3 className="event-sidebar-title">Join Us</h3>
 

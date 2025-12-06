@@ -2,8 +2,7 @@
     padding-top: 120px;
     padding-bottom: 80px;
     min-height: 100vh;
-    background: #0f172a;
-    /* Dark base for glow effect */
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%);
     display: flex;
     justify-content: center;
     align-items: center;
