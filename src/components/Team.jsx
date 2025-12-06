@@ -24,7 +24,8 @@ const Team = () => {
             role: 'Faculty Advisor & HOD Computer Engineering',
             image: 'https://i.ibb.co/RTNCNWTD/file-2.jpg',
             bio: 'Head of Department, Computer Engineering. Guiding the GDG on Campus chapter to excellence.',
-            twitter: null
+            linkedin: 'https://www.linkedin.com/in/sunny-sall-12372b284/?originalSubdomain=in',
+            googleScholar: 'https://scholar.google.com/citations?user=DV2d_v8AAAAJ&hl=en'
         }
     ];
 
@@ -230,6 +231,11 @@ const Team = () => {
                                 <i className="fab fa-twitter"></i>
                             </a>
                         )}
+                        {org.googleScholar && (
+                            <a href={org.googleScholar} target="_blank" rel="noreferrer" className="social-icon google-scholar">
+                                <i className="fas fa-graduation-cap"></i>
+                            </a>
+                        )}
                     </div>
                 </div>
             </li>
@@ -315,6 +321,9 @@ const Team = () => {
                             )}
                             {selectedOrganizer.twitter && (
                                 <a href={selectedOrganizer.twitter} target="_blank" rel="noreferrer" className="modal-social-link">Twitter/X</a>
+                            )}
+                            {selectedOrganizer.googleScholar && (
+                                <a href={selectedOrganizer.googleScholar} target="_blank" rel="noreferrer" className="modal-social-link">Google Scholar</a>
                             )}
                         </div>
                     </div>

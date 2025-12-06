@@ -12,7 +12,54 @@
 
 .organizers-section {
     padding: 80px 0;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating Background Animation */
+.organizers-section::before,
+.organizers-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.4;
+    animation: floatBlob 15s infinite ease-in-out alternate;
+}
+
+.organizers-section::before {
+    top: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(66, 133, 244, 0.2);
+}
+
+.organizers-section::after {
+    bottom: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(52, 168, 83, 0.2);
+    animation-delay: -5s;
+}
+
+@keyframes floatBlob {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(40px, 60px) scale(1.1);
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    /* Keep content above blobs */
 }
 
 
@@ -184,6 +231,11 @@
 
 .social-icon.instagram:hover {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.social-icon.google-scholar:hover {
+    background: #4285F4;
+    color: white;
 }
 
 /* Update Modal Social Links to be flexible */
