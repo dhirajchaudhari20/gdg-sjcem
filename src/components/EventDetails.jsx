@@ -18,64 +18,50 @@ const EventDetails = () => {
 
     const agendaRef = useRef(null);
     const progressLineRef = useRef(null);
+    const timelineRef = useRef(null);
+    const timelineProgressRef = useRef(null);
 
-    // Agenda Scroll Animation
+    // Function to handle timeline animation (reused for both Agenda and Timeline)
+    const handleTimelineAnimation = (containerRef, lineRef) => {
+        if (!containerRef.current || !lineRef.current) return;
+
+        const container = containerRef.current;
+        const progressLine = lineRef.current;
+        const items = container.querySelectorAll('.agenda-item');
+        const windowHeight = window.innerHeight;
+
+        let maxActiveTop = 0;
+
+        items.forEach((item) => {
+            const itemRect = item.getBoundingClientRect();
+            if (itemRect.top < windowHeight * 0.75) {
+                item.classList.add('active');
+                const dotOffset = 36;
+                maxActiveTop = (item.offsetTop + dotOffset);
+            } else {
+                item.classList.remove('active');
+            }
+        });
+
+        if (maxActiveTop > 0) {
+            progressLine.style.height = `${maxActiveTop}px`;
+        } else {
+            progressLine.style.height = '0px';
+        }
+    };
+
+    // Scroll Animation Effect
     useEffect(() => {
         const handleScroll = () => {
-            if (!agendaRef.current || !progressLineRef.current) return;
-
-            const agenda = agendaRef.current;
-            const progressLine = progressLineRef.current;
-            const items = agenda.querySelectorAll('.agenda-item');
-
-            const agendaRect = agenda.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            const triggerPoint = windowHeight * 0.5; // Active when item passes middle of screen
-
-            // Calculate progress line height
-            // Start filling when agenda top hits middle of screen
-            let progress = 0;
-            const startY = agendaRect.top - windowHeight / 2;
-            const totalHeight = agenda.offsetHeight;
-
-            // Percentage of agenda scrolled past center
-            if (agendaRect.top < windowHeight / 2) {
-                progress = Math.abs(agendaRect.top - windowHeight / 2);
-                if (progress > totalHeight) progress = totalHeight;
-            }
-
-            // Limit progress to actual content bounds roughly
-            // A more precise way: Draw line to the last active item
-            let maxActiveTop = 0;
-
-            items.forEach((item, index) => {
-                const itemRect = item.getBoundingClientRect();
-                const itemCenter = itemRect.top + itemRect.height / 2;
-
-                if (itemRect.top < windowHeight * 0.75) { // Trigger slightly below mid-screen
-                    item.classList.add('active');
-                    // Calculate where the line should end (center of the last active dot)
-                    // Dot is at top: 1.8rem + 8px approx 36px from top
-                    const dotOffset = 36;
-                    maxActiveTop = (item.offsetTop + dotOffset);
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            if (maxActiveTop > 0) {
-                progressLine.style.height = `${maxActiveTop}px`;
-            } else {
-                progressLine.style.height = '0px';
-            }
+            handleTimelineAnimation(agendaRef, progressLineRef);
+            handleTimelineAnimation(timelineRef, timelineProgressRef);
         };
 
         window.addEventListener('scroll', handleScroll);
-        // Initial check
         setTimeout(handleScroll, 100);
 
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [event, id]); // Re-run when event changes
+    }, [event, id]);
 
     // Scroll to top and refresh animations on load
     useEffect(() => {
@@ -339,13 +325,17 @@ const EventDetails = () => {
                 {event.timeline && (
                     <div className="event-timeline full-width-block">
                         <div className="content-wrapper">
-                            <h3 className="agenda-title">Hackathon Timeline</h3>
-                            <div className="timeline-grid">
+                            <h3 className="agenda-title">Hackathon Timeline (Tentative)</h3>
+                            <div className="agenda-timeline" ref={timelineRef}>
+                                <div className="agenda-progress-line" ref={timelineProgressRef}></div>
                                 {event.timeline.map((item, index) => (
-                                    <div key={index} className="timeline-card" data-aos="fade-up" data-aos-delay={index * 100}>
-                                        <div className="timeline-date-badge">{item.date}</div>
-                                        <h4 className="timeline-title">{item.title}</h4>
-                                        <p className="timeline-desc">{item.description}</p>
+                                    <div
+                                        key={index}
+                                        className="agenda-item"
+                                    >
+                                        <div className="agenda-time">{item.date}</div>
+                                        <div className="agenda-event-title">{item.title}</div>
+                                        <div className="agenda-desc">{item.description}</div>
                                     </div>
                                 ))}
                             </div>
