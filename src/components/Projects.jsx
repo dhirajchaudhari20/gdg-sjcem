@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Projects.css';
 import Tilt from 'react-parallax-tilt';
+import ProjectIdeaModal from './ProjectIdeaModal';
 
 const Projects = ({ preview = false }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const projects = [
         {
             id: 1,
@@ -107,12 +110,20 @@ const Projects = ({ preview = false }) => {
                             <br />
                             <strong>Perks:</strong> Get <span className="highlight">Certificates of Appreciation</span> & exclusive <span className="highlight">Google Swags</span> upon completion! 🏆🎁
                         </p>
-                        <a href="#" className="submit-btn" target="_blank" rel="noopener noreferrer">
+                        <button
+                            className="submit-btn"
+                            onClick={() => setIsModalOpen(true)}
+                        >
                             Submit Your Idea
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <ProjectIdeaModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </section>
     );
 };
