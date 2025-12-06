@@ -6,6 +6,7 @@ import './Organizers.css';
 
 const Team = () => {
     const [selectedOrganizer, setSelectedOrganizer] = useState(null);
+    const [isAvatarExpanded, setIsAvatarExpanded] = useState(false);
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -143,6 +144,7 @@ const Team = () => {
         },
         { name: 'Aarchi Pimple', role: 'Graphic Designer' },
         { name: 'Shivanshu Mishra', role: 'Media & Design Lead' },
+        { name: 'Aarya Krup', role: 'Media Member', image: null },
         { name: 'Tanishka Gharat', role: 'Volunteer' },
         { name: 'Viren Soni', role: 'Member' },
         { name: 'Parveen Shaikh', role: 'Volunteer' }
@@ -281,7 +283,9 @@ const Team = () => {
                     <div className="organizer-modal-content" onClick={(e) => e.stopPropagation()}>
                         <button className="modal-close-btn" onClick={() => setSelectedOrganizer(null)}>&times;</button>
                         <div className="modal-header">
-                            <div className="modal-avatar"
+                            <div
+                                className="modal-avatar clickable"
+                                onClick={() => setIsAvatarExpanded(true)}
                                 style={{
                                     backgroundColor: selectedOrganizer.image ? 'transparent' : '#4285F4'
                                 }}>
@@ -314,6 +318,21 @@ const Team = () => {
                             )}
                         </div>
                     </div>
+                </div>
+            )}
+            {/* Avatar Lightbox */}
+            {isAvatarExpanded && selectedOrganizer && selectedOrganizer.image && (
+                <div
+                    className="avatar-lightbox"
+                    onClick={() => setIsAvatarExpanded(false)}
+                >
+                    <img
+                        src={selectedOrganizer.image}
+                        alt={selectedOrganizer.name}
+                        className="lightbox-image"
+                        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image
+                    />
+                    <button className="lightbox-close-btn" onClick={() => setIsAvatarExpanded(false)}>&times;</button>
                 </div>
             )}
         </section>
