@@ -175,29 +175,71 @@
 
 .success-message {
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(66, 133, 244, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    margin: 0 auto;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.check-icon {
-    font-size: 4rem;
+.success-gif {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 10px 20px rgba(52, 168, 83, 0.2));
+}
+
+.success-message h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+}
+
+.success-message p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.btn-outline {
+    padding: 1rem 2.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    color: #374151;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline:hover {
+    border-color: #34A853;
     color: #34A853;
-    margin-bottom: 20px;
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #f0fdf4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(52, 168, 83, 0.1);
 }
 
 @keyframes popIn {
     0% {
-        transform: scale(0);
+        transform: scale(0.9);
         opacity: 0;
-    }
-
-    80% {
-        transform: scale(1.2);
-        opacity: 1;
     }
 
     100% {
         transform: scale(1);
+        opacity: 1;
     }
 }
 

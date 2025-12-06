@@ -48,10 +48,14 @@ const Contact = () => {
                 <div className="contact-wrapper" data-aos="fade-up" data-aos-delay="200">
                     {submitted ? (
                         <div className="success-message">
-                            <div className="check-icon">✓</div>
-                            <h3>Message Sent!</h3>
+                            <img
+                                src="https://i.pinimg.com/originals/fe/c2/39/fec23921611cc3abb6db1774e284a251.gif"
+                                alt="Success"
+                                className="success-gif"
+                            />
+                            <h3>Message Sent Successfully!</h3>
                             <p>Thanks for reaching out. We'll get back to you soon.</p>
-                            <button className="btn btn-outline" onClick={() => setSubmitted(false)}>Send Another</button>
+                            <button className="btn btn-outline" onClick={() => setSubmitted(false)}>Send Another Message</button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="contact-form">
