@@ -24,3 +24,6 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/gdg-sjcem-web:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
