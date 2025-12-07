@@ -60,10 +60,13 @@ const Team = () => {
             image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/abhijeet_rogye_DhOJ3Wv.jpg',
             linkedin: 'https://www.linkedin.com/in/abhijeetrogye/'
         },
-        {
+   {
             name: 'Sumedh Patil',
             role: 'Technical Head',
-            image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png'
+            image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png',
+            linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/',
+            github: 'https://github.com/Sumedh1102',
+            instagram: 'https://www.instagram.com/sumedh1102'
         },
         {
             name: 'Rupesh Nandale',
@@ -117,7 +120,9 @@ const Team = () => {
             name: 'Sumedh Patil',
             role: 'Technical Head',
             image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png',
-            linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/'
+            linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/',
+            github: 'https://github.com/Sumedh1102',
+            instagram: 'https://www.instagram.com/sumedh1102'
         },
         {
             name: 'Prathamesh Jakkula',
@@ -160,8 +165,33 @@ const Team = () => {
         { name: 'Saiyed Furquanahmed Barkatali', role: 'Member' },
         { name: 'Sakshi Jaywant Mhatre', role: 'Volunteer' },
         { name: 'Satyam R. Tiwari', role: 'Volunteer', image: 'https://i.ibb.co/v6MmDcds/1000121746.jpg' },
-        { name: 'Saish Mekal', role: 'Volunteer' },
-        { name: 'Satyam Ashok Mahto', role: 'Volunteer' }
+        {
+            name: 'Saish Mekal',
+            role: 'Web Development Lead',
+            image: 'https://i.ibb.co/B7022qg/IMG-0369.jpg',
+            linkedin: 'https://www.linkedin.com/in/saish-mekal-64499b253',
+            github: 'https://github.com/saishmekal',
+            instagram: 'https://www.instagram.com/saish_mekal',
+            twitter: 'https://x.com/saishmekal',
+            bio: 'Full-stack Developer passionate about learning, building, and contributing to the developer community. Excited to grow and collaborate with GDG.'
+        },
+        {
+            name: 'Rudra Jaikar',
+            role: 'Tech Volunteer',
+            image: 'https://i.ibb.co/gZ2YvP3y/1000036261.jpg',
+            linkedin: 'https://www.linkedin.com/in/rudra-jaikar-0b3956369',
+            github: 'https://github.com/ThatWasShiva'
+        },
+        {
+            name: 'Satyam Mahto',
+            role: 'Technical Member',
+            image: 'https://i.ibb.co/8LpnHcnf/1000078158.jpg',
+            linkedin: 'https://www.linkedin.com/in/satyam-mahto-8862b7366',
+            github: 'https://github.com/satyammahto',
+            instagram: 'https://www.instagram.com/satyam_mahto.06',
+            twitter: 'https://x.com/SatyamMaht77813',
+            bio: 'Computer science SE Engineering student interested in software development and AI'
+        }
     ];
 
     const eventsTeam = [
@@ -180,10 +210,24 @@ const Team = () => {
         },
         { name: 'Lokesh Rane', role: 'Outreach Coordinator' },
         { name: 'Sarth Gawad', role: 'Event Manager' },
-        { name: 'Mihir Kishor Pimple', role: 'Logistic Manager' },
+
+        {
+            name: 'Mihir Kishor Pimple',
+            role: 'Logistic Manager',
+            image: 'https://i.ibb.co/0jPxP35b/DSC02319.jpg',
+            linkedin: 'https://www.linkedin.com/in/mihir-pimple-378338223',
+            instagram: 'https://www.instagram.com/mihirpimple',
+            bio: 'Tech enthusiast with hands-on logistics management experience, building smart projects and supporting GDG SJCEM events.'
+        },
         { name: 'Neha Vijay Parab', role: 'Event Coordinator' },
         { name: 'Vighnesh Rane', role: 'Member' },
-        { name: 'Neej Patel', role: 'Member' },
+        {
+            name: 'Neej Patel',
+            role: 'Event Member',
+            image: 'https://i.ibb.co/BKqSNWjv/IMG-20250111-WA0007.jpg',
+            linkedin: 'https://www.linkedin.com/in/neej-patel-968404260',
+            instagram: 'https://www.instagram.com/neej_p223'
+        },
         { name: 'Sahil Dongre', role: 'Volunteer' },
         { name: 'Kamlesh S. Choudhary', role: 'Volunteer' },
         { name: 'Rajendra Singh Rajput', role: 'Volunteer' },
@@ -203,8 +247,21 @@ const Team = () => {
             role: 'Volunteer',
             image: 'https://i.ibb.co/BH7Vc2rb/1000012426.jpg'
         },
-        { name: 'Upasana Kundan Meher', role: 'Volunteer' },
-        { name: 'Jyoti Satyendra Awasthi', role: 'Volunteer' }
+        {
+            name: 'Upasana Meher',
+            role: 'Volunteer',
+            image: 'https://i.ibb.co/Vpg73nmX/1000113270.jpg',
+            linkedin: 'https://www.linkedin.com/in/upasana-meher-495481397',
+            instagram: 'https://www.instagram.com/upasana_meher'
+        },
+        {
+            name: 'Jyoti Awasthi',
+            role: 'Volunteer',
+            image: 'https://i.ibb.co/2Yh5bzDr/IMG-20251207-WA0005.jpg',
+            linkedin: 'https://www.linkedin.com/in/jyoti-awasthi-22b381326',
+            instagram: 'https://www.instagram.com/jyoti_awasthi12',
+            bio: 'Simple yet effective.'
+        }
     ];
 
     const communityTeam = [
@@ -244,15 +301,48 @@ const Team = () => {
             image: 'https://i.ibb.co/vvxSHbtD/1000128292.webp',
             linkedin: 'https://www.linkedin.com/in/vaishnavi-khandagale-519203371?utm_source=share_via&utm_content=profile&utm_medium=member_android'
         },
-        { name: 'Sadaf Shakeel Asar', role: 'Community Coordinator' },
+        {
+            name: 'Sadaf Shakeel Asar',
+            role: 'Community Coordinator',
+            image: 'https://i.ibb.co/7d14tgDQ/1000074178.png',
+            linkedin: 'https://www.linkedin.com/in/sadaf-asar-68093a328'
+        },
         { name: 'Vaibhav Somanna', role: 'Member' },
-        { name: 'Saanj Dilsukh Bari', role: 'Member' },
-        { name: 'Prachi R. Vishwakarma', role: 'Member' },
+        {
+            name: 'Saanj Bari',
+            role: 'Community Member (PR)',
+            image: 'https://i.ibb.co/DDH1ySwy/28a1e745-83f8-425a-bfa9-aca5f0610c84-1-all-3220.jpg',
+            linkedin: 'https://www.linkedin.com/in/saanj-bari-59a2b1315',
+            bio: 'PR community member at GDG, committed to promoting events, engaging developers, and supporting a vibrant tech community.'
+        },
+
+        {
+            name: 'Prachi Vishwakarma',
+            role: 'Community Member',
+            image: 'https://i.ibb.co/mVtLsDYr/IMG-20241130-WA0009.jpg',
+            linkedin: 'https://www.linkedin.com/in/prachi-vishwakarma-b1778b30b',
+            instagram: 'https://www.instagram.com/prachi_artverse',
+            bio: 'A creative thinker who values expression, teamwork, and community involvement.'
+        },
         { name: 'S. Madhav', role: 'Volunteer' },
         { name: 'Devyani Jadhav', role: 'Volunteer' },
-        { name: 'Rupali Bharat Kashid', role: 'Volunteer' },
+        {
+            name: 'Rupali Bharat Kashid',
+            role: 'Community Volunteer',
+            image: 'https://i.ibb.co/4gWBcGmm/1000390606.jpg',
+            linkedin: 'https://www.linkedin.com/in/rupali-kashid-41b70a363',
+            instagram: 'https://www.instagram.com/rupaliiii_07',
+            twitter: 'https://x.com/krupalii_07',
+            bio: 'GDG Community Volunteer-Rupali | Exploring technology, teamwork, and real-world innovation.'
+        },
         { name: 'Priti Brijnath Vishwakarma', role: 'Volunteer' },
-        { name: 'Dev Sehgal', role: 'Volunteer' },
+        {
+            name: 'Dev Sehgal',
+            role: 'Community Volunteer',
+            image: 'https://i.ibb.co/HTTvX8JN/1000010196.jpg',
+            linkedin: 'https://www.linkedin.com/in/dev-sehgal-913b39391',
+            instagram: 'https://www.instagram.com/ft.deev._'
+        },
         { name: 'Atharva Mallya', role: 'Volunteer' },
         { name: 'Om Manglure', role: 'Volunteer' }
     ];
@@ -295,18 +385,58 @@ const Team = () => {
             bio: 'Bringing clean design, creative ideas, and an eye for trends to elevate GDG on Campus SJCEM’s social media identity.'
         },
         { name: 'Siddhant Kiran Meher', role: 'Graphic Designer', image: 'https://i.ibb.co/Q3gRBMgj/EU2237020.jpg' },
-        { name: 'Devanshu Pramod Pal', role: 'Social Media Manager' },
+        {
+            name: 'Devanshu Pal',
+            role: 'Social Media Manager',
+            image: 'https://i.ibb.co/dshhfGbv/1000393118.png',
+            linkedin: 'https://www.linkedin.com/in/devanshu-pal-84a25632a',
+            bio: 'I’m Devanshu, a social media–first content creator. I focus on growing brands through smart visuals, consistent posting, and trending strategies.'
+        },
         { name: 'Viraj Tamhanekar', role: 'Member', image: 'https://media.licdn.com/dms/image/v2/D4D03AQHuJOwdR7GHIQ/profile-displayphoto-crop_800_800/B4DZqvjKeRIkAI-/0/1763881823603?e=1766620800&v=beta&t=bpxNqsH4OwnOTszb4C4Gd6hUe2yCYlfFqPZs3E3FZOE' },
         { name: 'Arya Kurup', role: 'Member' },
         { name: 'Prathamesh Dhatavkar', role: 'Member' },
         { name: 'Sarvesh Ambire', role: 'Member' },
         { name: 'Harsh Chaudhari', role: 'Member' },
-        { name: 'Vidhisha Nitin Sonar', role: 'Member' },
+        {
+            name: 'Vidhisha Nitin Sonar',
+            role: 'Design Team Member',
+            image: 'https://i.ibb.co/ycYNFXq5/My-Pic.jpg',
+            linkedin: 'https://www.linkedin.com/in/vidhisha-sonar-ba29b7325',
+            instagram: 'https://www.instagram.com/vidhisha._28',
+            bio: 'Passionate about the intersection of art and technology. My goal is to make digital products look as good as they work.'
+        },
         { name: 'Juee Subhash Patil', role: 'Member' },
         { name: 'Sai Deepak Alim', role: 'Volunteer' },
-        { name: 'Shivanshu A. Mishra', role: 'Volunteer' },
-        { name: 'Parveen A. Shaikh', role: 'Volunteer' },
-        { name: 'Viren Suresh Soni', role: 'Volunteer' }
+
+        {
+            name: 'Shivanshu Mishra',
+            role: 'Media & Design',
+            image: 'https://i.ibb.co/wFxwMdJC/1000083291.jpg',
+            linkedin: 'https://www.linkedin.com/in/shivanshu-mishra-740569373',
+            github: 'https://github.com/shivanshubeast',
+            instagram: 'https://www.instagram.com/shivanshu_beast',
+            bio: 'Creative thinker and great brainstormer with ideas out of the box'
+        },
+        {
+            name: 'Parveen Abdul Rahiman Shaikh',
+            role: 'Media Volunteer',
+            image: 'https://i.ibb.co/9mQWSj5j/1000136066.jpg',
+            linkedin: 'https://www.linkedin.com/in/parveen-shaikh-b85753397',
+            github: 'https://github.com/Parveen1820',
+            instagram: 'https://www.instagram.com/shaikhparveen.20',
+            twitter: 'https://x.com/ParveenSha17555',
+            bio: 'I’m an active and easy-going person who loves exploring tech and taking on new challenges.'
+        },
+        {
+            name: 'Viren Suresh Soni',
+            role: 'Media Volunteer',
+            image: 'https://i.ibb.co/WJY531W/1000032268.jpg',
+            linkedin: 'https://www.linkedin.com/in/viren-soni-485b5a356',
+            github: 'https://github.com/Viren4689',
+            instagram: 'https://www.instagram.com/_viren.soni_',
+            twitter: 'https://x.com/virensoni4689',
+            bio: 'I’m an enthusiastic and calm media volunteer with a strong interest in technology and digital tools.'
+        }
     ];
 
     const contentTeam = [
@@ -331,6 +461,13 @@ const Team = () => {
             linkedin: 'https://www.linkedin.com/in/rutuja-gharat-6b8375372',
             github: 'https://github.com/RutujaGharat-11',
             instagram: 'https://www.instagram.com/rutujagharat_11'
+        },
+        {
+            name: 'Ritika Chaurasiya',
+            role: 'Content and Research Member',
+            linkedin: 'https://www.linkedin.com/in/ritika-chaurasiya-20231a379',
+            instagram: 'https://www.instagram.com/ritika.chaurasiya06',
+            bio: 'Second year ECS student.'
         },
         { name: 'Durvesh Suresh Vinherkar', role: 'Content Lead' },
         { name: 'Siddhi Mahendra Akre', role: 'Member' },

@@ -46,6 +46,23 @@
   --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e8eaed;
+  --surface-color: #202124;
+  --card-bg: #2d2e31;
+  --border-color: #5f6368;
+
+  /* Dark Mode Glassmorphism */
+  --glass-bg: rgba(0, 0, 0, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 * {
   margin: 0;
   padding: 0;

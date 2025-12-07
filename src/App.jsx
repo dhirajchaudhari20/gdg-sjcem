@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import AOS from 'aos';
@@ -93,21 +94,23 @@ function App() {
   }, [loading]);
 
   return (
-    <Router>
-      <div className="App">
-        {loading && <Preloader onFinish={() => setLoading(false)} />}
-        {!loading && (
-          <>
-            <ScrollProgress />
-            <Navbar />
-            <ScrollToTop />
-            <AnimatedRoutes />
-            <Footer />
-            <BackToTop />
-          </>
-        )}
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          {loading && <Preloader onFinish={() => setLoading(false)} />}
+          {!loading && (
+            <>
+              <ScrollProgress />
+              <Navbar />
+              <ScrollToTop />
+              <AnimatedRoutes />
+              <Footer />
+              <BackToTop />
+            </>
+          )}
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

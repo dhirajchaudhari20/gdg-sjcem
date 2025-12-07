@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './EventDetails.css';
+import FeedbackModal from './FeedbackModal';
 
 import AOS from 'aos';
 
@@ -99,6 +100,7 @@ const EventDetails = () => {
         }
     };
     const [activeFaq, setActiveFaq] = useState(null);
+    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
     // Scroll Progress Logic
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -319,6 +321,14 @@ const EventDetails = () => {
                             style={{ marginTop: '0.5rem' }}
                         >
                             Add to Calendar 📅
+                        </button>
+
+                        <button
+                            className="sidebar-btn btn-outline-action"
+                            style={{ marginTop: '0.5rem', borderColor: '#FBBC04', color: '#B45309' }}
+                            onClick={() => setIsFeedbackModalOpen(true)}
+                        >
+                            Share Feedback ⭐
                         </button>
 
                         {event.materialsLink && (
@@ -613,6 +623,12 @@ const EventDetails = () => {
                     </Swiper>
                 </div>
             )}
+
+            <FeedbackModal
+                isOpen={isFeedbackModalOpen}
+                onClose={() => setIsFeedbackModalOpen(false)}
+                eventName={event.title}
+            />
             {/* Floating Registration Bar */}
             <div className={`floating-registration-bar ${showFloatingBar ? 'show' : ''}`}>
                 <div className="floating-content">
