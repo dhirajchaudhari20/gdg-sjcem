@@ -276,19 +276,20 @@ const Team = () => {
     ];
 
     const communityTeam = [
-        {
-            name: 'Sejal Rai',
-            role: 'PR & Outreach Lead',
-            image: 'https://media.licdn.com/dms/image/v2/D4E03AQE0pqh_npE7bQ/profile-displayphoto-scale_200_200/B4EZlln7rdKQAY-/0/1758346591904?e=1766620800&v=beta&t=Z8phlcanXrqhmSGB_Q7PPxypHkc12KSHRogFe9aD4k0',
-            linkedin: 'https://www.linkedin.com/in/sejal-rai-18334a321/'
-        },
-        {
+         {
             name: 'Sahas Santosh Bochare',
             role: 'Community & Marketing Head',
             image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sahas_bochare_EIH7Urf.jpg',
             linkedin: 'https://www.linkedin.com/in/sahasbochare',
             bio: 'Leading with passion | Growing with community 💖'
         },
+        {
+            name: 'Sejal Rai',
+            role: 'PR & Outreach Lead',
+            image: 'https://media.licdn.com/dms/image/v2/D4E03AQE0pqh_npE7bQ/profile-displayphoto-scale_200_200/B4EZlln7rdKQAY-/0/1758346591904?e=1766620800&v=beta&t=Z8phlcanXrqhmSGB_Q7PPxypHkc12KSHRogFe9aD4k0',
+            linkedin: 'https://www.linkedin.com/in/sejal-rai-18334a321/'
+        },
+       
         {
             name: 'Tanaya Mohan Bagade',
             role: 'Partnership Manager',
