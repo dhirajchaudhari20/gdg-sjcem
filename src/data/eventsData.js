@@ -116,7 +116,14 @@ export const upcomingEvents = [
                 image: 'https://media.licdn.com/dms/image/v2/D4D03AQFfFEuKlDTZ5g/profile-displayphoto-shrink_200_200/B4DZcebfwaHMAY-/0/1748562214841?e=1766620800&v=beta&t=UK1GVNOfnuAAJqTPrvUamUS7Zj0PkuiWTfkN2a_nuiI',
                 linkedin: 'https://www.linkedin.com/in/nomthat/',
                 bio: 'A Data & AI Engineer and ML specialist, I convert raw data into strategic assets, enabling informed decision-making and driving business growth.'
-            }
+            },
+               {
+            name: 'Biswanath Giri',
+            role: 'Google Developer Expert | Principal Architect',
+            image: 'https://media.licdn.com/dms/image/v2/D5603AQHZRTzsf7raNA/profile-displayphoto-scale_200_200/B56ZoMZ29DIYAY-/0/1761144697834?e=1766620800&v=beta&t=-1zXZ1xM5FPmYxvIHi9kZ94vY0JHthmriYUKxtkk5Ws',
+            linkedin: 'https://www.linkedin.com/in/biswanathgiri/',
+            bio: '16+ Years of IT industry experience. Google Developer Expert (GDE) in Cloud. Helping businesses with their journey to Cloud & AI. Principal Architect at Kenvue.'
+        }
         ],
         faq: [
             { question: 'Do I need prior experience to participate?', answer: 'No, this hackathon is open to beginners and experts alike. We will have mentors to guide you.' },
