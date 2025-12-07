@@ -60,7 +60,7 @@ export const upcomingEvents = [
         ],
         partners: [
             { name: 'Hack2Skill', logo: 'https://h2svision.github.io/publicAssets/vision/favicon.png' },
-            { name: 'DC Infotech', logo: 'https://storage.googleapis.com/vision-hack2skill-production/innovator/USER00398865/1764868779435-logo.webp' }
+            { name: 'DC Infotech Private Limited', logo: 'https://storage.googleapis.com/vision-hack2skill-production/innovator/USER00398865/1764868779435-logo.webp' }
         ],
         results: {
             status: 'pending', // or 'announced'

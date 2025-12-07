@@ -24,8 +24,11 @@
 }
 
 .footer-logo-img {
-    height: 80px;
-    width: auto;
+    height: auto;
+    width: 100%;
+    max-width: 280px;
+    /* Restrict width to prevent overflow */
+    display: block;
 }
 
 .footer-logo {
