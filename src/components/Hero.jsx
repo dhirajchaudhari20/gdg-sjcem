@@ -47,6 +47,14 @@ const Hero = () => {
                         data-aos="fade-up"
                         data-aos-delay="300"
                     >
+                        GDG on Campus SJCEM
+                    </h1>
+                    <div
+                        className="hero-dynamic-text"
+                        data-aos="fade-up"
+                        data-aos-delay="350"
+                        style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#e3e3e3' }}
+                    >
                         <Typewriter
                             options={{
                                 strings: [
@@ -60,8 +68,7 @@ const Hero = () => {
                                 deleteSpeed: 50,
                             }}
                         />
-                        <span className="highlight">on Campus SJCEM</span>
-                    </h1>
+                    </div>
                     <p
                         className="hero-subtitle"
                         data-aos="fade-up"

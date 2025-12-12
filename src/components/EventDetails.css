@@ -210,102 +210,300 @@
     color: #1f2937;
 }
 
-/* Agenda Section */
-.event-agenda {
-    margin: 3rem 0;
+/* Google Style Agenda Card */
+.agenda-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    /* Constrain width for better readability */
+    margin: 0 auto;
 }
 
-.agenda-title,
-.gallery-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: #1f2937;
-}
-
-.agenda-timeline {
-    position: relative;
-    padding-left: 2rem;
-    border-left: 2px solid rgba(229, 231, 235, 0.5);
-    /* Faint background line */
-}
-
-/* The dynamic progress line */
-.agenda-progress-line {
-    position: absolute;
-    top: 0;
-    left: -2px;
-    /* Overlap the border-left */
-    width: 2px;
-    background: #4285F4;
-    box-shadow: 0 0 10px rgba(66, 133, 244, 0.8);
-    height: 0;
-    /* Will be set via JS */
-    transition: height 0.1s linear;
-    z-index: 1;
-}
-
-.agenda-item {
-    position: relative;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    opacity: 0.5;
-    /* Start dimmed */
-    transform: scale(0.98);
-}
-
-.agenda-item.active {
-    opacity: 1;
-    transform: scale(1);
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 10px 30px rgba(66, 133, 244, 0.2);
-    border-color: rgba(66, 133, 244, 0.3);
-}
-
-.agenda-item::before {
-    content: '';
-    position: absolute;
-    left: -2.6rem;
-    top: 1.8rem;
-    width: 16px;
-    height: 16px;
+.google-agenda-card {
     background: white;
-    border: 3px solid #e5e7eb;
-    /* Default gray */
-    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    /* More rounded */
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    margin-bottom: 0.5rem;
+    /* Spacing */
+    position: relative;
+    top: 0;
+}
+
+.google-agenda-card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-color: transparent;
+    transform: translateY(-4px);
+    /* 3D Lift */
+    z-index: 5;
+}
+
+.google-agenda-card.expanded {
+    border-color: #dadce0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    margin: 1rem 0;
+    /* Give it space when open */
+    transform: scale(1.01);
+    /* Subtle grow */
+}
+
+.google-agenda-header {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: white;
+    position: relative;
     z-index: 2;
-    transition: all 0.3s ease;
 }
 
-.agenda-item.active::before {
-    border-color: #4285F4;
-    background: #4285F4;
-    box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.2);
+.google-agenda-main-info {
+    flex: 1;
+    padding-right: 1rem;
 }
 
-.agenda-time {
-    font-size: 0.9rem;
-    color: #4285F4;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
+.google-agenda-title {
+    font-size: 1.3rem;
+    /* Slightly larger */
+    font-weight: 500;
+    /* Google uses lighter weights often */
+    color: #202124;
+    margin: 0;
+    line-height: 1.3;
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    margin-bottom: 0.5rem;
 }
 
-.agenda-event-title {
+.google-agenda-speaker-preview {
+    font-size: 0.95rem;
+    color: #5f6368;
+    font-weight: 400;
+}
+
+.google-agenda-speakers-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f1f3f4;
+}
+
+.google-speaker-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.google-speaker-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #e8f0fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+}
+
+.google-speaker-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.google-speaker-initial {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #374151;
+    color: #1967d2;
 }
 
-.agenda-desc {
-    color: #6b7280;
+.google-speaker-info {
+    flex: 1;
+}
+
+.google-speaker-name {
+    font-size: 1rem;
+    font-weight: 600;
+    /* Bold Name */
+    color: #202124;
+}
+
+.google-speaker-role {
+    font-size: 0.85rem;
+    color: #5f6368;
+}
+
+.google-speaker-company {
+    font-size: 0.8rem;
+    color: #80868b;
+}
+
+.google-speaker-social {
+    color: #5f6368;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+    padding: 0.5rem;
+}
+
+.google-speaker-social:hover {
+    color: #0a66c2;
+    /* LinkedIn Blue */
+}
+
+/* Live Badge */
+.live-item {
+    border: 1px solid #ea4335 !important;
+    background-color: #fce8e6 !important;
+}
+
+.agenda-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ea4335;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.google-agenda-toggle {
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-top: 0.2rem;
+    /* Align better with title top */
+}
+
+.google-agenda-toggle .icon {
+    font-family: 'Material Icons';
+    /* Explicitly set font */
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.google-agenda-toggle .icon.rotated {
+    transform: rotate(180deg);
+}
+
+.google-agenda-collapsed-info {
+    padding: 0 1.5rem 1.5rem;
+    color: #5f6368;
     font-size: 0.95rem;
+    /* readable size */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.google-agenda-time {
+    background: #f1f3f4;
+    color: #3c4043;
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.google-agenda-card.expanded .google-agenda-collapsed-info {
+    display: none;
+    /* Hide simple time when expanded if we show it in detail, or keep it. Google usually hides summary stuff if it's redundant, but let's hide it to match the "expand" feel */
+}
+
+.google-agenda-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    background: #f8f9fa;
+    /* Slightly different bg for expanded area */
+    border-top: 1px solid transparent;
+}
+
+.google-agenda-body.show {
+    max-height: 500px;
+    /* Arbitrary limit */
+    opacity: 1;
+    border-top-color: #f1f3f4;
+}
+
+.google-agenda-desc {
+    padding: 1.5rem;
+    color: #3c4043;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.google-agenda-meta-detail {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.meta-badge-time {
+    display: inline-flex;
+    align-items: center;
+    background: #e8f0fe;
+    color: #1967d2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    /* Less rounded than pills */
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 /* Partners Section */
