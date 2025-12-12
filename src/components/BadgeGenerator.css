@@ -1,128 +1,217 @@
-/* Badge Generator Styles */
+/* Badge Generator Styles - Premium Redesign */
 .badge-generator-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%);
-    padding: 3rem 2rem;
-    border-radius: 24px;
-    margin: 3rem 0;
+    background: radial-gradient(circle at 10% 20%, rgb(242, 246, 253) 0%, rgb(255, 255, 255) 90%);
+    padding: 4rem 2rem;
+    border-radius: 32px;
+    margin: 4rem 0;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 10px 15px -3px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background decoration */
+.badge-generator-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(66, 133, 244, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .badge-generator-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.badge-header {
+    max-width: 600px;
 }
 
 .badge-title {
-    font-size: 2rem;
-    color: #202124;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #202124 0%, #5f6368 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
 .badge-subtitle {
     color: #5f6368;
     margin-bottom: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
 }
 
 .badge-input-group {
     display: flex;
-    gap: 1rem;
+    gap: 12px;
     width: 100%;
-    max-width: 500px;
-    margin-bottom: 1rem;
+    max-width: 550px;
+    margin-bottom: 1.5rem;
+    background: white;
+    padding: 8px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .badge-input {
     flex: 1;
-    padding: 12px 20px;
-    border: 2px solid #dadce0;
-    border-radius: 12px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    padding: 14px 24px;
+    border: none;
+    background: transparent;
+    font-size: 1.05rem;
     outline: none;
+    color: #202124;
+    font-weight: 500;
 }
 
-.badge-input:focus {
-    border-color: #4285F4;
-    box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+.badge-input::placeholder {
+    color: #9aa0a6;
 }
 
 .btn-generate {
-    background: #4285F4;
+    background: linear-gradient(135deg, #4285F4 0%, #1a73e8 100%);
     color: white;
     border: none;
-    padding: 12px 24px;
+    padding: 14px 32px;
     border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
 }
 
 .btn-generate:hover {
-    background: #1a73e8;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.35);
+    filter: brightness(1.05);
+}
+
+.btn-generate:active {
+    transform: translateY(0);
 }
 
 .badge-preview-container {
     position: relative;
     margin-top: 1rem;
-    padding: 20px;
+    padding: 24px;
+    /* White frame */
     background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 40px -4px rgba(0, 0, 0, 0.1),
+        0 8px 16px -4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease;
+}
+
+.badge-preview-container:hover {
+    transform: translateY(-4px);
 }
 
 .badge-canvas {
     max-width: 100%;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+    /* Inner border for definition */
+    display: block;
+    /* Remove bottom gap */
 }
 
 .badge-actions {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     display: flex;
-    gap: 1rem;
     justify-content: center;
+    perspective: 1000px;
 }
 
 .btn-download {
-    background: #34A853;
+    background: linear-gradient(135deg, #34A853 0%, #188038 100%);
     color: white;
     border: none;
-    padding: 12px 24px;
+    padding: 16px 36px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(52, 168, 83, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-download::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .btn-download:hover {
-    background: #2d9144;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 168, 83, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 12px 28px rgba(52, 168, 83, 0.35);
 }
 
-@media (max-width: 600px) {
-    .badge-input-group {
-        flex-direction: column;
+.btn-download:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .badge-generator-section {
+        padding: 3rem 1.5rem;
+        margin: 2rem 0;
+        border-radius: 24px;
     }
 
-    .badge-generator-section {
-        padding: 2rem 1rem;
+    .badge-title {
+        font-size: 2rem;
+    }
+
+    .badge-input-group {
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .badge-input {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f1f3f4;
+        padding-bottom: 16px;
+    }
+
+    .btn-generate {
+        width: 100%;
+        justify-content: center;
     }
 }

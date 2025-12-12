@@ -16,134 +16,144 @@ const BadgeGenerator = ({ eventName }) => {
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
 
-        // Square 1080x1080 for Instagram/LinkedIn
-        canvas.width = 1080;
-        canvas.height = 1080;
+        // High resolution for crisp text (2160x2160 internally, scaled down by CSS)
+        // Standard Instagram Square is 1080, but let's go double for quality
+        const size = 1080;
+        canvas.width = size;
+        canvas.height = size;
 
-        // 1. Sophisticated Background
-        // Soft gradient base
-        const gradient = ctx.createLinearGradient(0, 0, 1080, 1080);
-        gradient.addColorStop(0, '#ffffff');
-        gradient.addColorStop(1, '#f8f9fa'); // Even lighter grey
+        // --- 1. Background ---
+        // Premium Mesh Gradient
+        const gradient = ctx.createLinearGradient(0, 0, size, size);
+        gradient.addColorStop(0, '#FFFFFF');
+        gradient.addColorStop(1, '#F0F4F8');
         ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 1080, 1080);
+        ctx.fillRect(0, 0, size, size);
 
-        // Geometric Pattern Overlay (Dot Grid) - Fainter
-        ctx.fillStyle = '#eaecf0';
-        for (let i = 0; i < 1080; i += 40) {
-            for (let j = 0; j < 1080; j += 40) {
-                if ((i + j) % 80 === 0) {
-                    ctx.beginPath();
-                    ctx.arc(i, j, 2, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-        }
+        // Soft Orbs
+        const drawOrb = (x, y, r, color) => {
+            const orbGrad = ctx.createRadialGradient(x, y, 0, x, y, r);
+            orbGrad.addColorStop(0, color);
+            orbGrad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = orbGrad;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fill();
+        };
 
-        // 2. Google Color Borders / Accents (Top Bar)
-        const barHeight = 24;
-        ctx.fillStyle = '#4285F4'; // Blue
-        ctx.fillRect(0, 0, 270, barHeight);
-        ctx.fillStyle = '#EA4335'; // Red
-        ctx.fillRect(270, 0, 270, barHeight);
-        ctx.fillStyle = '#FBBC04'; // Yellow
-        ctx.fillRect(540, 0, 270, barHeight);
-        ctx.fillStyle = '#34A853'; // Green
-        ctx.fillRect(810, 0, 270, barHeight);
+        drawOrb(900, 100, 400, 'rgba(66, 133, 244, 0.08)'); // Blue top-right
+        drawOrb(100, 900, 500, 'rgba(234, 67, 53, 0.06)');  // Red bottom-left
 
-        // 3. Central Card / container
-        // White card with deep shadow for "Canva" feel
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.12)';
-        ctx.shadowBlur = 50;
-        ctx.shadowOffsetY = 20;
-        ctx.fillStyle = '#ffffff';
-        roundRect(ctx, 140, 160, 800, 760, 40);
+        // --- 2. Google Colors Top Bar (Sleek) ---
+        const barHeight = 16;
+        const colors = ['#4285F4', '#EA4335', '#FBBC04', '#34A853'];
+        const segWidth = size / 4;
+        colors.forEach((c, i) => {
+            ctx.fillStyle = c;
+            ctx.fillRect(i * segWidth, 0, segWidth, barHeight);
+        });
+
+        // --- 3. Central Card Container ---
+        // Matte Glass Effect
+        const cardW = 860;
+        const cardH = 860;
+        const cardX = (size - cardW) / 2;
+        const cardY = (size - cardH) / 2 + 20;
+        const cardR = 48;
+
+        // Card Drop Shadow (Deep & Soft)
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.08)';
+        ctx.shadowBlur = 60;
+        ctx.shadowOffsetY = 30;
+        ctx.fillStyle = '#FFFFFF';
+        roundRect(ctx, cardX, cardY, cardW, cardH, cardR);
         ctx.fill();
+        ctx.shadowColor = 'transparent'; // Reset
 
-        ctx.shadowColor = 'transparent'; // Reset shadow
+        // Card Content Container Clip
+        ctx.save();
+        roundRect(ctx, cardX, cardY, cardW, cardH, cardR);
+        ctx.clip();
 
-        // 4. Load & Draw Logo
+        // 4. Content - Logo & Title
         const logo = new Image();
         logo.src = '/gdg-logo-new.png';
 
-        const drawContent = () => {
-            // Logo Centered
-            const logoWidth = 300;
-            const logoHeight = (logo.naturalHeight / logo.naturalWidth) * logoWidth;
-            ctx.drawImage(logo, (1080 - logoWidth) / 2, 220, logoWidth, logoHeight);
+        const drawText = () => {
+            const centerX = size / 2;
 
-            // "I AM ATTENDING" Pill - Cleaner Font
-            const pillY = 380;
-            ctx.fillStyle = '#e8f0fe';
-            roundRect(ctx, 365, pillY, 350, 60, 30);
+            // Logo
+            const logoWidth = 320;
+            const logoHeight = (logo.naturalHeight / logo.naturalWidth) * logoWidth;
+            ctx.drawImage(logo, centerX - logoWidth / 2, cardY + 80, logoWidth, logoHeight);
+
+            // "I AM ATTENDING" Pill
+            const pillY = cardY + 280;
+            const pillW = 400;
+            const pillH = 70;
+            const pillX = centerX - pillW / 2;
+
+            ctx.fillStyle = '#E8F0FE'; // Light Blue
+            roundRect(ctx, pillX, pillY, pillW, pillH, 35);
             ctx.fill();
 
-            ctx.fillStyle = '#1967d2';
-            // Use system font stack fallback for broad support, but prioritize modern sans
-            ctx.font = '700 28px "Google Sans", "Inter", "Roboto", "Segoe UI", sans-serif';
+            ctx.fillStyle = '#1967D2';
+            ctx.font = '700 28px "Google Sans", "Inter", sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('I AM ATTENDING', 540, pillY + 40);
+            ctx.textBaseline = 'middle';
+            ctx.fillText('I AM ATTENDING', centerX, pillY + pillH / 2 + 2);
 
-            // Event Title - Proper Spacing
+            // Main Title
+            ctx.textBaseline = 'alphabetic';
             ctx.fillStyle = '#202124';
-            ctx.font = '800 72px "Google Sans", "Inter", "Roboto", sans-serif'; // Bolder
-            ctx.fillText('TechSprint', 540, 540);
-            ctx.font = '700 64px "Google Sans", "Inter", "Roboto", sans-serif';
-            ctx.fillText('Hackathon 2025', 540, 630);
+            ctx.font = '800 84px "Google Sans", "Inter", sans-serif';
+            ctx.fillText('TechSprint', centerX, cardY + 480);
 
-            // Subtitle / Session - Proper Red
-            ctx.fillStyle = '#d93025'; // Google Red
-            ctx.font = '600 36px "Google Sans", "Inter", "Roboto", sans-serif';
-            ctx.fillText('Session One', 540, 690);
+            ctx.font = '700 72px "Google Sans", "Inter", sans-serif';
+            ctx.fillText('Hackathon 2025', centerX, cardY + 570);
 
-            // Divider Line - Subtle
-            ctx.strokeStyle = '#f1f3f4';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(340, 730);
-            ctx.lineTo(740, 730);
-            ctx.stroke();
+            // Subtitle
+            ctx.fillStyle = '#EA4335';
+            ctx.font = '600 40px "Google Sans", "Inter", sans-serif';
+            ctx.fillText('Session One', centerX, cardY + 640);
 
-            // User Name
+            // User Name Highlight
             if (userName) {
-                // Name scaling logic to fit container
-                ctx.font = '700 70px "Google Sans", "Inter", "Roboto", sans-serif';
-                let textWidth = ctx.measureText(userName).width;
-                if (textWidth > 700) ctx.font = '700 50px "Google Sans", "Inter", "Roboto", sans-serif';
+                // Determine font size based on length
+                let userFont = 76;
+                if (userName.length > 15) userFont = 60;
+                if (userName.length > 20) userFont = 48;
 
                 ctx.fillStyle = '#202124';
-                ctx.fillText(userName, 540, 810);
+                ctx.font = `800 ${userFont}px "Google Sans", "Inter", sans-serif`;
+                ctx.fillText(userName, centerX, cardY + 760);
 
+                // Role
                 ctx.fillStyle = '#5f6368';
-                ctx.font = '500 28px "Google Sans", "Inter", "Roboto", sans-serif';
-                ctx.letterSpacing = '1px'; // Slight letter spacing for "Proper" look
-                ctx.fillText('CONTRIBUTOR / ATTENDEE', 540, 860);
+                // Add simple line above name
+                ctx.fillRect(centerX - 40, cardY + 700, 80, 4);
             } else {
-                ctx.fillStyle = '#dadce0';
-                ctx.font = 'italic 50px "Google Sans", "Inter", "Roboto", sans-serif';
-                ctx.fillText('Your Name Here', 540, 810);
+                ctx.fillStyle = '#DADCE0';
+                ctx.font = 'italic 500 60px "Google Sans", "Inter", sans-serif';
+                ctx.fillText('Your Name Here', centerX, cardY + 760);
             }
 
-            // Footer (Date & Badge)
-            // Blue bottom bar on the card
-            // clip bottom area of card to fill
-            ctx.save();
-            roundRect(ctx, 140, 160, 800, 760, 40);
-            ctx.clip();
+            // Bottom Brand Strip (Inside Card)
             ctx.fillStyle = '#4285F4';
-            ctx.fillRect(140, 840, 800, 80); // bottom strip
+            ctx.fillRect(cardX, cardY + cardH - 100, cardW, 100);
 
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 30px "Google Sans", "Inter", "Roboto", sans-serif';
-            ctx.fillText('Dec 17-18 • SJCEM Palghar', 540, 890);
-            ctx.restore();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '600 32px "Google Sans", "Inter", sans-serif';
+            ctx.fillText('Dec 17-18 • SJCEM Palghar', centerX, cardY + cardH - 40);
         };
 
         if (logo.complete) {
-            drawContent();
+            drawText();
         } else {
-            logo.onload = drawContent;
+            logo.onload = drawText;
         }
+
+        ctx.restore(); // Undo clip
     };
 
     // Helper for rounded rectangle
