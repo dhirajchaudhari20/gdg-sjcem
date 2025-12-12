@@ -77,18 +77,28 @@ const BadgeGenerator = ({ eventName }) => {
 
         // 4. Content - Logo & Title
         const logo = new Image();
-        logo.src = '/gdg-logo-new.png';
+        logo.src = '/gdg-sjc-logo.png'; // Updated wide logo
 
         const drawText = () => {
             const centerX = size / 2;
 
-            // Logo
-            const logoWidth = 320;
-            const logoHeight = (logo.naturalHeight / logo.naturalWidth) * logoWidth;
-            ctx.drawImage(logo, centerX - logoWidth / 2, cardY + 80, logoWidth, logoHeight);
+            // Logo - Wide format adjustments
+            // Calculate height based on aspect ratio, max width constrained
+            const maxLogoWidth = 580;
+            const logoAspectRatio = logo.naturalWidth / logo.naturalHeight;
+            let logoWidth = maxLogoWidth;
+            let logoHeight = logoWidth / logoAspectRatio;
 
-            // "I AM ATTENDING" Pill
-            const pillY = cardY + 280;
+            // If logo is too tall (unlikely for wide logo but safe check)
+            if (logoHeight > 200) {
+                logoHeight = 200;
+                logoWidth = logoHeight * logoAspectRatio;
+            }
+
+            ctx.drawImage(logo, centerX - logoWidth / 2, cardY + 60, logoWidth, logoHeight);
+
+            // "I AM ATTENDING" Pill - Pushed down further
+            const pillY = cardY + logoHeight + 110;
             const pillW = 400;
             const pillH = 70;
             const pillX = centerX - pillW / 2;
@@ -103,21 +113,26 @@ const BadgeGenerator = ({ eventName }) => {
             ctx.textBaseline = 'middle';
             ctx.fillText('I AM ATTENDING', centerX, pillY + pillH / 2 + 2);
 
-            // Main Title
+            // Main Title - Pushed down
+            // Calculate Y based on pill position
+            const titleStartY = pillY + pillH + 110;
+
             ctx.textBaseline = 'alphabetic';
             ctx.fillStyle = '#202124';
             ctx.font = '800 84px "Google Sans", "Inter", sans-serif';
-            ctx.fillText('TechSprint', centerX, cardY + 480);
+            ctx.fillText('TechSprint', centerX, titleStartY);
 
             ctx.font = '700 72px "Google Sans", "Inter", sans-serif';
-            ctx.fillText('Hackathon 2025', centerX, cardY + 570);
+            ctx.fillText('Hackathon 2025', centerX, titleStartY + 90);
 
             // Subtitle
             ctx.fillStyle = '#EA4335';
             ctx.font = '600 40px "Google Sans", "Inter", sans-serif';
-            ctx.fillText('Session One', centerX, cardY + 640);
+            ctx.fillText('Session One', centerX, titleStartY + 160);
 
-            // User Name Highlight
+            // User Name Highlight - Pushed to bottom relative to title
+            const nameY = titleStartY + 270;
+
             if (userName) {
                 // Determine font size based on length
                 let userFont = 76;
@@ -126,16 +141,16 @@ const BadgeGenerator = ({ eventName }) => {
 
                 ctx.fillStyle = '#202124';
                 ctx.font = `800 ${userFont}px "Google Sans", "Inter", sans-serif`;
-                ctx.fillText(userName, centerX, cardY + 760);
+                ctx.fillText(userName, centerX, nameY);
 
-                // Role
+                // Role line
                 ctx.fillStyle = '#5f6368';
                 // Add simple line above name
-                ctx.fillRect(centerX - 40, cardY + 700, 80, 4);
+                ctx.fillRect(centerX - 40, nameY - 70, 80, 4);
             } else {
                 ctx.fillStyle = '#DADCE0';
                 ctx.font = 'italic 500 60px "Google Sans", "Inter", sans-serif';
-                ctx.fillText('Your Name Here', centerX, cardY + 760);
+                ctx.fillText('Your Name Here', centerX, nameY);
             }
 
             // Bottom Brand Strip (Inside Card)
@@ -185,6 +200,20 @@ const BadgeGenerator = ({ eventName }) => {
         link.click();
     };
 
+    const handleShare = (platform) => {
+        const text = `I'm attending TechSprint Hackathon 2025! 🚀\n\nJoin me at the Kick-Off Session by GDG on Campus SJCEM.\n\n#TechSprint2025 #GDGonCampus #SJCEM #GoogleDevs`;
+        const url = 'https://gdg.community.dev/events/details/google-gdg-on-campus-st-john-college-of-engineering-and-management-autonomous-palghar-india-presents-techsprint-hackathon-2025-kick-off-session-gdg-on-campus-sjcem/';
+
+        let shareUrl = '';
+        if (platform === 'twitter') {
+            shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        } else if (platform === 'linkedin') {
+            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        }
+
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    };
+
     return (
         <div className="badge-generator-section" id="get-badge">
             <div className="badge-generator-container">
@@ -214,10 +243,23 @@ const BadgeGenerator = ({ eventName }) => {
                     <canvas ref={canvasRef} className="badge-canvas" style={{ width: '100%', maxWidth: '600px' }}></canvas>
 
                     {isGenerated && (
-                        <div className="badge-actions" data-aos="fade-up">
-                            <button className="btn-download" onClick={handleDownload}>
-                                Download Image 📥
-                            </button>
+                        <div className="badge-actions-container">
+                            <div className="badge-actions">
+                                <button className="btn-download" onClick={handleDownload}>
+                                    Download Image 📥
+                                </button>
+                            </div>
+
+                            <div className="share-text">Share your badge!</div>
+
+                            <div className="social-share-buttons">
+                                <button className="btn-share btn-twitter" onClick={() => handleShare('twitter')}>
+                                    <i className="fab fa-twitter"></i> Share on X
+                                </button>
+                                <button className="btn-share btn-linkedin" onClick={() => handleShare('linkedin')}>
+                                    <i className="fab fa-linkedin"></i> Share on LinkedIn
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>
