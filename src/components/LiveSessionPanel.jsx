@@ -4,14 +4,11 @@ import { collection, doc, setDoc, addDoc, deleteDoc, onSnapshot, query, orderBy,
 import { useAuth } from '../context/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const LiveSessionPanel = ({ codelabId }) => {
+const LiveSessionPanel = ({ codelabId, sessionId }) => {
     const { currentUser } = useAuth();
     const [votes, setVotes] = useState([]);
     const [counts, setCounts] = useState({ yes: 0, no: 0, help: 0 });
     const [myVote, setMyVote] = useState(null);
-
-    // Create a unique session ID for this tab instance
-    const sessionId = useRef(`session_${Math.random().toString(36).substr(2, 9)}`).current;
 
     // Chat State
     const [activeTab, setActiveTab] = useState('chat'); // 'chat' or 'stats'
@@ -49,11 +46,14 @@ const LiveSessionPanel = ({ codelabId }) => {
         });
 
         // Listen to chat messages (Limit 50)
-        const qChat = query(collection(db, "codelabs", codelabId, "chat_messages"), orderBy("timestamp", "asc"), limit(50));
+        // Listen to chat messages (Limit 50 latest)
+        // Use 'desc' to get newest first, then reverse for display
+        const qChat = query(collection(db, "codelabs", codelabId, "chat_messages"), orderBy("timestamp", "desc"), limit(50));
         const unsubChat = onSnapshot(qChat, (snapshot) => {
             const msgs = [];
             snapshot.forEach(doc => msgs.push({ id: doc.id, ...doc.data() }));
-            setMessages(msgs);
+            // Reverse so oldest are at top, newest at bottom
+            setMessages(msgs.reverse());
             // Scroll to bottom on new message
             setTimeout(() => chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
         });
@@ -66,7 +66,7 @@ const LiveSessionPanel = ({ codelabId }) => {
 
     // Auto-join on session enter & Cleanup on exit
     useEffect(() => {
-        if (!currentUser || !codelabId) return;
+        if (!currentUser || !codelabId || !sessionId) return;
 
         const presenceRef = doc(db, "codelabs", codelabId, "live_votes", sessionId);
 
@@ -237,7 +237,7 @@ const LiveSessionPanel = ({ codelabId }) => {
 
                     {counts.help > 0 && (
                         <div className="help-queue">
-                            <h4>Help Queue</h4>
+                            <h4>Help Queue ✋</h4>
                             <div className="queue-list">
                                 {votes.filter(v => v.status === 'help').map((user) => (
                                     <motion.div
@@ -247,7 +247,33 @@ const LiveSessionPanel = ({ codelabId }) => {
                                         animate={{ opacity: 1, x: 0 }}
                                     >
                                         <img src={user.photoURL || "https://lh3.googleusercontent.com/a/default-user"} alt={user.name} />
-                                        <span>{user.name}</span>
+                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                            <span>{user.name}</span>
+                                            {user.currentStep && <span style={{ fontSize: '10px', color: '#5f6368' }}>Step {user.currentStep}</span>}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {counts.no > 0 && (
+                        <div className="help-queue" style={{ marginTop: '24px' }}>
+                            <h4 style={{ color: '#d93025' }}>Stuck Users 👎</h4>
+                            <div className="queue-list">
+                                {votes.filter(v => v.status === 'no').map((user) => (
+                                    <motion.div
+                                        key={user.id}
+                                        className="queue-item"
+                                        style={{ backgroundColor: '#fce8e6', color: '#d93025' }}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                    >
+                                        <img src={user.photoURL || "https://lh3.googleusercontent.com/a/default-user"} alt={user.name} />
+                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                            <span>{user.name}</span>
+                                            {user.currentStep && <span style={{ fontSize: '10px', opacity: 0.8 }}>Step {user.currentStep}</span>}
+                                        </div>
                                     </motion.div>
                                 ))}
                             </div>

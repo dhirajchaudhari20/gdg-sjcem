@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './GoogleCodelab.css';
@@ -18,6 +18,9 @@ const GoogleCodelab = () => {
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const navigate = useNavigate();
     const [codelab, setCodelab] = useState(null);
+
+    // Unique session ID for multi-tab support
+    const sessionId = useRef(`session_${Math.random().toString(36).substr(2, 9)}`).current;
 
     // Protect the route
     useEffect(() => {
@@ -136,6 +139,22 @@ const GoogleCodelab = () => {
     const handleStepClick = (index) => {
         setActiveStep(index);
     };
+
+    // Update Step in Firestore Live Presence
+    useEffect(() => {
+        if (!codelab || !currentUser) return;
+        const updateStep = async () => {
+            try {
+                await setDoc(doc(db, "codelabs", codelab.id, "live_votes", sessionId), {
+                    currentStep: activeStep + 1,
+                    lastActive: new Date()
+                }, { merge: true });
+            } catch (e) {
+                console.error("Error updating step:", e);
+            }
+        };
+        updateStep();
+    }, [activeStep, codelab, currentUser, sessionId]);
 
     // Conditional Rendering Checks - MUST be after all hooks
     if (!currentUser) return null; // redirect handled by useEffect
@@ -358,7 +377,7 @@ const GoogleCodelab = () => {
                 </main>
 
                 {/* Right Sidebar - Live Session */}
-                <LiveSessionPanel codelabId={codelab.id} />
+                <LiveSessionPanel codelabId={codelab.id} sessionId={sessionId} />
             </div>
         </div>
     );
