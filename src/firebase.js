@@ -17,13 +17,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Services
-// Initialize Services
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
-// Use initializeFirestore with experimentalForceLongPolling to bypass strict firewalls (like college/office networks)
-import { initializeFirestore } from "firebase/firestore";
-export const db = initializeFirestore(app, {
-    experimentalForceLongPolling: true,
-});
+export const db = getFirestore(app);
 
 export default app;
