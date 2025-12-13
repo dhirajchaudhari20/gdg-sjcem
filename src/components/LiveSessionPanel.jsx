@@ -220,6 +220,21 @@ const LiveSessionPanel = ({ codelabId, sessionId }) => {
                         ✋ I need help!
                     </button>
 
+                    <div className="session-status" style={{
+                        textAlign: 'center',
+                        padding: '12px',
+                        marginBottom: '16px',
+                        borderRadius: '8px',
+                        backgroundColor: (counts.yes >= (counts.no + counts.help)) ? '#e6f4ea' : '#fce8e6',
+                        color: (counts.yes >= (counts.no + counts.help)) ? '#137333' : '#c5221f',
+                        fontWeight: 'bold',
+                        border: '1px solid',
+                        borderColor: (counts.yes >= (counts.no + counts.help)) ? '#ceead6' : '#fad2cf'
+                    }}>
+                        {(votes.length === 0) ? "Waiting for votes..." :
+                            (counts.yes >= (counts.no + counts.help)) ? "🟢 Smooth Sailing" : "🔴 Slow Down / Help Needed"}
+                    </div>
+
                     <div className="live-stats">
                         <div className="stat-card">
                             <div className="count green">{counts.yes}</div>
