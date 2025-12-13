@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './GoogleCodelab.css';
 import { db } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
 import { codelabs } from '../data/codelabs';
 import LiveSessionPanel from './LiveSessionPanel';
@@ -15,6 +15,7 @@ const GoogleCodelab = () => {
     const [showToast, setShowToast] = useState(false);
     const [showBadgeOverlay, setShowBadgeOverlay] = useState(false);
     const [timeLeft, setTimeLeft] = useState(60 * 60);
+    const [timerStartTime, setTimerStartTime] = useState(null);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const navigate = useNavigate();
     const [codelab, setCodelab] = useState(null);
@@ -39,12 +40,49 @@ const GoogleCodelab = () => {
         }
     }, [id]);
 
+    // Load timer start time from Firestore on mount
     useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-        }, 1000);
+        const loadTimerState = async () => {
+            if (!currentUser || !id) return;
+
+            try {
+                const progressRef = doc(db, 'users', currentUser.uid, 'progress', id);
+                const progressSnap = await getDoc(progressRef);
+
+                if (progressSnap.exists()) {
+                    const data = progressSnap.data();
+                    if (data.timerStartTime) {
+                        // Calculate elapsed time since start
+                        const startTime = data.timerStartTime.toDate();
+                        setTimerStartTime(startTime);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading timer state:', error);
+            }
+        };
+
+        loadTimerState();
+    }, [currentUser, id]);
+
+    // Timer countdown based on start time
+    useEffect(() => {
+        if (!timerStartTime) return;
+
+        const updateTimer = () => {
+            const now = new Date();
+            const elapsedSeconds = Math.floor((now - timerStartTime) / 1000);
+            const remaining = Math.max(0, 60 * 60 - elapsedSeconds);
+            setTimeLeft(remaining);
+        };
+
+        // Update immediately
+        updateTimer();
+
+        // Then update every second
+        const timer = setInterval(updateTimer, 1000);
         return () => clearInterval(timer);
-    }, []);
+    }, [timerStartTime]);
 
     const formatTime = (seconds) => {
         const mins = Math.floor(seconds / 60);
@@ -109,7 +147,7 @@ const GoogleCodelab = () => {
                             codelabId: codelab.id,
                             title: codelab.title,
                             completed: true,
-                            completedAt: new Date(),
+                            completedAt: serverTimestamp(),
                             badge: "Learning"
                         }, { merge: true });
                         console.log("Progress saved!");
@@ -117,6 +155,37 @@ const GoogleCodelab = () => {
                         console.error("Error saving progress: ", e);
                     }
                 };
+
+                // Initialize timer on first codelab load
+                const initializeTimer = async () => {
+                    if (!currentUser || !id || timerStartTime) return;
+
+                    try {
+                        const progressRef = doc(db, 'users', currentUser.uid, 'progress', id);
+                        const progressSnap = await getDoc(progressRef);
+
+                        // Only set start time if it doesn't exist
+                        if (!progressSnap.exists() || !progressSnap.data().timerStartTime) {
+                            const now = new Date();
+                            await setDoc(progressRef, {
+                                timerStartTime: serverTimestamp(),
+                                codelabId: id,
+                                title: codelab?.title || 'Codelab'
+                            }, { merge: true });
+                            setTimerStartTime(now);
+                            console.log('⏱️ Timer started!');
+                        }
+                    } catch (error) {
+                        console.error('Error initializing timer:', error);
+                    }
+                };
+
+                // Start timer when codelab loads
+                useEffect(() => {
+                    if (codelab && currentUser && !timerStartTime) {
+                        initializeTimer();
+                    }
+                }, [codelab, currentUser, timerStartTime, id]);
                 saveProgress();
             }
         }
