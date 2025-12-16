@@ -275,6 +275,8 @@ const EventDetails = () => {
 
     // Lightbox State
     const [selectedImage, setSelectedImage] = useState(null);
+    // Gallery Grid State
+    const [showGalleryGrid, setShowGalleryGrid] = useState(false);
 
     const openLightbox = (imgUrl) => {
         setSelectedImage(imgUrl);
@@ -283,6 +285,20 @@ const EventDetails = () => {
 
     const closeLightbox = () => {
         setSelectedImage(null);
+        // Only restore scrolling if grid is CLOSED. If grid is open, keep hidden.
+        if (!showGalleryGrid) {
+            document.body.style.overflow = 'unset';
+        }
+    };
+
+    // Grid Toggles
+    const openGrid = () => {
+        setShowGalleryGrid(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeGrid = () => {
+        setShowGalleryGrid(false);
         document.body.style.overflow = 'unset';
     };
 
@@ -953,7 +969,12 @@ const EventDetails = () => {
             {
                 event.gallery && (
                     <div className="event-gallery-full-bleed">
-                        <h3 className="gallery-title-center">Highlights</h3>
+                        <div className="gallery-header-row">
+                            <h3 className="gallery-title-center" style={{ marginBottom: 0 }}>Highlights</h3>
+                            <button onClick={openGrid} className="btn-view-all">
+                                <span className="icon">🖼️</span> View All Photos
+                            </button>
+                        </div>
                         <Swiper
                             modules={[Navigation, Pagination, Autoplay]}
                             spaceBetween={0}
@@ -1034,15 +1055,36 @@ const EventDetails = () => {
                 )
             }
 
-            {/* Lightbox Modal */}
-            {selectedImage && (
-                <div className="lightbox-overlay" onClick={closeLightbox}>
-                    <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
-                        <img src={selectedImage} alt="Full size" className="lightbox-image" />
+            {/* Gallery Grid Overlay */}
+            {
+                showGalleryGrid && event.gallery && (
+                    <div className="gallery-grid-overlay">
+                        <div className="gallery-grid-header">
+                            <h3 style={{ margin: 0, fontSize: '1.5rem', color: '#202124' }}>{event.title} - Gallery</h3>
+                            <button className="btn-close-grid" onClick={closeGrid}>Close ✕</button>
+                        </div>
+                        <div className="gallery-grid-content">
+                            {event.gallery.map((img, index) => (
+                                <div key={index} className="gallery-grid-item" onClick={() => openLightbox(img)}>
+                                    <img src={img} alt={`Gallery ${index}`} loading="lazy" />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            )}
+                )
+            }
+
+            {/* Lightbox Modal */}
+            {
+                selectedImage && (
+                    <div className="lightbox-overlay" onClick={closeLightbox}>
+                        <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+                            <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
+                            <img src={selectedImage} alt="Full size" className="lightbox-image" />
+                        </div>
+                    </div>
+                )
+            }
         </section >
     );
 };
