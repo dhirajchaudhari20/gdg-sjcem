@@ -150,15 +150,13 @@ const Quiz = ({ data }) => {
     };
 
     // Auto-detect if score was successfully added (via real-time listener)
-    // This fixes the "Submitting..." stuck state if addDoc hangs but listener updates
     useEffect(() => {
-        if (showResult && !scoreSubmitted && userName && endTime) {
-            const timeTaken = (endTime - startTime) / 1000;
-            // Check if an entry with same name, score and roughly same time exists
+        if (showResult && !scoreSubmitted && userName) {
+            // Simplified check: Name and Score matching is enough for this context
+            // to assume it's the current user's submission showing up.
             const entryExists = leaderboard.some(entry =>
                 entry.name === userName &&
-                entry.score === score &&
-                (Math.abs((entry.timeTaken || 0) - timeTaken) < 1.0) // 1s tolerance
+                entry.score === score
             );
 
             if (entryExists) {
@@ -166,28 +164,46 @@ const Quiz = ({ data }) => {
                 setSubmittingScore(false);
             }
         }
-    }, [leaderboard, showResult, scoreSubmitted, userName, score, startTime, endTime]);
+    }, [leaderboard, showResult, scoreSubmitted, userName, score]);
 
     const submitScore = async () => {
         if (submittingScore || scoreSubmitted) return;
         setSubmittingScore(true);
 
-        // Calculate total time taken relative to questions * 10 or just use wall clock?
-        // Using wall clock is fine, but since we have a timer, users might wait. 
-        // Let's stick to wall clock for "timeTaken" leaderboard metric as before.
         const timeTaken = (endTime - startTime) / 1000;
 
         try {
-            await addDoc(quizCollectionRef, {
-                name: userName,
-                score: score,
-                timeTaken: timeTaken,
-                createdAt: serverTimestamp()
-            });
+            // Create a timeout promise
+            const timeoutPromise = new Promise((_, reject) =>
+                setTimeout(() => reject(new Error("Request timed out")), 10000)
+            );
+
+            // Race the addDoc against the timeout
+            await Promise.race([
+                addDoc(quizCollectionRef, {
+                    name: userName,
+                    score: score,
+                    timeTaken: timeTaken,
+                    createdAt: serverTimestamp()
+                }),
+                timeoutPromise
+            ]);
+
             setScoreSubmitted(true);
         } catch (error) {
-            console.error("Error adding score: ", error);
-            alert("Failed to submit score. Try again!");
+            console.error("Error submitting score: ", error);
+
+            // If it failed/timed out, double check if it actually made it (race condition)
+            const entryExists = leaderboard.some(entry =>
+                entry.name === userName &&
+                entry.score === score
+            );
+
+            if (entryExists) {
+                setScoreSubmitted(true);
+            } else {
+                alert("Submission is taking longer than usual. Please check your internet or try again.");
+            }
         } finally {
             setSubmittingScore(false);
         }
