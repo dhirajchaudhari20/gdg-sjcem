@@ -1,60 +1,40 @@
 export const upcomingEvents = [
     {
-        id: 1,
-        date: '16 Dec 2025 – 13 Jan 2026',
+        id: 2,
+        date: '16 Dec 2025',
         type: 'Hackathon',
         title: 'TechSprint Hackathon 2025 | GDG on Campus SJCEM',
         description: 'Welcome to TechSprint 2025! Hosted by GDG on Campus – St. John College of Engineering & Management, this hackathon is an exciting journey of innovation, problem-solving, and collaboration.',
+        driveLink: 'https://drive.google.com/drive/folders/1h5C_-WAmtc67PDEfjlWfDdK-j-pRTKqU?usp=drive_link',
+        gallery: [
+            '/images/techsprint-day1/uploaded_image_0_1765824705394.png',
+            '/images/techsprint-day1/uploaded_image_1_1765824705394.png',
+            '/images/techsprint-day1/uploaded_image_2_1765824705394.png',
+            '/images/techsprint-day1/uploaded_image_3_1765824705394.png',
+            '/images/techsprint-day1/uploaded_image_4_1765824705394.png'
+        ],
         longDescription: `
-            <h3>🚀 TechSprint 2025 – Official Kick-Off Session (Workshop)</h3>
-            <p><strong>Hosted by GDG on Campus – St. John College of Engineering & Management (Autonomous)</strong><br/>
-            <strong>Powered by Hack2Skill</strong></p>
+            <h3>🚀 TechSprint 2025 – Innovation & Hackathon</h3>
+            <p><strong>Hosted by GDG on Campus – SJCEM</strong> | <strong>Powered by Hack2Skill</strong></p>
 
-            <p>Welcome to the official Kick-Off Session of TechSprint 2025 — a campus-wide innovation journey where student developers identify real problems and build meaningful solutions using Google technologies such as Cloud, Firebase, Android, AI/ML, and more.</p>
-
-            <p>This organizer-led hackathon empowers participants to think creatively, collaborate effectively, and create projects that make an impact on campus and in the community.</p>
+            <p>TechSprint 2025 is a month-long innovation journey identifying real problems and building meaningful solutions using Google technologies (Cloud, Firebase, AI/ML).</p>
+            
+            <p><strong>Highlights:</strong></p>
+            <ul>
+                <li><strong>Recruitment:</strong> Top performers get a chance to join the GDG Core Team! 🌟</li>
+                <li><strong>Prizes:</strong> Exciting rewards for winners! 🎁</li>
+                <li><strong>Mentorship:</strong> Expert guidance throughout development.</li>
+            </ul>
 
             <div style="background: #e8f0fe; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #1a73e8;">
                 <h4 style="margin-top: 0; color: #1a73e8;">🎓 Who Can Participate?</h4>
-                <p style="margin-bottom: 0;"><strong>Open to ALL Students:</strong></p>
-                <ul style="margin-top: 5px; margin-bottom: 0;">
-                    <li>Engineering Students (BE/BTech)</li>
-                    <li>Diploma Students</li>
-                    <li><strong>ITI (Industrial Training Institute) Students</strong> – We strongly encourage you to participate!</li>
-                    <li>BSc/MSc/BCA/MCA Students</li>
-                </ul>
-                <p style="margin-top: 10px; margin-bottom: 0; font-size: 0.9em;">*No prior coding experience required. Mentorship will be provided.</p>
+                <p><strong>Open to ALL Students (BE, Diploma, ITI, BSc/MSc):</strong> No prior coding experience required!</p>
             </div>
-
-            <h4>📌 What This Kick-Off Session Will Cover</h4>
-            <ul>
-                <li>Introduction to the TechSprint 2025 campaign</li>
-                <li>Theme explanation, rules, judging criteria & timeline</li>
-                <li>How to use the Hack2Skill hackathon platform</li>
-                <li>Guidance on structuring strong, impactful projects</li>
-                <li>Team formation & idea brainstorming support</li>
-                <li>Tips to maximize your chances of winning</li>
-            </ul>
-
-            <p>Whether you’re a beginner or an experienced developer, this workshop will prepare you for a successful TechSprint journey.</p>
-
-            <h4>📅 Event Details</h4>
-            <p><strong>Kick-Off Session</strong><br/>
-            <strong>Date:</strong> 16 December 2025<br/>
-            <strong>Day:</strong> Tuesday<br/>
-            <strong>Time:</strong> 11:15 AM – 4:15 PM<br/>
-            <strong>Venue:</strong> Lab 1, First Floor</p>
-
-            <p>Be there to start your TechSprint journey with the right direction and mentorship.<br/>
-            <strong>Let’s build technologies that matter! 🚀</strong></p>
-
-            <hr/>
-
           
         `,
         image: 'https://i.ibb.co/bjc6f31T/Generated-Image-December-04-2025-8-46-PM.jpg',
         showTimer: true,
-        registrations: 20,
+        registrations: 100,
         teamSize: '2-4 Members',
         lastDate: 'Submission: 01 Jan 2026',
         location: 'SJCEM Campus (Hybrid)',
@@ -72,94 +52,140 @@ export const upcomingEvents = [
             { date: '02–04 January', title: 'Internal Evaluation', description: 'Shortlisting of Top 10 Teams.' },
             { date: '05 January', title: 'Top 10 Announcement', description: 'Shortlisted teams displayed on website.' },
             { date: '06–12 January', title: 'Pitching & Mentoring Phase', description: 'Mentoring for Top 10 Teams (Online/On-campus).' },
-            { date: '13 January', title: 'Top 3 Teams Announcement', description: 'Top 3 Teams Announcement & Submission to Hack2Skills.' }
+            { date: '13 January', title: 'Grand Finale', description: 'Top 10 Demos, Judging & Prize Distribution.' }
         ],
         agenda: [
             {
-                time: '11:15 AM – 11:45 AM',
-                title: 'Opening & Kickoff',
-                description: 'Welcome message, Hackathon goals & expectations, Full-day roadmap overview.',
-                speakers: [
+                id: 'day1',
+                label: 'Day 1: Kick-off (16 Dec)',
+                items: [
                     {
-                        name: 'Dhiraj Chaudhari',
-                        role: 'GDGoC Organizer',
-                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
-                        linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                        time: '11:15 AM – 11:45 AM',
+                        title: 'Opening & Kickoff',
+                        description: 'Welcome message, Hackathon goals & expectations, Full-day roadmap overview.',
+                        speakers: [
+                            {
+                                name: 'Dhiraj Chaudhari',
+                                role: 'GDGoC Organizer',
+                                image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
+                                linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                            },
+                            {
+                                name: 'Aayush Bari',
+                                role: 'Co-Organizer',
+                                image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aayush_bari.jpg',
+                                linkedin: '#'
+                            }
+                        ]
                     },
                     {
-                        name: 'Aayush Bari',
-                        role: 'Co-Organizer',
-                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aayush_bari.jpg',
-                        linkedin: '#'
-                    }
-                ]
-            },
-            {
-                time: '11:45 AM – 12:00 PM',
-                title: 'Starting the Tech Journey',
-                description: 'Most common beginner problems, Resource platform walkthrough (prathamesh01110.vercel.app), Introduction to Google’s AI ecosystem.',
-                speakers: [
-                    {
-                        name: 'Prathamesh Jakkula',
-                        role: 'AIML/DSA Lead',
-                        image: 'https://i.ibb.co/35jPBNjj/profile.jpg',
-                        linkedin: 'https://www.linkedin.com/in/prathamesh-jakkula-496a39285/'
-                    }
-                ]
-            },
-            {
-                time: '12:00 PM – 01:15 PM',
-                title: 'Hands-On Workshop – Part 1',
-                description: 'Basics of Google Colab & GCP, Deploying ML/AI projects, Basics of Google AI Studio & Firebase, ADK + Gemini API + Firebase Mini-Project.',
-                speakers: [
-                    {
-                        name: 'Prathamesh Jakkula',
-                        role: 'AIML/DSA Lead',
-                        image: 'https://i.ibb.co/35jPBNjj/profile.jpg',
-                        linkedin: 'https://www.linkedin.com/in/prathamesh-jakkula-496a39285/'
+                        time: '11:45 AM – 12:00 PM',
+                        title: 'Starting the Tech Journey',
+                        description: 'Most common beginner problems, Resource platform walkthrough (prathamesh01110.vercel.app), Introduction to Google’s AI ecosystem.',
+                        speakers: [
+                            {
+                                name: 'Prathamesh Jakkula',
+                                role: 'AIML/DSA Lead',
+                                image: 'https://i.ibb.co/35jPBNjj/profile.jpg',
+                                linkedin: 'https://www.linkedin.com/in/prathamesh-jakkula-496a39285/'
+                            }
+                        ]
                     },
                     {
-                        name: 'Sumedh Patil',
-                        role: 'Technical Head',
-                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png',
-                        linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/'
-                    }
-                ]
-            },
-            {
-                time: '01:15 PM – 02:15 PM',
-                title: 'Lunch Break 🍱',
-                description: 'Networking lunch.'
-            },
-            {
-                time: '02:15 PM – 03:30 PM',
-                title: 'Hands-On Workshop – Part 2',
-                description: 'Idea brainstorming session, Anti-Gravity IDE practical demo + project direction, Team formation & grouping.',
-                speakers: [
-                    {
-                        name: 'Sumedh Patil',
-                        role: 'Technical Head',
-                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png',
-                        linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/'
+                        time: '12:00 PM – 01:15 PM',
+                        title: 'Hands-On Workshop – Part 1',
+                        description: 'Basics of Google Colab & GCP, Deploying ML/AI projects, Basics of Google AI Studio & Firebase, ADK + Gemini API + Firebase Mini-Project.',
+                        speakers: [
+                            {
+                                name: 'Prathamesh Jakkula',
+                                role: 'AIML/DSA Lead',
+                                image: 'https://i.ibb.co/35jPBNjj/profile.jpg',
+                                linkedin: 'https://www.linkedin.com/in/prathamesh-jakkula-496a39285/'
+                            },
+                            {
+                                name: 'Sumedh Patil',
+                                role: 'Technical Head',
+                                image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png',
+                                linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/'
+                            }
+                        ]
                     },
                     {
-                        name: 'Dhiraj Chaudhari',
-                        role: 'GDGoC Organizer',
-                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
-                        linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                        time: '01:15 PM – 02:15 PM',
+                        title: 'Lunch Break 🍱',
+                        description: 'Networking lunch.'
+                    },
+                    {
+                        time: '02:15 PM – 03:30 PM',
+                        title: 'Hands-On Workshop – Part 2',
+                        description: 'Idea brainstorming session, Anti-Gravity IDE practical demo + project direction, Team formation & grouping.',
+                        speakers: [
+                            {
+                                name: 'Sumedh Patil',
+                                role: 'Technical Head',
+                                image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sumedh_patil_CV1e5fD.png',
+                                linkedin: 'https://www.linkedin.com/in/sumedh-patil-640512251/'
+                            },
+                            {
+                                name: 'Dhiraj Chaudhari',
+                                role: 'GDGoC Organizer',
+                                image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
+                                linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                            }
+                        ]
+                    },
+                    {
+                        time: '03:30 PM – 04:00 PM',
+                        title: 'Closing, Team Formation & Q&A',
+                        description: 'Final team confirmations, Hackathon guidelines, Open floor Q&A.',
+                        speakers: [
+                            {
+                                name: 'Dhiraj Chaudhari',
+                                role: 'GDGoC Organizer',
+                                image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
+                                linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                time: '03:30 PM – 04:00 PM',
-                title: 'Closing, Team Formation & Q&A',
-                description: 'Final team confirmations, Hackathon guidelines, Open floor Q&A.',
-                speakers: [
+                id: 'day2',
+                label: 'Day 2: Grand Finale (13 Jan)',
+                items: [
                     {
-                        name: 'Dhiraj Chaudhari',
-                        role: 'GDGoC Organizer',
-                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
-                        linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                        time: '09:00 AM – 10:00 AM',
+                        title: 'Check-in & Setup',
+                        description: 'Finalists arrive and set up their demo stations.'
+                    },
+                    {
+                        time: '10:00 AM – 12:00 PM',
+                        title: 'Final Pitches - Round 1',
+                        description: 'Top 10 teams present their projects to the judges.',
+                        speakers: []
+                    },
+                    {
+                        time: '12:00 PM – 01:00 PM',
+                        title: 'Lunch Break & Networking',
+                        description: 'Networking with judges and industry experts.'
+                    },
+                    {
+                        time: '01:00 PM – 02:30 PM',
+                        title: 'Final Pitches - Round 2',
+                        description: 'Remaining teams present.'
+                    },
+                    {
+                        time: '03:00 PM – 04:00 PM',
+                        title: 'Award Ceremony',
+                        description: 'Announcement of winners and prize distribution.',
+                        speakers: [
+                            {
+                                name: 'Dr. Sunny Sall',
+                                role: 'Faculty Advisor',
+                                image: 'https://wsrv.nl/?url=https%3A%2F%2Fi.ibb.co%2FRTNCNWTD%2Ffile-2.jpg&w=400&h=400&fit=cover&a=center&q=80&output=webp',
+                                linkedin: 'https://www.linkedin.com/in/sunny-sall-12372b284/?originalSubdomain=in'
+                            }
+                        ]
                     }
                 ]
             }
@@ -384,18 +410,90 @@ export const upcomingEvents = [
                 }
             ]
         }
+    },
+    {
+        id: 2,
+        date: '20 Dec 2025',
+        type: 'Session',
+        title: 'TechSprint 2025 | Ask Me Anything & Hackathon Guidance Session',
+        description: 'Join us for an important online guidance & AMA session as part of TechSprint 2025. Gain clarity on submissions, evaluation expectations, and execution strategy.',
+        longDescription: `
+            <h3>TechSprint 2025 | Ask Me Anything & Hackathon Guidance Session</h3>
+            <p><strong>Hosted by GDG on Campus – St. John College of Engineering & Management (Autonomous)</strong></p>
+
+            <p>Join us for an important online guidance & AMA session as part of TechSprint 2025.</p>
+
+            <p>This session is designed to help participants gain absolute clarity on hackathon submissions, evaluation expectations, and execution strategy before entering the build phase.</p>
+
+            <p>Whether you already have an idea or are still brainstorming, this session will help you refine, validate, and strengthen your approach.</p>
+
+            <h4>🎯 Session Focus</h4>
+            <ul>
+                <li>Clarity on Hackathon submissions & timelines</li>
+                <li>What evaluators and judges expect</li>
+                <li>How to sharpen your idea & execution</li>
+                <li>Common mistakes to avoid during submission</li>
+                <li><strong>Ask Me Anything (Q&A)</strong> – Opportunity to have your pressing questions answered by experts!</li>
+            </ul>
+
+            <div style="background: #e6f4ea; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #34a853;">
+                <h4 style="margin-top: 0; color: #34a853;">🗣️ Speaker</h4>
+                <p style="margin-bottom: 0;"><strong>Dhiraj Chaudhari</strong><br/>
+                GDG on Campus Organizer<br/>
+                Google Product Expert | 14× Google Cloud Certified</p>
+            </div>
+
+            <h4>🗓 Event Details</h4>
+            <p><strong>Date:</strong> Saturday, 20 Dec 2025<br/>
+            <strong>Time:</strong> 7:30 PM – 8:30 PM (IST)<br/>
+            <strong>Mode:</strong> Online</p>
+
+            <p>👉 <strong>Call to Action:</strong> Don't miss this chance to elevate your hackathon game and gain insights from an industry expert. Register now and be part of the journey to innovation!</p>
+        `,
+        image: 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80', // Fixed working placeholder
+        showTimer: true,
+        registrations: 2,
+        location: 'Online (Google Meet)',
+        buttons: [
+            {
+                text: 'Register / RSVP',
+                link: 'https://gdg.community.dev/events/details/google-gdg-on-campus-st-john-college-of-engineering-and-management-autonomous-palghar-india-presents-techsprint-2025-ask-me-anything-hackathon-guidance-session/',
+                style: 'primary'
+            }
+        ],
+        agenda: [
+            {
+                time: '07:15 PM',
+                title: 'Session Starts',
+                description: 'Join slightly early to settle in.'
+            },
+            {
+                time: '07:30 PM – 08:30 PM',
+                title: 'Guidance & AMA',
+                description: 'Main session with Dhiraj Chaudhari.',
+                speakers: [
+                    {
+                        name: 'Dhiraj Chaudhari',
+                        role: 'Organizer',
+                        image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/dhiraj_chaudhari.jpeg',
+                        linkedin: 'https://www.linkedin.com/in/dhirajchaudhari20/'
+                    }
+                ]
+            }
+        ]
     }
 ];
 
 export const pastEvents = [
     {
         id: 103,
-        date: '16 Dec 2025',
+        date: '15 Dec 2025',
         type: 'Workshop',
-        title: 'TechSprint 2025 | Day 1 Update - How NOT to Win a Hackathon',
-        location: 'GDG on Campus – SJCEM (Lab 1)',
+        title: 'TechSprint 2025 | Pre-Event: How NOT to Win a Hackathon',
+        location: 'Online Google Meet',
         description: 'Day 1 of TechSprint 2025 successfully kicked off with the "Anti-Workshop" session focused on hackathon strategy, team building, and execution. \n\nSpeaker: Prathamesh Jakkula (Finalist – SIH’24 & MumbaiHacks’25)',
         materialsLink: 'https://www.youtube.com/watch?v=EkT1XYiY3gM',
+        driveLink: 'https://drive.google.com/drive/folders/1h5C_-WAmtc67PDEfjlWfDdK-j-pRTKqU?usp=drive_link',
         registrations: 50,
         image: '/images/techsprint-day1/uploaded_image_0_1765824705394.png',
         gallery: [

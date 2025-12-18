@@ -73,11 +73,11 @@ const Hero = () => {
                         data-aos-delay="500"
                     >
                         <div className="stat-item">
-                            <span className="stat-number"><CountUp end={1050} suffix="+" /></span>
-                            <span className="stat-label">Community Members</span>
+                            <span className="stat-number"><CountUp end={1172} suffix="+" /></span>
+                            <span className="stat-label">Group Members</span>
                         </div>
                         <div className="stat-item">
-                            <span className="stat-number"><CountUp end={2} suffix="+" /></span>
+                            <span className="stat-number"><CountUp end={4} suffix="+" /></span>
                             <span className="stat-label">Events Hosted</span>
                         </div>
                         <div className="stat-item">
@@ -90,7 +90,7 @@ const Hero = () => {
                         data-aos="zoom-in"
                         data-aos-delay="600"
                     >
-                        <button className="btn btn-primary hero-btn">Join Chapter</button>
+                        <a href="https://gdg.community.dev/gdg-on-campus-st-john-college-of-engineering-and-management-autonomous-palghar-india/" target="_blank" rel="noopener noreferrer" className="btn btn-primary hero-btn">Join Chapter</a>
                         <button className="btn btn-outline hero-btn-outline">Learn More</button>
                     </div>
                 </div>

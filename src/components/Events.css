@@ -453,3 +453,217 @@
         margin-bottom: 5px;
     }
 }
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    padding: 20px;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    animation: zoomIn 0.3s forwards;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    opacity: 0.8;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    to { transform: scale(1); }
+}
+
+/* Gallery Grid Overlay */
+.gallery-grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 2100; /* Higher than header */
+    overflow-y: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.gallery-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 1rem 0;
+    z-index: 101;
+    border-bottom: 1px solid #eee;
+}
+
+.gallery-grid-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid-item {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.gallery-grid-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.gallery-grid-item:hover img {
+    transform: scale(1.05);
+}
+
+.btn-close-grid {
+    background: #f1f3f4;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.btn-close-grid:hover {
+    background: #eed;
+    color: #000;
+}
+
+.lightbox-download {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background: white;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    opacity: 0.9;
+    transition: all 0.2s;
+}
+
+.lightbox-download:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-share-linkedin {
+    background: #0077b5;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.btn-share-linkedin:hover {
+    background: #005582;
+}
+
+.btn-back-gallery {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5f6368;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-back-gallery:hover {
+    background: #f1f3f4;
+    color: #202124;
+}

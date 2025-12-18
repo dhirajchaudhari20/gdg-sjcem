@@ -27,6 +27,7 @@ import TeamDirectory from './components/TeamDirectory';
 import Blog from './components/Blog';
 import Newsletter from './components/Newsletter';
 import EventDetails from './components/EventDetails';
+import EventGallery from './components/EventGallery';
 import ProjectSubmission from './components/ProjectSubmission';
 import PageTransition from './components/PageTransition';
 import CodelabTabs from './components/CodelabTabs';
@@ -61,6 +62,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
         <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
+        <Route path="/events/gallery/:id" element={<PageTransition><EventGallery /></PageTransition>} />
         <Route path="/privacy-policy" element={<PageTransition><PrivacyPolicy /></PageTransition>} />
         <Route path="/terms-and-conditions" element={<PageTransition><Terms /></PageTransition>} />
         <Route path="/community-guidelines" element={<PageTransition><CommunityGuidelines /></PageTransition>} />

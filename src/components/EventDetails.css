@@ -2222,6 +2222,7 @@
 .alert-icon {
     font-size: 1.2rem;
 }
+
 /* Lightbox Styles */
 .lightbox-overlay {
     position: fixed;
@@ -2304,8 +2305,13 @@
 }
 
 @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 .gallery-grid-header {
@@ -2336,13 +2342,13 @@
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s;
 }
 
 .gallery-grid-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-grid-item img {
@@ -2391,7 +2397,7 @@
 .btn-view-all:hover {
     background: #f8fbff;
     border-color: #1a73e8;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .gallery-header-row {
@@ -2407,4 +2413,44 @@
 /* Ensure Lightbox is ABOVE Grid */
 .lightbox-overlay {
     z-index: 3000 !important;
+}
+
+/* Agenda Tabs */
+.agenda-tabs-container {
+    margin-bottom: 2rem;
+}
+
+.agenda-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+    overflow-x: auto;
+}
+
+.agenda-tab-btn {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #5f6368;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.agenda-tab-btn.active {
+    color: #4285F4;
+    border-bottom-color: #4285F4;
+    background: rgba(66, 133, 244, 0.05);
+    border-radius: 8px 8px 0 0;
+}
+
+.agenda-tab-btn:hover {
+    color: #202124;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px 8px 0 0;
 }

@@ -14,7 +14,7 @@ const shuffleArray = (array) => {
     return newArray;
 };
 
-const Quiz = ({ data }) => {
+const Quiz = ({ data = {} }) => {
     const [started, setStarted] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -30,12 +30,12 @@ const Quiz = ({ data }) => {
         console.log(msg);
         setDebugLog(prev => [...prev, `${new Date().toLocaleTimeString()}: ${msg}`]);
     };
-    const { title, description, questions } = data;
+    const { title, description, questions = [] } = data;
     // Use activeQuestions if started, otherwise fallback/placeholder
     // FIX: If activeQuestions is empty after start (weird bug), default to raw questions
     const currentQuestion = started
-        ? (activeQuestions.length > 0 ? activeQuestions[currentQuestionIndex] : questions[currentQuestionIndex])
-        : questions[0];
+        ? (activeQuestions.length > 0 ? activeQuestions[currentQuestionIndex] : (questions.length > 0 ? questions[currentQuestionIndex] : null))
+        : (questions.length > 0 ? questions[0] : null);
 
     const [userName, setUserName] = useState('');
     const [nameSubmitted, setNameSubmitted] = useState(false);
@@ -75,8 +75,8 @@ const Quiz = ({ data }) => {
             }
         }, (error) => {
             console.error("Leaderboard fetch error:", error);
-            // This usually happens if index is missing or quota exceeded
-            setLeaderboardError("Unable to load leaderboard. Live updates might be paused.");
+            // Show the actual error message to the user/developer for debugging
+            setLeaderboardError(`Error: ${error.message} (Check console for details)`);
         });
 
         return () => unsubscribe();
@@ -97,6 +97,11 @@ const Quiz = ({ data }) => {
     }, [started, isAnswered, showResult, timeLeft]);
 
     const handleStart = () => {
+        if (!questions || questions.length === 0) {
+            alert("No questions available for this quiz!");
+            return;
+        }
+
         if (!userName.trim()) {
             alert("Please enter your name first!");
             return;
@@ -374,10 +379,10 @@ const Quiz = ({ data }) => {
                     </div>
                 </div>
 
-                <h4 className="question-text">{currentQuestion.question}</h4>
+                <h4 className="question-text">{currentQuestion?.question || "Question not found"}</h4>
 
                 <div className="quiz-options">
-                    {currentQuestion.options.map((option, index) => {
+                    {currentQuestion?.options?.map((option, index) => {
                         let btnClass = "quiz-option-btn";
                         if (isAnswered) {
                             if (option === currentQuestion.correctAnswer) {

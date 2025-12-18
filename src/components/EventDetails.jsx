@@ -484,7 +484,28 @@ const EventDetails = () => {
             <div className="event-details-container">
                 <div className="event-main-content">
                     <div className="event-main-image">
-                        <img src={event.image} alt={event.title} />
+                        {event.gallery && event.gallery.length > 0 ? (
+                            <Swiper
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={0}
+                                slidesPerView={1}
+                                navigation
+                                pagination={{ clickable: true }}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                                loop={true}
+                                className="event-main-slider"
+                            >
+                                {event.gallery.map((img, index) => (
+                                    <SwiperSlide key={index}>
+                                        <div className="main-slider-image-container">
+                                            <img src={img} alt={`Event Highlight ${index + 1}`} />
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : (
+                            <img src={event.image} alt={event.title} />
+                        )}
                     </div>
 
                     <h3>About the Event</h3>
@@ -643,11 +664,36 @@ const EventDetails = () => {
                     <div className="event-agenda full-width-block">
                         <div className="content-wrapper">
                             <h3 className="agenda-title">Event Agenda</h3>
-                            <div className="agenda-list-container">
-                                {event.agenda.map((item, index) => (
-                                    <AgendaCard key={index} item={item} />
-                                ))}
-                            </div>
+
+                            {/* Multi-Day Logic */}
+                            {Array.isArray(event.agenda) && event.agenda.length > 0 && event.agenda[0].items ? (
+                                // Multi-Day Format
+                                <div className="agenda-tabs-container">
+                                    <div className="agenda-tabs">
+                                        {event.agenda.map((day, index) => (
+                                            <button
+                                                key={day.id}
+                                                className={`agenda-tab-btn ${index === (activeFaq || 0) ? 'active' : ''}`}
+                                                onClick={() => setActiveFaq(index)}
+                                            >
+                                                {day.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <div className="agenda-list-container">
+                                        {event.agenda[activeFaq || 0].items.map((item, index) => (
+                                            <AgendaCard key={index} item={item} />
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                // Single-Day/Legacy Format
+                                <div className="agenda-list-container">
+                                    {event.agenda.map((item, index) => (
+                                        <AgendaCard key={index} item={item} />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 )}
