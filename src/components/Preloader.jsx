@@ -1,34 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import preloaderVideo from '../assets/new_preloader.mp4';
+import preloaderVideo from '../assets/optimized_preloader.gif';
 import './Preloader.css';
 
 const Preloader = ({ onFinish }) => {
     const [loading, setLoading] = useState(true);
-    const videoRef = React.useRef(null);
 
-    const handleVideoEnd = () => {
-        setLoading(false);
-        setTimeout(onFinish, 800); // 0.8s wait for exit animation
-    };
+    useEffect(() => {
+        // Since GIF loops or plays once without event, we set a fixed timer
+        const timer = setTimeout(() => {
+            setLoading(false);
+            setTimeout(onFinish, 800); // Wait for fade out
+        }, 3500); // 3.5 seconds display time
 
-    const handleMetadataLoaded = () => {
-        if (videoRef.current) {
-            videoRef.current.currentTime = 2;
-        }
-    };
+        return () => clearTimeout(timer);
+    }, [onFinish]);
 
     return (
         <div className={`preloader ${!loading ? 'fade-out' : ''}`}>
             <div className="loader-content">
-                <video
-                    ref={videoRef}
+                <img
                     src={preloaderVideo}
-                    autoPlay
-                    muted
-                    playsInline
+                    alt="Loading..."
                     className="preloader-video"
-                    onLoadedMetadata={handleMetadataLoaded}
-                    onEnded={handleVideoEnd}
                 />
             </div>
         </div>
