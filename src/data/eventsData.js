@@ -686,6 +686,7 @@ export const upcomingEvents = [
             isExternal: true,
             buttonText: 'Start Code Lab 🚀'
         },
+        slides: 'https://docs.google.com/presentation/d/1rpJzd1TGK5SiBR88YJPH8A-1mGBg8rUvtzdjW9Dcgc4/edit?usp=sharing',
         quiz: {
             title: "TechSprint Fun Trivia 🧠",
             description: "Test your knowledge about the event and our organizers! Top the leaderboard to win swag!",

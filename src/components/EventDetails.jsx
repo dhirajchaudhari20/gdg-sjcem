@@ -813,6 +813,33 @@ const EventDetails = () => {
                                     )}
                                 </button>
                             </div>
+
+
+                            {/* Slides Button */}
+                            {event.slides && (
+                                <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid #e0e0e0' }}>
+                                    <a
+                                        href={event.slides}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="sidebar-btn"
+                                        style={{
+                                            textDecoration: 'none',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            gap: '10px',
+                                            width: '100%',
+                                            background: '#fbbc04', // Google Yellow
+                                            color: '#202124',
+                                            fontWeight: '500',
+                                            border: 'none'
+                                        }}
+                                    >
+                                        <span>📑</span> View Slides
+                                    </a>
+                                </div>
+                            )}
                         </div>
                     </div>
                 )}
