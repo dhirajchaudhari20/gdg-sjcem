@@ -80,10 +80,10 @@ const About = () => {
                                 "https://media.licdn.com/dms/image/v2/D5622AQGD3OaHaFjaKQ/feedshare-shrink_2048_1536/B56ZsqwQxVJsAw-/0/1765948954327?e=1767830400&v=beta&t=2uulNLxO2qCg_kx5kyhR7zp9OtwmenxbyKk6rZ8plrY",
                                 "https://media.licdn.com/dms/image/v2/D5622AQG1I1VGUEKbTw/feedshare-shrink_2048_1536/B56ZsqwQxxKEAw-/0/1765948955314?e=1767830400&v=beta&t=RfP8lOmeHJUdviwdyPIdOtiOJI_C7MPMzUZD7IqNVAc",
 
-                                "http://localhost:5173/images/techsprint/kickoff/IMG_7967.JPG",
+                                "/images/techsprint/kickoff/IMG_7967.JPG",
 
 
-                                "http://localhost:5173/images/techsprint/kickoff/IMG_8069.JPG",
+                                "/images/techsprint/kickoff/IMG_8069.JPG",
 
 
                                 "https://media.licdn.com/dms/image/v2/D5622AQEQf33OsGpzNw/feedshare-shrink_2048_1536/B56ZsqwQy3I0Aw-/0/1765948954407?e=1767830400&v=beta&t=CZ6nGdT_19LbgyyiZx5lDEBMFPi9R45rnnSALeX_Drk",
