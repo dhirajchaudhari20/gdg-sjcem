@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { database } from '../firebase';
+import { ref, push, set, serverTimestamp } from 'firebase/database';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 import './WeeklyReport.css';
@@ -56,59 +58,26 @@ const WeeklyReport = () => {
         }
 
         try {
-            const data = new FormData();
-            // Access Key from Web3Forms (same as FeedbackModal)
-            data.append("access_key", "98defd20-dee9-48a7-ac0f-e2fdd45d1f32");
-            data.append("subject", `Weekly Report: ${formData.name} - ${formData.weekEnding}`);
-            data.append("from_name", "GDG Team Reports");
-
-            const messageBody = `
-Name: ${formData.name}
-Role: ${formData.role}
-Email: ${formData.email}
-Week Ending: ${formData.weekEnding}
-
---- Tasks Completed ---
-${formData.tasksCompleted}
-
---- Challenges ---
-${formData.challenges || 'None'}
-
---- Next Week Plan ---
-${formData.nextWeekPlan || 'None'}
-
---- Proof of Work (Links) ---
-${formData.prLinks || 'None'}
-            `;
-
-            data.append("message", messageBody);
-
-            // Optional: Redirect or JSON response
-            // We use JSON to handle it in React
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: data
+            const reportsRef = ref(database, 'weeklyReports');
+            const newReportRef = push(reportsRef);
+            await set(newReportRef, {
+                ...formData,
+                userId: currentUser ? currentUser.uid : 'anonymous',
+                timestamp: serverTimestamp(),
+                createdAt: new Date().toISOString()
             });
 
-            const result = await response.json();
-
-            if (result.success) {
-                setMessage({ type: 'success', text: 'Weekly report submitted successfully via Web3Forms!' });
-                setFormData(prev => ({
-                    ...prev,
-                    tasksCompleted: '',
-                    challenges: '',
-                    nextWeekPlan: '',
-                    prLinks: ''
-                }));
-            } else {
-                console.error("Web3Forms Error:", result);
-                setMessage({ type: 'error', text: 'Error submitting report. Please try again.' });
-            }
-
+            setMessage({ type: 'success', text: `Weekly Work Update submitted for ${formData.name}!` });
+            setFormData(prev => ({
+                ...prev,
+                tasksCompleted: '',
+                challenges: '',
+                nextWeekPlan: '',
+                prLinks: ''
+            }));
         } catch (error) {
             console.error('Error submitting report:', error);
-            setMessage({ type: 'error', text: 'Failed to submit report. Please check your connection.' });
+            setMessage({ type: 'error', text: 'Failed to submit report. Please try again.' });
         } finally {
             setLoading(false);
         }
@@ -255,10 +224,6 @@ ${formData.prLinks || 'None'}
                     <button type="submit" className="submit-btn" disabled={loading}>
                         {loading ? 'Submitting...' : 'Submit Weekly Report'}
                     </button>
-
-                    <p style={{ fontSize: '0.8rem', textAlign: 'center', marginTop: '10px', color: '#666' }}>
-                        Powered by Web3Forms
-                    </p>
                 </form>
             </motion.div>
         </div>
