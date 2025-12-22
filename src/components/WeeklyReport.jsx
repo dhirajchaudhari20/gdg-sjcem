@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 import './WeeklyReport.css';
@@ -58,33 +56,68 @@ const WeeklyReport = () => {
         }
 
         try {
-            await addDoc(collection(db, 'weeklyReports'), {
-                ...formData,
-                userId: currentUser ? currentUser.uid : null,
-                timestamp: serverTimestamp(),
-                createdAt: new Date().toISOString()
+            const data = new FormData();
+            // Access Key from Web3Forms (same as FeedbackModal)
+            data.append("access_key", "98defd20-dee9-48a7-ac0f-e2fdd45d1f32");
+            data.append("subject", `Weekly Report: ${formData.name} - ${formData.weekEnding}`);
+            data.append("from_name", "GDG Team Reports");
+
+            const messageBody = `
+Name: ${formData.name}
+Role: ${formData.role}
+Email: ${formData.email}
+Week Ending: ${formData.weekEnding}
+
+--- Tasks Completed ---
+${formData.tasksCompleted}
+
+--- Challenges ---
+${formData.challenges || 'None'}
+
+--- Next Week Plan ---
+${formData.nextWeekPlan || 'None'}
+
+--- Proof of Work (Links) ---
+${formData.prLinks || 'None'}
+            `;
+
+            data.append("message", messageBody);
+
+            // Optional: Redirect or JSON response
+            // We use JSON to handle it in React
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: data
             });
 
-            setMessage({ type: 'success', text: 'Weekly report submitted successfully. Keep up the good work!' });
-            setFormData(prev => ({
-                ...prev,
-                tasksCompleted: '',
-                challenges: '',
-                nextWeekPlan: '',
-                prLinks: ''
-            }));
+            const result = await response.json();
+
+            if (result.success) {
+                setMessage({ type: 'success', text: 'Weekly report submitted successfully via Web3Forms!' });
+                setFormData(prev => ({
+                    ...prev,
+                    tasksCompleted: '',
+                    challenges: '',
+                    nextWeekPlan: '',
+                    prLinks: ''
+                }));
+            } else {
+                console.error("Web3Forms Error:", result);
+                setMessage({ type: 'error', text: 'Error submitting report. Please try again.' });
+            }
+
         } catch (error) {
             console.error('Error submitting report:', error);
-            setMessage({ type: 'error', text: 'Failed to submit report. Please try again or contact admin.' });
+            setMessage({ type: 'error', text: 'Failed to submit report. Please check your connection.' });
         } finally {
             setLoading(false);
         }
     };
 
     const commonRoles = [
-        "Organizer", "Co-Organizer", "Technical Head", "Design & Media Head", 
-        "Events & Operations Head", "Community & Marketing Head", "Social Media Head", 
-        "Content Lead", "AIML/DSA Lead", "Web Development Lead", "App Lead", 
+        "Organizer", "Co-Organizer", "Technical Head", "Design & Media Head",
+        "Events & Operations Head", "Community & Marketing Head", "Social Media Head",
+        "Content Lead", "AIML/DSA Lead", "Web Development Lead", "App Lead",
         "Member", "Volunteer", "Technical Member", "Event Member", "Media Member"
     ];
 
@@ -166,7 +199,6 @@ const WeeklyReport = () => {
                             onChange={handleChange}
                             required
                         />
-                    
                     </div>
 
                     <div className="form-group">
@@ -223,6 +255,10 @@ const WeeklyReport = () => {
                     <button type="submit" className="submit-btn" disabled={loading}>
                         {loading ? 'Submitting...' : 'Submit Weekly Report'}
                     </button>
+
+                    <p style={{ fontSize: '0.8rem', textAlign: 'center', marginTop: '10px', color: '#666' }}>
+                        Powered by Web3Forms
+                    </p>
                 </form>
             </motion.div>
         </div>

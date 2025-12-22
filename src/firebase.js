@@ -24,7 +24,12 @@ export const googleProvider = new GoogleAuthProvider();
 const db = initializeFirestore(app, {
     localCache: memoryLocalCache()
 });
-console.log("Firebase Firestore Initialized (Forced Memory Cache)");
 
-export { db };
+// Initialize Realtime Database
+import { getDatabase } from "firebase/database";
+const database = getDatabase(app);
+
+console.log("Firebase Services Initialized");
+
+export { db, database };
 export default app;
