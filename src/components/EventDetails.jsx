@@ -8,7 +8,6 @@ import { Navigation, Pagination, Autoplay, Virtual } from 'swiper/modules';
 import 'swiper/css/virtual';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import './EventDetails.css';
 import FeedbackModal from './FeedbackModal';
 import BadgeGenerator from './BadgeGenerator';

@@ -783,9 +783,9 @@
     background: rgba(0, 0, 0, 0.6);
 }
 
-.swiper-pagination-bullet-active {
+/* .swiper-pagination-bullet-active {
     background: white !important;
-}
+} */
 
 @media (max-width: 900px) {
     .event-details-container {
