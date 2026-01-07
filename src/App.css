@@ -342,3 +342,200 @@
     grid-template-columns: 1fr;
   }
 }
+
+.personalized-entry {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.personalized-entry h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #202124;
+}
+
+.personalized-entry p {
+  font-size: 1rem;
+  color: #5f6368;
+  margin-bottom: 28px;
+}
+
+.entry-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.entry-buttons button {
+  padding: 12px 22px;
+  border-radius: 24px;
+  border: 1px solid #1a73e8;
+  background: transparent;
+  color: #1a73e8;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.entry-buttons button:hover {
+  background-color: #1a73e8;
+  color: #ffffff;
+}
+
+/* ===== Personalized Entry Popup ===== */
+
+.entry-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.entry-popup {
+  background: #ffffff;
+  padding: 32px 28px;
+  border-radius: 18px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  animation: popupFade 0.4s ease;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.entry-popup h2 {
+  margin-bottom: 10px;
+  color: #202124;
+}
+
+.entry-popup p {
+  color: #5f6368;
+  margin-bottom: 24px;
+}
+
+.entry-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #5f6368;
+}
+
+.entry-close:hover {
+  color: #202124;
+}
+
+/* ===== Learning Outcomes ===== */
+
+.learning-outcomes {
+  padding: 100px 20px;
+  background-color: #f8f9fa;
+}
+
+.learning-outcomes h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 48px;
+  color: #202124;
+}
+
+.outcomes-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.outcome-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.outcome-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.outcome-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #1a73e8;
+}
+
+.outcome-card p {
+  font-size: 0.95rem;
+  color: #5f6368;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .outcomes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Confidence Builder ===== */
+
+.confidence-builder {
+  padding: 100px 20px;
+  background-color: #ffffff;
+}
+
+.confidence-builder h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 48px;
+  color: #202124;
+}
+
+.confidence-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.confidence-card {
+  background: #f8f9fa;
+  padding: 22px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #5f6368;
+}
+
+.confidence-card span {
+  color: #34a853;
+  font-size: 1.2rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .confidence-grid {
+    grid-template-columns: 1fr;
+  }
+}

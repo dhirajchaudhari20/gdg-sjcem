@@ -1,3 +1,6 @@
+import ConfidenceBuilder from "./components/ConfidenceBuilder";
+import LearningOutcomes from "./components/LearningOutcomes";
+import PersonalizedEntry from "./components/PersonalizedEntry";
 import WhyJoinGDG from "./components/WhyJoinGDG";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
@@ -64,7 +67,10 @@ import PageTransition from "./components/PageTransition";
 const Home = () => (
   <>
     <Hero />
+    <PersonalizedEntry />
     <WhyJoinGDG />
+    <LearningOutcomes />
+    <ConfidenceBuilder />
     <GDGJourney />
     <EventsTimeline />
     <About />
