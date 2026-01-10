@@ -162,7 +162,14 @@ const Team = () => {
         { name: 'Shashikant Rajput', role: 'Web Development Lead' },
         { name: 'Prashant Yadav', role: 'App Lead' },
         { name: 'Hitanshu Vaidya', role: 'Member' },
-        { name: 'Riya Umesh Singh', role: 'Member' },
+        { 
+          name: 'Riya Umesh Singh', 
+          role: 'Member',
+          image: 'https://i.ibb.co/N6TmM7yr/riya.jpg',
+          linkedin: 'https://www.linkedin.com/in/riya-umesh-singh/',
+          github: 'https://github.com/riya-umesh-singh',
+          instagram: 'https://www.instagram.com/s_riyaa26/'
+        },
         { name: 'Anushri Amul Sane', role: 'Member' },
         {
             name: 'Saiyed Furquanahmed Barkatali',
