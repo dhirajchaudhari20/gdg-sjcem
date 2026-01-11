@@ -4,7 +4,6 @@
     left: 0;
     width: 100%;
     padding: 20px 0;
-    /* Reduced base padding, let content define height */
     z-index: 1000;
     transition: all 0.3s ease;
     background: transparent;
@@ -44,7 +43,6 @@
 
 .logo-img {
     height: 60px;
-    /* Increased from 35px */
     width: auto;
     object-fit: contain;
 }
@@ -73,7 +71,6 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    /* Reduced from 30px to fit all items */
     flex-wrap: nowrap;
 }
 
@@ -85,7 +82,6 @@
     text-decoration: none;
     font-size: 0.95rem;
     white-space: nowrap;
-    /* Prevent text wrapping */
 }
 
 .nav-links a::after {
@@ -115,9 +111,7 @@
     font-size: 0.9rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
-    /* Ensure button text doesn't wrap */
     flex-shrink: 0;
-    /* Prevent button from shrinking */
 }
 
 .join-btn:hover {
@@ -175,37 +169,76 @@
     }
 
     .nav-links.active {
-
         clip-path: circle(150% at 100% 0);
     }
 }
-/* Theme Toggle Button */
-.theme-toggle {
-  background: none;
+
+/* ============================= */
+/* 🌗 DAY–NIGHT TOGGLE */
+/* ============================= */
+
+.day-night-toggle {
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
-  color: inherit;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, color 0.3s ease;
-  margin-left: 15px;
+  padding: 0;
+  background: none;
+  overflow: hidden;
 }
 
-.theme-toggle:hover {
-  transform: rotate(15deg);
-  color: var(--google-blue);
+.toggle-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #4285f4, #1a73e8);
+  transition: background 0.6s ease;
 }
 
-.theme-toggle svg {
+.sun {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: #facc15;
+  border-radius: 50%;
+  top: 5px;
+  left: 6px;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.9);
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  z-index: 2;
+}
+
+.moon {
+  position: absolute;
   width: 20px;
   height: 20px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  top: 6px;
+  right: 6px;
+  box-shadow: inset -4px -2px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  z-index: 2;
 }
 
-@media (max-width: 768px) {
-  .theme-toggle {
-    margin-left: 0;
-    margin-top: 10px;
-  }
+.day-night-toggle.night .toggle-bg {
+  background: linear-gradient(135deg, #020617, #0f172a);
 }
+
+.day-night-toggle.night .sun {
+  transform: translateX(28px) scale(0.4);
+  opacity: 0;
+}
+
+.day-night-toggle.night .moon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================= */
+/* END NAVBAR */
+/* ============================= */
