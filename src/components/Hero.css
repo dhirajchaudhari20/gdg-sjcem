@@ -199,11 +199,16 @@
 
 .stat-label {
     font-size: 1rem;
-    color: #e0e0e0;
-    font-weight: 500;
+    color: #ffffff !important;
+    /* Force white text for visibility on dark overlay */
+    font-weight: 600;
+    /* Increased weight */
     letter-spacing: 1px;
     text-transform: uppercase;
-    opacity: 0.9;
+    opacity: 1;
+    /* Removed opacity for better contrast */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Added text shadow for legibility */
 }
 
 .hero-actions {

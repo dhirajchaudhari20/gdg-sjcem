@@ -1,3 +1,13 @@
+/* Default: Hide Newsletter Column */
+.newsletter-col {
+    display: none;
+}
+
+/* Show only when footer has home-footer class */
+.footer.home-footer .newsletter-col {
+    display: block;
+}
+
 .footer {
     background-color: transparent;
     padding: 75px 0 80px;
