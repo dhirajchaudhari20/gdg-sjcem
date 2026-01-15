@@ -12,53 +12,54 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (location.pathname === '/') {
-        setScrolled(window.scrollY > 50);
-      } else {
-        setScrolled(true);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
-    // Initial check
-    if (location.pathname !== '/') {
-      setScrolled(true);
-    } else {
-      setScrolled(window.scrollY > 50);
-    }
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
+  }, []);
+
+  // Helper to determine if link is active
+  const isActive = (path) => {
+    if (path === '/' && location.pathname === '/') return 'active';
+    if (path !== '/' && location.pathname.startsWith(path)) return 'active';
+    return '';
+  };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
-        <motion.div
-          className="logo"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <img src="/gdg-logo.png" alt="GDG Logo" className="logo-img" />
-        </motion.div>
+        <Link to="/" className="logo" onClick={closeMenu}>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img src="/gdg-sjc-logo.png" alt="Google Developer Group on Campus SJCEM" className="logo-img" />
+          </motion.div>
+        </Link>
 
         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <a href="/#home" onClick={() => setMenuOpen(false)}>Home</a>
-          <a href="/#about" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="/#events" onClick={() => setMenuOpen(false)}>Events</a>
-          <Link to="/codelabs" onClick={() => setMenuOpen(false)}>Codelabs</Link>
-          <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
-          <Link to="/leaderboard" onClick={() => setMenuOpen(false)}>Ranking</Link>
-          <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
-          <Link to="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
-          <Link to="/team" onClick={() => setMenuOpen(false)}>Team</Link>
-          <a href="/#organizers" onClick={() => setMenuOpen(false)}>Organizers</a>
-          <a href="/#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          <Link to="/" className={isActive('/')} onClick={closeMenu}>Home</Link>
+          <Link to="/about" className={isActive('/about')} onClick={closeMenu}>About</Link>
+          <Link to="/events" className={isActive('/events')} onClick={closeMenu}>Events</Link>
+          <Link to="/codelabs" className={isActive('/codelabs')} onClick={closeMenu}>Codelabs</Link>
+          <Link to="/projects" className={isActive('/projects')} onClick={closeMenu}>Projects</Link>
+          <Link to="/leaderboard" className={isActive('/leaderboard')} onClick={closeMenu}>Ranking</Link>
+          <Link to="/gallery" className={isActive('/gallery')} onClick={closeMenu}>Gallery</Link>
+          <Link to="/blog" className={isActive('/blog')} onClick={closeMenu}>Blog</Link>
+          <Link to="/team" className={isActive('/team')} onClick={closeMenu}>Team</Link>
+          <Link to="/organizers" className={isActive('/organizers')} onClick={closeMenu}>Organizers</Link>
+          <Link to="/contact" className={isActive('/contact')} onClick={closeMenu}>Contact</Link>
+
           <a
             href="https://gdg.community.dev/gdg-on-campus-st-john-college-of-engineering-and-management-autonomous-palghar-india/"
             target="_blank"
             rel="noreferrer"
             className="btn btn-primary join-btn"
+            onClick={closeMenu}
           >
             Join Chapter
           </a>

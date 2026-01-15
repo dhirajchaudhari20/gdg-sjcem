@@ -161,10 +161,7 @@ const Events = () => {
 
                                             {/* Show "Event Started!" only if actually active */}
                                             {active && (
-                                                <div style={{
-                                                    color: '#34a853', fontWeight: 'bold', marginBottom: '0.5rem',
-                                                    display: 'flex', alignItems: 'center', gap: '5px'
-                                                }}>
+                                                <div className="event-status-active">
                                                     <span className="pulsating-dot"></span> Event Started!
                                                 </div>
                                             )}
@@ -186,15 +183,11 @@ const Events = () => {
                                                 </Link>
 
                                                 {(event.gallery || event.driveLink) && (
-                                                    <div style={{ display: 'flex', gap: '8px', marginTop: '10px', justifyContent: 'center' }}>
+                                                    <div className="event-action-buttons">
                                                         {event.gallery && (
                                                             <button
                                                                 onClick={() => goToGallery(event)}
-                                                                style={{
-                                                                    background: '#fff', border: '1px solid #ddd', borderRadius: '4px',
-                                                                    padding: '6px 12px', cursor: 'pointer', fontSize: '0.85rem', color: '#555',
-                                                                    display: 'flex', alignItems: 'center', gap: '5px'
-                                                                }}
+                                                                className="event-btn-secondary"
                                                             >
                                                                 🖼️ Photos
                                                             </button>
@@ -204,11 +197,7 @@ const Events = () => {
                                                                 href={event.driveLink}
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
-                                                                style={{
-                                                                    background: '#fff', border: '1px solid #ddd', borderRadius: '4px',
-                                                                    padding: '6px 12px', cursor: 'pointer', fontSize: '0.85rem', color: '#555',
-                                                                    textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px'
-                                                                }}
+                                                                className="event-btn-secondary"
                                                             >
                                                                 📂 Drive
                                                             </a>
@@ -222,7 +211,7 @@ const Events = () => {
                             );
                         })
                     ) : (
-                        <div style={{ textAlign: 'center', width: '100%', padding: '2rem', color: '#666' }}>
+                        <div className="no-events-msg">
                             <p>No upcoming events at the moment. Stay tuned!</p>
                         </div>
                     )}
@@ -250,19 +239,16 @@ const Events = () => {
                                 <span className="event-type-sm">{event.type}</span>
                                 <h4 className="event-title-sm">{event.title}</h4>
                                 <p className="event-location">{event.location}</p>
-                                <div className="event-stats-row" style={{ display: 'flex', gap: '15px', marginTop: '5px', alignItems: 'center' }}>
-                                    <span className="badge-closed" style={{
-                                        background: '#EA4335', color: 'white', padding: '2px 8px',
-                                        borderRadius: '4px', fontSize: '0.75rem', fontWeight: '600'
-                                    }}>
+                                <div className="event-stats-row">
+                                    <span className="badge-event-ended">
                                         Event Ended
                                     </span>
-                                    <span className="reg-count" style={{ fontSize: '0.85rem', color: '#5f6368', fontWeight: '500' }}>
+                                    <span className="reg-count-text">
                                         👥 {event.registrations}+ Registrations
                                     </span>
                                 </div>
                             </div>
-                            <div className="event-action-col" style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
+                            <div className="event-action-col event-action-col-inner">
                                 <Link
                                     to={`/events/${event.id}`}
                                     className="btn-text"
@@ -270,13 +256,14 @@ const Events = () => {
                                     View Details
                                 </Link>
 
-                                <div style={{ display: 'flex', gap: '10px' }}>
+                                <div className="event-action-buttons-past">
                                     {event.gallery && (
                                         <button
                                             onClick={() => goToGallery(event)}
+                                            className="event-btn-secondary"
                                             style={{
-                                                background: 'none', border: '1px solid #ddd', borderRadius: '4px',
-                                                padding: '4px 8px', cursor: 'pointer', fontSize: '0.8rem', color: '#555'
+                                                background: 'none',
+                                                border: '1px solid var(--border-color)'
                                             }}
                                         >
                                             🖼️ Photos
@@ -287,10 +274,10 @@ const Events = () => {
                                             href={event.driveLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            className="event-btn-secondary"
                                             style={{
-                                                background: 'none', border: '1px solid #ddd', borderRadius: '4px',
-                                                padding: '4px 8px', cursor: 'pointer', fontSize: '0.8rem', color: '#555',
-                                                textDecoration: 'none'
+                                                background: 'none',
+                                                border: '1px solid var(--border-color)'
                                             }}
                                         >
                                             📂 Drive

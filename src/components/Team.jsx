@@ -588,7 +588,7 @@ const Team = () => {
         return (
             <React.Fragment key={title}>
                 <h2 className="section-title-premium team-title" data-aos={animation} style={{ marginTop: '3rem' }}>
-                    {title} <span style={{ fontSize: '0.6em', opacity: 0.7, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(66, 133, 244, 0.1)', padding: '2px 12px', borderRadius: '12px', color: '#4285F4' }}>{teamArray.length}</span>
+                    {title} <span style={{ fontSize: '0.6em', opacity: 1, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(66, 133, 244, 0.1)', padding: '2px 12px', borderRadius: '12px', color: '#4285F4', WebkitTextFillColor: 'initial' }}>{teamArray.length}</span>
                 </h2>
 
                 {leads.length > 0 && (
@@ -624,7 +624,7 @@ const Team = () => {
 
                 <h1 className="section-title-premium" data-aos="fade-up" style={{ fontSize: '2.5rem' }}>
                     Visionary Leaders
-                    <span style={{ fontSize: '0.5em', opacity: 0.7, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(52, 168, 83, 0.1)', padding: '2px 10px', borderRadius: '12px', color: '#34A853' }}>{facultyAdvisor.length}</span>
+                    <span style={{ fontSize: '0.5em', opacity: 1, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(52, 168, 83, 0.1)', padding: '2px 10px', borderRadius: '12px', color: '#34A853', WebkitTextFillColor: 'initial' }}>{facultyAdvisor.length}</span>
                 </h1>
                 <ul className="organizers-grid faculty-grid">
                     {facultyAdvisor.map(renderOrganizerCard)}
@@ -634,7 +634,7 @@ const Team = () => {
 
                 <h1 className="section-title-premium" data-aos="fade-up" style={{ fontSize: '2.5rem' }}>
                     Core Team
-                    <span style={{ fontSize: '0.5em', opacity: 0.7, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(234, 67, 53, 0.1)', padding: '2px 10px', borderRadius: '12px', color: '#EA4335' }}>{coreTeam.length}</span>
+                    <span style={{ fontSize: '0.5em', opacity: 1, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(234, 67, 53, 0.1)', padding: '2px 10px', borderRadius: '12px', color: '#EA4335', WebkitTextFillColor: 'initial' }}>{coreTeam.length}</span>
                 </h1>
                 <ul className="organizers-grid">
                     {coreTeam.map(renderOrganizerCard)}
@@ -644,7 +644,7 @@ const Team = () => {
 
                 <h1 className="section-title-premium" data-aos="fade-up" style={{ fontSize: '2.5rem' }}>
                     Department Leads
-                    <span style={{ fontSize: '0.5em', opacity: 0.7, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(251, 188, 4, 0.1)', padding: '2px 10px', borderRadius: '12px', color: '#FBBC04' }}>{departmentLeads.length}</span>
+                    <span style={{ fontSize: '0.5em', opacity: 1, verticalAlign: 'middle', marginLeft: '10px', background: 'rgba(251, 188, 4, 0.1)', padding: '2px 10px', borderRadius: '12px', color: '#FBBC04', WebkitTextFillColor: 'initial' }}>{departmentLeads.length}</span>
                 </h1>
                 <ul className="organizers-grid department-leads-grid" style={{ justifyContent: 'center' }}>
                     {departmentLeads.map(renderOrganizerCard)}

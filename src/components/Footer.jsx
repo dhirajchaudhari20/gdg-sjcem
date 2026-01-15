@@ -1,15 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
+    const location = useLocation();
+    const isHomePage = location.pathname === '/';
+
     return (
-        <footer id="contact" className="footer">
+        <footer id="contact" className={`footer ${isHomePage ? 'home-footer' : ''}`}>
             <div className="container">
                 <div className="footer-top">
                     <div className="footer-col" data-aos="fade-up" data-aos-delay="100">
                         <div className="footer-logo-wrapper" style={{ marginLeft: '-5px' }}>
-                            <img src="/gdg-logo.png" alt="GDG Logo" className="footer-logo-img" />
+                            <img src="/gdg-sjc-logo.png" alt="GDG on Campus SJCEM" className="footer-logo-img" />
                         </div>
                         <p className="footer-desc">
                             St. John College of Engineering and Management (Autonomous), Palghar.
@@ -48,24 +51,26 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="footer-col newsletter-col" data-aos="fade-up" data-aos-delay="400">
-                        <h4 className="footer-heading">Stay Updated 🚀</h4>
-                        <p className="footer-desc" style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
-                            Get the latest updates on events and hackathons.
-                        </p>
-                        <form className="newsletter-form" onSubmit={(e) => {
-                            e.preventDefault();
-                            alert("Thanks for subscribing! We'll keep you posted.");
-                            e.target.reset();
-                        }}>
-                            <div className="input-group">
-                                <input type="email" placeholder="Enter your email" required />
-                                <button type="submit" className="btn-subscribe">
-                                    <span className="icon">➤</span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                    {isHomePage && (
+                        <div className="footer-col newsletter-col" data-aos="fade-up" data-aos-delay="400">
+                            <h4 className="footer-heading">Stay Updated 🚀</h4>
+                            <p className="footer-desc" style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
+                                Get the latest updates on events and hackathons.
+                            </p>
+                            <form className="newsletter-form" onSubmit={(e) => {
+                                e.preventDefault();
+                                alert("Thanks for subscribing! We'll keep you posted.");
+                                e.target.reset();
+                            }}>
+                                <div className="input-group">
+                                    <input type="email" placeholder="Enter your email" required />
+                                    <button type="submit" className="btn-subscribe">
+                                        <span className="icon">➤</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    )}
                 </div>
 
                 <div className="footer-bottom" data-aos="fade-up" data-aos-delay="400">

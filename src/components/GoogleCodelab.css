@@ -4,11 +4,16 @@
 :root {
     --gc-blue: #1a73e8;
     --gc-blue-hover: #1765cc;
-    --gc-text-primary: #202124;
-    --gc-text-secondary: #5f6368;
-    --gc-border-color: #dadce0;
-    --gc-bg-hover: #f1f3f4;
-    --gc-bg-active: #e8f0fe;
+    --gc-text-primary: var(--text-color);
+    /* Mapped to global text color */
+    --gc-text-secondary: var(--text-secondary);
+    /* Mapped to global secondary text */
+    --gc-border-color: var(--border-color);
+    /* Mapped to global border */
+    --gc-bg-hover: var(--hover-bg);
+    /* Mapped to global hover */
+    --gc-bg-active: var(--bg-secondary);
+    /* Mapped */
     --gc-font-family: 'Roboto', sans-serif;
     --gc-heading-font: 'Google Sans', sans-serif;
 }
@@ -24,7 +29,7 @@ body {
     height: 100vh;
     font-family: var(--gc-font-family);
     color: var(--gc-text-primary);
-    background-color: #fff;
+    background-color: var(--bg-color);
     overflow: hidden;
 }
 

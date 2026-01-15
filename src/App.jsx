@@ -48,15 +48,7 @@ import WeeklyReportsList from './components/WeeklyReportsList';
 const Home = () => (
   <>
     <Hero />
-    <About />
-    <Events />
-    <Gallery preview={true} />
-    <Projects preview={true} />
-    <Leaderboard preview={true} />
-    <Organizers />
-    <FAQ />
     <Newsletter />
-    <Contact />
   </>
 );
 
@@ -67,6 +59,12 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
+        <Route path="/organizers" element={<PageTransition><Organizers /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+
         <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
         <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
         <Route path="/events/gallery/:id" element={<PageTransition><EventGallery /></PageTransition>} />
@@ -100,7 +98,7 @@ const AnimatedRoutes = () => {
         {/* 404 Route - Must be last */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
-    </AnimatePresence>
+    </AnimatePresence >
   );
 };
 
@@ -116,7 +114,7 @@ const Layout = ({ children }) => {
       {!isCodelabApp && <Navbar />}
       <ScrollToTop />
       {children}
-      {!isCodelabApp && <Footer />}
+      {(location.pathname === '/' || location.pathname === '/contact') && <Footer />}
       {!isCodelabApp && <BackToTop />}
     </div>
   );

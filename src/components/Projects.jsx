@@ -55,6 +55,7 @@ const Projects = ({ preview = false }) => {
                             tiltMaxAngleY={5}
                             scale={1.02}
                             transitionSpeed={1500}
+                            className="project-card-tilt"
                         >
                             <div
                                 className="project-card"

@@ -1,18 +1,19 @@
 .theme-provider-namespace-people-card {
     --google-blue: #4285F4;
-    --card-bg: #ffffff;
-    --text-primary: #202124;
-    --text-secondary: #5f6368;
+    --card-bg: var(--card-bg);
+    --text-primary: var(--text-color);
+    --text-secondary: var(--text-secondary);
     --button-outlined-color: #1a73e8;
-    --button-outlined-border: #dadce0;
-    --button-outlined-hover-bg: #f8f9fa;
+    --button-outlined-border: var(--border-color);
+    --button-outlined-hover-bg: rgba(26, 115, 232, 0.04);
     --button-outlined-hover-border: #d2e3fc;
     --button-outlined-hover-color: #174ea6;
 }
 
 .organizers-section {
     padding: 80px 0;
-    background-color: #ffffff;
+    background-color: transparent;
+    /* Changed from white to transparent to inherit global bg */
     position: relative;
     overflow: hidden;
 }
@@ -85,7 +86,7 @@
 
 .people-card {
     background-color: var(--card-bg);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 40px 24px;
     height: 100%;
@@ -93,7 +94,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -111,7 +112,7 @@
 }
 
 .people-card:hover {
-    box-shadow: 0 20px 40px -12px rgba(66, 133, 244, 0.15);
+    box-shadow: var(--shadow-lg);
     border-color: rgba(66, 133, 244, 0.2);
 }
 
@@ -128,7 +129,7 @@
     color: white;
     font-size: 2.5rem;
     font-weight: 500;
-    border: 5px solid white;
+    border: 5px solid var(--card-bg);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transform: translateZ(20px);
 }

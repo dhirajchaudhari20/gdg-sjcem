@@ -1,8 +1,9 @@
 .legal-page-container {
-    padding: 120px 20px 80px;
+    padding: 75px 20px 80px;
     background-color: #f8f9fa;
     min-height: 100vh;
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Google Sans',
+        sans-serif;
 }
 
 .legal-content {

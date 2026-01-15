@@ -1,5 +1,5 @@
 .leaderboard-section {
-    padding-top: 120px;
+    padding-top: 75px;
     padding-bottom: 80px;
     min-height: 100vh;
     background: var(--bg-color);
@@ -10,7 +10,7 @@
 
 .leaderboard-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
     padding: 0 20px;
 }
 
@@ -135,21 +135,25 @@
     font-weight: 700;
     margin-bottom: 5px;
     text-align: center;
-    color: var(--text-color);
+    color: #1c1c1c !important;
+    /* Carbon Black for visibility */
 }
 
 .podium-score {
     font-size: 0.9rem;
-    color: #5f6368;
+    color: #1c1c1c !important;
+    /* Carbon Black */
     font-weight: 600;
 }
 
 .podium-rank {
     font-size: 2rem;
     font-weight: 800;
-    opacity: 0.1;
+    opacity: 0.2;
+    /* Increased opacity slightly */
     margin-top: auto;
-    color: var(--text-color);
+    color: #1c1c1c !important;
+    /* Carbon Black */
 }
 
 /* List Styles */
@@ -179,7 +183,8 @@
 .list-rank {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #5f6368;
+    color: #1c1c1c !important;
+    /* Carbon Black */
     width: 40px;
 }
 
@@ -197,17 +202,21 @@
 .list-name {
     font-weight: 600;
     display: block;
-    color: var(--text-color);
+    color: #1c1c1c !important;
+    /* Carbon Black */
 }
 
 .list-role {
     font-size: 0.8rem;
-    color: #888;
+    color: #555;
+    /* Slightly darker grey */
 }
 
 .list-score {
     font-weight: 700;
     color: #4285F4;
+    /* Keep blue for score emphasis if desired, or change to 1c1c1c if strictly requested. User said XP visible, maybe keep blue for contrast? Request said "Update user names to the same carbon black". Request also said "all rankings, user names, and XP values". So let's change XP too but user said "Keep accent colors ... unchanged". XP color is usually an accent. I'll make XP #1c1c1c for list-item but podium-score is already set. Wait, let's re-read carefully: "Update user names to the same carbon black... XP values are clearly visible". I will set XP to #1c1c1c as well to be safe, or a very dark blue. Let's stick to #1c1c1c for text visibility request. */
+    color: #1c1c1c !important;
 }
 
 @media (max-width: 768px) {

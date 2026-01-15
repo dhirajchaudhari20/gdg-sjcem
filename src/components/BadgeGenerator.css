@@ -1,6 +1,7 @@
 /* Badge Generator Styles - Premium Redesign */
 .badge-generator-section {
-    background: radial-gradient(circle at 10% 20%, rgb(242, 246, 253) 0%, rgb(255, 255, 255) 90%);
+    background: var(--card-bg);
+    /* Simplified background for theme compat */
     padding: 4rem 2rem;
     border-radius: 32px;
     margin: 4rem 0;
@@ -8,9 +9,10 @@
     box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.05),
         0 10px 15px -3px rgba(0, 0, 0, 0.05),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 /* Subtle background decoration */
@@ -43,7 +45,7 @@
 
 .badge-title {
     font-size: 2.5rem;
-    background: linear-gradient(135deg, #202124 0%, #5f6368 100%);
+    background: linear-gradient(135deg, var(--text-color) 0%, var(--text-secondary) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -53,7 +55,7 @@
 }
 
 .badge-subtitle {
-    color: #5f6368;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     font-size: 1.15rem;
     line-height: 1.6;
@@ -65,11 +67,11 @@
     width: 100%;
     max-width: 550px;
     margin-bottom: 1.5rem;
-    background: white;
+    background: var(--input-bg);
     padding: 8px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .badge-input {
@@ -79,12 +81,12 @@
     background: transparent;
     font-size: 1.05rem;
     outline: none;
-    color: #202124;
+    color: var(--text-color);
     font-weight: 500;
 }
 
 .badge-input::placeholder {
-    color: #9aa0a6;
+    color: var(--text-secondary);
 }
 
 .btn-generate {
@@ -118,12 +120,13 @@
     margin-top: 1rem;
     padding: 24px;
     /* White frame */
-    background: white;
+    background: var(--card-bg);
     border-radius: 24px;
     box-shadow:
         0 20px 40px -4px rgba(0, 0, 0, 0.1),
         0 8px 16px -4px rgba(0, 0, 0, 0.05);
     transition: transform 0.4s ease;
+    border: 1px solid var(--border-color);
 }
 
 .badge-preview-container:hover {

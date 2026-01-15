@@ -105,20 +105,20 @@ const WeeklyReportsList = () => {
 
                                 <div className="report-body">
                                     <div className="report-section section-completed">
-                                        <div className="section-title">✅ Completed</div>
+                                        <div className="report-section-title">✅ Completed</div>
                                         <div className="section-content">{report.tasksCompleted}</div>
                                     </div>
 
                                     {report.challenges && (
                                         <div className="report-section section-challenges">
-                                            <div className="section-title">🛑 Challenges</div>
+                                            <div className="report-section-title">🛑 Challenges</div>
                                             <div className="section-content">{report.challenges}</div>
                                         </div>
                                     )}
 
                                     {report.nextWeekPlan && (
                                         <div className="report-section section-plan">
-                                            <div className="section-title">🔮 Next Week</div>
+                                            <div className="report-section-title">🔮 Next Week</div>
                                             <div className="section-content">{report.nextWeekPlan}</div>
                                         </div>
                                     )}

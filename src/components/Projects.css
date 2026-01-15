@@ -1,5 +1,5 @@
 .projects-section {
-    padding-top: 120px;
+    padding-top: 75px;
     padding-bottom: 80px;
     min-height: 100vh;
     background: var(--bg-color);
@@ -25,7 +25,7 @@
 
 .projects-subtitle {
     text-align: center;
-    color: #aaaaaa;
+    color: var(--text-secondary);
     margin-bottom: 50px;
     font-size: 1.1rem;
 }
@@ -34,11 +34,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    align-items: stretch;
+    /* Ensure grid items stretch to match height */
+}
+
+/* Tilt wrapper needs to take full height */
+.project-card-tilt {
+    height: 100%;
+    display: flex;
 }
 
 .project-card {
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -46,13 +54,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    height: 100%;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     border-color: rgba(66, 133, 244, 0.3);
-    box-shadow: 0 15px 40px rgba(66, 133, 244, 0.15);
+    box-shadow: var(--shadow-xl);
 }
 
 .project-image-wrapper {
@@ -90,9 +100,9 @@
     font-size: 0.75rem;
     padding: 4px 10px;
     border-radius: 20px;
-    background: #f1f3f4;
-    color: #5f6368;
-    border: 1px solid transparent;
+    background: var(--surface-color);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 
 .project-name {
@@ -103,7 +113,7 @@
 }
 
 .project-desc {
-    color: #5f6368;
+    color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -121,7 +131,7 @@
     align-items: center;
     gap: 5px;
     text-decoration: none;
-    color: #4285F4;
+    color: var(--google-blue);
     font-weight: 600;
     font-size: 0.9rem;
     transition: color 0.3s ease;
@@ -142,19 +152,19 @@
 .view-all-btn {
     display: inline-block;
     padding: 14px 32px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color);
     border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #5f6368;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .view-all-btn:hover {
-    border-color: #4285F4;
-    color: #4285F4;
-    background: white;
+    border-color: var(--google-blue);
+    color: var(--google-blue);
+    background: var(--card-bg);
     box-shadow: 0 5px 15px rgba(66, 133, 244, 0.15);
     transform: translateY(-2px);
 }
@@ -162,14 +172,14 @@
 /* Submit Project CTA - Animated Glow */
 .submit-project-cta {
     margin-top: 60px;
-    background: white;
+    background: var(--card-bg);
     border-radius: 24px;
     padding: 50px;
     text-align: center;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-lg);
 }
 
 /* The Animated Gradient Border */
@@ -194,7 +204,7 @@
     left: 6px;
     right: 6px;
     bottom: 6px;
-    background: white;
+    background: var(--card-bg);
     z-index: -1;
     border-radius: 20px;
 }
@@ -222,12 +232,12 @@
     font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 15px;
-    color: #202124;
+    color: var(--text-color);
 }
 
 .cta-desc {
     font-size: 1.15rem;
-    color: #5f6368;
+    color: var(--text-secondary);
     margin-bottom: 35px;
     line-height: 1.6;
     max-width: 700px;
@@ -236,7 +246,7 @@
 }
 
 .highlight {
-    color: #4285F4;
+    color: var(--google-blue);
     font-weight: 800;
     position: relative;
     display: inline-block;

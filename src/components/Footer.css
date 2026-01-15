@@ -1,6 +1,16 @@
+/* Default: Hide Newsletter Column */
+.newsletter-col {
+    display: none;
+}
+
+/* Show only when footer has home-footer class */
+.footer.home-footer .newsletter-col {
+    display: block;
+}
+
 .footer {
-    background-color: var(--surface-color);
-    padding: 100px 0 80px;
+    background-color: transparent;
+    padding: 75px 0 80px;
     border-top: 1px solid var(--border-color);
 }
 
@@ -45,7 +55,7 @@
 
 .footer-desc {
     font-size: 0.9rem;
-    color: #5f6368;
+    color: var(--text-secondary);
     margin-bottom: 20px;
     max-width: 300px;
 }
@@ -56,7 +66,7 @@
 }
 
 .social-link {
-    color: #5f6368;
+    color: var(--text-secondary);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -64,7 +74,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--card-bg);
 }
 
 .social-link:hover {
@@ -92,7 +102,7 @@
 
 .footer-links a {
     font-size: 0.9rem;
-    color: #5f6368;
+    color: var(--text-secondary);
 }
 
 .footer-links a:hover {
@@ -108,11 +118,11 @@
     flex-wrap: wrap;
     gap: 20px;
     font-size: 0.85rem;
-    color: #5f6368;
+    color: var(--text-secondary);
 }
 
 .footer-bottom-links a {
-    color: #5f6368;
+    color: var(--text-secondary);
 }
 
 .footer-bottom-links a:hover {
@@ -137,11 +147,11 @@
 
 .input-group {
     display: flex;
-    background: white;
+    background: var(--card-bg);
     padding: 5px;
     border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e0e0e0;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
     margin-top: 15px;
     transition: all 0.3s ease;
 }
@@ -157,7 +167,7 @@
     padding: 10px 15px;
     flex: 1;
     font-size: 0.9rem;
-    color: #3c4043;
+    color: var(--text-color);
     outline: none;
 }
 

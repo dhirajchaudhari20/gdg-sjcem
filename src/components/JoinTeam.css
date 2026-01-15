@@ -4,25 +4,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(-45deg, #f8f9fa, #e8f0fe, #f0fdf4, #fff7ed);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    background: var(--bg-color);
     position: relative;
     overflow: hidden;
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 /* Glowing Orbs Animation */
@@ -96,15 +80,15 @@
 
 .preview-title {
     text-align: center;
-    color: #4b5563;
+    color: var(--text-secondary);
     font-weight: 700;
     margin-bottom: 10px;
 }
 
 .form-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 3rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
@@ -112,7 +96,7 @@
 
 .form-title {
     font-size: 2.5rem;
-    color: #1f2937;
+    color: var(--text-color);
     text-align: center;
     margin-bottom: 0.5rem;
     font-weight: 800;
@@ -126,7 +110,7 @@
 }
 
 .form-subtitle {
-    color: #6b7280;
+    color: var(--text-secondary);
     text-align: center;
     margin-bottom: 3rem;
     font-size: 1.1rem;
@@ -165,7 +149,7 @@
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #374151;
+    color: var(--text-color);
     font-size: 0.95rem;
     font-weight: 600;
 }
@@ -175,10 +159,10 @@
 .form-group select {
     width: 100%;
     padding: 0.85rem 1rem;
-    background: #fff;
-    border: 2px solid #e5e7eb;
+    background: var(--input-bg);
+    border: 2px solid var(--border-color);
     border-radius: 12px;
-    color: #1f2937;
+    color: var(--text-color);
     font-family: inherit;
     font-size: 1rem;
     transition: all 0.2s;
@@ -186,7 +170,7 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #9ca3af;
+    color: var(--text-secondary);
 }
 
 .form-group input:focus,
@@ -201,9 +185,9 @@
 .image-upload-box {
     width: 100%;
     height: 120px;
-    border: 2px dashed #e5e7eb;
+    border: 2px dashed var(--border-color);
     border-radius: 12px;
-    background: #f9fafb;
+    background: var(--bg-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -215,14 +199,14 @@
 
 .image-upload-box:hover {
     border-color: #4285F4;
-    background: #f0fdf4;
+    background: var(--hover-bg);
 }
 
 .image-upload-label {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
@@ -243,7 +227,7 @@
     height: 100%;
     padding: 0.5rem;
     justify-content: center;
-    background: #fff;
+    background: var(--bg-secondary);
 }
 
 .image-preview {
@@ -290,12 +274,12 @@
 .applications-closed-card,
 .success-message {
     text-align: center;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--glass-border);
     padding: 4rem 2rem;
     border-radius: 32px;
-    color: #374151;
+    color: var(--text-color);
     box-shadow: 0 20px 60px rgba(66, 133, 244, 0.15);
     max-width: 500px;
     margin: 0 auto;
@@ -356,7 +340,7 @@
 
 .success-message p {
     font-size: 1.1rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 2.5rem;
 }
@@ -364,9 +348,9 @@
 /* Premium Reset Button */
 .reset-btn {
     padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    background: var(--bg-secondary);
     border: none;
-    color: #4b5563;
+    color: var(--text-color);
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 700;
@@ -447,7 +431,7 @@
 .privacy-disclaimer {
     margin-top: 1.5rem;
     font-size: 0.85rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     text-align: center;
     line-height: 1.5;
     background: rgba(66, 133, 244, 0.05);
@@ -459,6 +443,6 @@
 .role-helper {
     display: block;
     margin-top: 0.5rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 0.85rem;
 }

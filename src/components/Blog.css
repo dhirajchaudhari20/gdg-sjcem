@@ -1,7 +1,7 @@
 .blog-section {
     padding: 8rem 2rem 4rem;
     min-height: 100vh;
-    background: #ffffff;
+    background: var(--bg-color);
 }
 
 .blog-container {
@@ -18,13 +18,13 @@
 
 .blog-title {
     font-size: 3rem;
-    color: #1f2937;
+    color: var(--text-color);
     margin-bottom: 1rem;
     font-weight: 800;
 }
 
 .blog-subtitle {
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     margin-bottom: 2rem;
 }
@@ -55,11 +55,11 @@
 }
 
 .blog-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -75,7 +75,7 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    background: #f3f4f6;
+    background: var(--bg-secondary);
 }
 
 .blog-card-image {
@@ -118,19 +118,19 @@
     display: flex;
     gap: 1rem;
     font-size: 0.85rem;
-    color: #9ca3af;
+    color: var(--text-secondary);
     margin-bottom: 0.8rem;
 }
 
 .blog-card-title {
     font-size: 1.4rem;
-    color: #1f2937;
+    color: var(--text-color);
     margin-bottom: 0.8rem;
     line-height: 1.3;
 }
 
 .blog-excerpt {
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -156,7 +156,7 @@
 .back-link {
     background: none;
     border: none;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 1rem;
     cursor: pointer;
     margin-bottom: 2rem;
@@ -170,9 +170,9 @@
 .submission-form-wrapper {
     max-width: 700px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 3rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
@@ -180,12 +180,12 @@
 
 .submission-title {
     font-size: 2rem;
-    color: #1f2937;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
 .submission-subtitle {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
 }
 
@@ -196,7 +196,7 @@
 .blog-form label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #374151;
+    color: var(--text-color);
     font-weight: 500;
 }
 
@@ -208,7 +208,9 @@
     border: 2px solid #e5e7eb;
     border-radius: 12px;
     font-size: 1rem;
-    background: white;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
     transition: all 0.3s;
     font-family: inherit;
 }
@@ -258,7 +260,7 @@
     max-width: 600px;
     margin: 4rem auto;
     padding: 3rem;
-    background: white;
+    background: var(--card-bg);
     border-radius: 24px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
@@ -270,12 +272,12 @@
 
 .submission-success h2 {
     font-size: 2rem;
-    color: #1f2937;
+    color: var(--text-color);
     margin-bottom: 1rem;
 }
 
 .submission-success p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
@@ -298,9 +300,9 @@
 }
 
 .reset-btn {
-    background: white;
-    border: 2px solid #e5e7eb;
-    color: #6b7280;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
@@ -322,7 +324,7 @@
 .article-view {
     max-width: 800px;
     margin: 0 auto;
-    background: white;
+    background: var(--card-bg);
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
@@ -330,26 +332,26 @@
 
 .article-title {
     font-size: 2.5rem;
-    color: #1f2937;
+    color: var(--text-color);
     margin: 1rem 0;
     line-height: 1.2;
 }
 
 .article-meta {
     margin-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 1rem;
 }
 
 .article-content h3 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #1f2937;
+    color: var(--text-color);
     font-size: 1.5rem;
 }
 
 .article-content p {
-    color: #4b5563;
+    color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
@@ -358,7 +360,7 @@
 .article-content ul {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
-    color: #4b5563;
+    color: var(--text-secondary);
 }
 
 /* Loading Spinner */

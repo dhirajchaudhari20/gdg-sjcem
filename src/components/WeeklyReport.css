@@ -1,5 +1,5 @@
 .weekly-report-container {
-    padding: 120px 20px 60px;
+    padding: 75px 20px 60px;
     max-width: 800px;
     margin: 0 auto;
     min-height: 100vh;
@@ -7,11 +7,10 @@
 
 .weekly-report-card {
     background: var(--card-bg);
-    /* Assuming these vars exist used in other components */
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .weekly-report-header {
@@ -41,16 +40,16 @@
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--text-color);
 }
 
 .form-control {
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid var(--border-color, #ddd);
-    background: var(--input-bg, #fff);
-    color: var(--text-primary, #333);
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
     font-size: 1rem;
     transition: all 0.3s ease;
 }
@@ -107,18 +106,6 @@ textarea.form-control {
     border-radius: 8px;
     text-align: center;
     margin-bottom: 20px;
-}
-
-/* Dark mode adjustments (guessing class names based on standard practices or ThemeContext) */
-.dark-mode .weekly-report-card {
-    background: #1a1a1a;
-    border-color: #333;
-}
-
-.dark-mode .form-control {
-    background: #2a2a2a;
-    border-color: #444;
-    color: #fff;
 }
 
 /* --- Enhanced Dashboard Styles --- */
@@ -220,7 +207,7 @@ textarea.form-control {
     border-radius: 3px;
 }
 
-.section-title {
+.report-section-title {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -232,7 +219,7 @@ textarea.form-control {
 }
 
 /* Section specific colors */
-.section-completed .section-title {
+.section-completed .report-section-title {
     color: #34A853;
 }
 
@@ -240,7 +227,7 @@ textarea.form-control {
     background: #34A853;
 }
 
-.section-challenges .section-title {
+.section-challenges .report-section-title {
     color: #EA4335;
 }
 
@@ -248,7 +235,7 @@ textarea.form-control {
     background: #EA4335;
 }
 
-.section-plan .section-title {
+.section-plan .report-section-title {
     color: #FBBC05;
 }
 

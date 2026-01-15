@@ -1,8 +1,8 @@
 /* Team Page Specific Styles */
 .team-section-container {
-    padding: 120px 0 80px;
-    background-color: #ffffff;
     position: relative;
+    padding: 75px 0 80px;
+    background-color: var(--bg-color);
     overflow: hidden;
     min-height: 100vh;
 }
@@ -79,7 +79,7 @@
 .section-title-premium {
     font-size: 3rem;
     font-weight: 800;
-    text-align: center;
+    text-align: center !important;
     margin-bottom: 3rem;
     background: linear-gradient(135deg, #1a73e8, #ea4335, #fbbc04, #34a853);
     -webkit-background-clip: text;
@@ -96,7 +96,7 @@
     width: 100%;
     max-width: 800px;
     margin: 5rem auto;
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
     position: relative;
 }
 
@@ -106,9 +106,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: var(--bg-color);
     padding: 0 20px;
-    color: #dadce0;
+    color: var(--text-secondary);
     font-size: 1.5rem;
 }
 
@@ -122,15 +122,46 @@
 }
 
 .people-card {
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    background-color: var(--glass-bg);
     /* Slightly transparent for glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--text-color);
 }
 
 .people-card:hover {
     box-shadow: 0 25px 50px rgba(66, 133, 244, 0.15);
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     transform: translateY(-10px);
+    border-color: rgba(66, 133, 244, 0.3);
+}
+
+.role-badge {
+    color: var(--text-secondary);
+    /* Assuming role badge uses specific styling, ensuring visibility */
+}
+
+/* 
+ * FIX: Ensure text is always visible by default. 
+ * Prevents inheritance of transparent text fill or opacity issues.
+ */
+.people-card h2,
+.people-card p,
+.people-card .organizer-name-premium,
+.people-card .organizer-role-premium,
+.people-card span {
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: initial !important;
+    text-fill-color: initial !important;
+    text-shadow: none !important;
+}
+
+.people-card .organizer-name-premium {
+    color: var(--text-color) !important;
+}
+
+.people-card .organizer-role-premium {
+    color: var(--google-blue) !important;
 }

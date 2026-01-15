@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { Link } from 'react-router-dom';
+import ImageWithLoader from './ImageWithLoader';
+import { getOptimizedImageUrl } from '../utils/imageOptimizer';
 import './Organizers.css';
 
 const Organizers = () => {
@@ -21,9 +23,8 @@ const Organizers = () => {
             role: 'Faculty Advisor & HOD Computer Engineering',
             image: 'https://i.ibb.co/RTNCNWTD/file-2.jpg',
             bio: 'Head of Department, Computer Engineering. Guiding the GDG on Campus chapter to excellence.',
-            linkedin: '#',
-            google_scholar: 'https://scholar.google.com/citations?user=EwZhrZITmhFEC',
-            twitter: null
+            linkedin: 'https://www.linkedin.com/in/sunny-sall-12372b284/?originalSubdomain=in',
+            googleScholar: 'https://scholar.google.com/citations?user=DV2d_v8AAAAJ&hl=en'
         }
     ];
 
@@ -39,11 +40,14 @@ const Organizers = () => {
             bio: 'Passionate about building communities and empowering students through technology.'
         },
         {
-            name: 'Aayush Bari',
+            name: 'Aayush Mahesh Bari',
             role: 'Co-Organizer',
-            image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aayush_bari.jpg',
-            twitter: 'https://twitter.com/aayush_bari02',
-            bio: 'Tech enthusiast and community builder.'
+            image: 'https://i.ibb.co/qFpsP4MF/Profile-Pic.jpg',
+            linkedin: 'https://www.linkedin.com/in/aayush-bari/',
+            github: 'https://github.com/Aayush0735',
+            instagram: 'https://www.instagram.com/aayush.bari.585',
+            twitter: 'https://x.com/aayush_bari01',
+            bio: 'I work at the intersection of Agentic AI, TensorFlow, and RAG, building solutions that are scalable, performant, and meaningful. I enjoy sharing knowledge through workshops, events, and mentorship, helping students grow in emerging tech. As GDG Co-Organizer, I foster community innovation and hands-on learning.'
         }
     ];
 
@@ -71,7 +75,7 @@ const Organizers = () => {
             twitter: 'https://x.com/Anvayu108'
         },
         {
-            name: 'Sahas Bochare',
+            name: 'Sahas Santosh Bochare',
             role: 'Community & Marketing Head',
             image: 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sahas_bochare_EIH7Urf.jpg',
             linkedin: 'https://www.linkedin.com/in/sahasbochare',
@@ -84,6 +88,7 @@ const Organizers = () => {
             linkedin: 'https://www.linkedin.com/in/manasvi-kadu-8729b3286',
             github: 'https://github.com/AlgoWhizMk',
             twitter: 'https://x.com/manasvi52370?t=HBTufU3UyjMkyQP0ZwmUbA&s=09',
+            instagram: 'https://www.instagram.com/_manasv.iii?igsh=MWl2MDA0eGk1NzgxOA==',
             bio: 'Bringing clean design, creative ideas, and an eye for trends to elevate GDG on Campus SJCEM’s social media identity.'
         },
         {
@@ -91,6 +96,22 @@ const Organizers = () => {
             role: 'PR & Outreach Lead',
             image: 'https://media.licdn.com/dms/image/v2/D4E03AQE0pqh_npE7bQ/profile-displayphoto-scale_200_200/B4EZlln7rdKQAY-/0/1758346591904?e=1766620800&v=beta&t=Z8phlcanXrqhmSGB_Q7PPxypHkc12KSHRogFe9aD4k0',
             linkedin: 'https://www.linkedin.com/in/sejal-rai-18334a321/'
+        },
+        {
+            name: 'Aleena Maria Joji',
+            role: 'Content Lead',
+            image: 'https://i.ibb.co/ycV0QkCQ/1000153477.png',
+            linkedin: 'https://www.linkedin.com/in/aleenajoji',
+            instagram: 'https://www.instagram.com/_aleena21_?igsh=MXZhazlpMzdzYW9vdw=='
+        },
+        {
+            name: 'Prathamesh Jakkula',
+            role: 'AIML/DSA Lead',
+            image: 'https://i.ibb.co/35jPBNjj/profile.jpg',
+            linkedin: 'https://www.linkedin.com/in/prathamesh-jakkula-496a39285/',
+            github: 'https://github.com/Prathamesh01110',
+            twitter: 'https://x.com/Prathamesh01_',
+            bio: "Started as a participant, became a finalist, then a winner; now I mentor and judge hackathons, with still a long way to go. I enjoy working with Google’s AI tools ,Building agents, and practical ML projects while helping others learn faster."
         }
     ];
 
@@ -121,12 +142,10 @@ const Organizers = () => {
                     }}
                 >
                     {org.image ? (
-                        <img
-                            src={org.image}
+                        <ImageWithLoader
+                            src={getOptimizedImageUrl(org.image, 400)}
                             alt={org.name}
-                            loading="lazy"
-                            decoding="async"
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                            style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
                         />
                     ) : (
                         <span className="initials">{getInitials(org.name)}</span>
@@ -158,8 +177,8 @@ const Organizers = () => {
                                 <i className="fab fa-instagram"></i>
                             </a>
                         )}
-                        {org.google_scholar && (
-                            <a href={org.google_scholar} target="_blank" rel="noreferrer" className="social-icon google-scholar" title="Google Scholar">
+                        {org.googleScholar && (
+                            <a href={org.googleScholar} target="_blank" rel="noreferrer" className="social-icon google-scholar" title="Google Scholar">
                                 <i className="fas fa-graduation-cap"></i>
                             </a>
                         )}
@@ -211,12 +230,10 @@ const Organizers = () => {
                                     backgroundColor: selectedOrganizer.image ? 'transparent' : '#4285F4'
                                 }}>
                                 {selectedOrganizer.image ? (
-                                    <img
-                                        src={selectedOrganizer.image}
+                                    <ImageWithLoader
+                                        src={getOptimizedImageUrl(selectedOrganizer.image, 600)}
                                         alt={selectedOrganizer.name}
-                                        loading="lazy"
-                                        decoding="async"
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
                                     />
                                 ) : (
                                     <span className="initials">{getInitials(selectedOrganizer.name)}</span>
@@ -248,8 +265,8 @@ const Organizers = () => {
                                         <i className="fab fa-instagram"></i>
                                     </a>
                                 )}
-                                {selectedOrganizer.google_scholar && (
-                                    <a href={selectedOrganizer.google_scholar} target="_blank" rel="noreferrer" className="social-icon google-scholar" title="Google Scholar">
+                                {selectedOrganizer.googleScholar && (
+                                    <a href={selectedOrganizer.googleScholar} target="_blank" rel="noreferrer" className="social-icon google-scholar" title="Google Scholar">
                                         <i className="fas fa-graduation-cap"></i>
                                     </a>
                                 )}
