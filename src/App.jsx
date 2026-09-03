@@ -10,6 +10,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Events from './components/Events';
 import Organizers from './components/Organizers';
+import Preloader from './components/Preloader';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Terms from './components/Terms';
@@ -178,6 +179,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
+        {loading && <Preloader onFinish={() => setLoading(false)} />}
         <Router>
           <Layout>
             <AnimatedRoutes />

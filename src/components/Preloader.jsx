@@ -1,41 +1,49 @@
-import React, { useState, useEffect, useRef } from 'react';
-import preloaderVideo from '../assets/new_preloader.mp4';
+import React, { useEffect } from 'react';
 import './Preloader.css';
 
 const Preloader = ({ onFinish }) => {
-    const videoRef = useRef(null);
-    // Fixed timer for fallback + fade out logic
     useEffect(() => {
         const timer = setTimeout(() => {
-            // Trigger fade out
             const preloader = document.querySelector('.preloader');
             if (preloader) preloader.classList.add('fade-out');
-
-            setTimeout(onFinish, 800);
-        }, 3500);
+            setTimeout(onFinish, 700);
+        }, 2200);
 
         return () => clearTimeout(timer);
     }, [onFinish]);
 
-    useEffect(() => {
-        if (videoRef.current) {
-            // Attempt to set start time
-            videoRef.current.currentTime = 2;
-        }
-    }, []);
-
     return (
         <div className="preloader">
+            <div className="preloader-bg-glow"></div>
             <div className="loader-content">
-                <video
-                    ref={videoRef}
-                    src={preloaderVideo}
-                    autoPlay
-                    muted
-                    playsInline
-                    className="preloader-video"
-                    style={{ width: '100%', height: 'auto', maxWidth: '300px' }}
-                />
+                <div className="logo-ring-wrapper">
+                    {/* Glowing orbit dots */}
+                    <div className="orbit-dot dot-blue"></div>
+                    <div className="orbit-dot dot-red"></div>
+                    <div className="orbit-dot dot-yellow"></div>
+                    <div className="orbit-dot dot-green"></div>
+
+                    {/* Central GDG Logo */}
+                    <div className="logo-box">
+                        <img 
+                            src="/gdg-sjc-logo.png" 
+                            alt="GDG on Campus SJCEM Logo" 
+                            className="preloader-logo-img"
+                        />
+                    </div>
+                </div>
+
+                <div className="brand-text-container">
+                    <h2 className="preloader-title">GDG on Campus SJCEM</h2>
+                    <p className="preloader-subtitle">Innovating & Building Together</p>
+                </div>
+
+                <div className="google-bar-loader">
+                    <div className="bar-segment bar-blue"></div>
+                    <div className="bar-segment bar-red"></div>
+                    <div className="bar-segment bar-yellow"></div>
+                    <div className="bar-segment bar-green"></div>
+                </div>
             </div>
         </div>
     );

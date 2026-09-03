@@ -45,14 +45,10 @@ const Navbar = () => {
           <Link to="/" className={isActive('/')} onClick={closeMenu}>Home</Link>
           <Link to="/about" className={isActive('/about')} onClick={closeMenu}>About</Link>
           <Link to="/events" className={isActive('/events')} onClick={closeMenu}>Events</Link>
-          <Link to="/codelabs" className={isActive('/codelabs')} onClick={closeMenu}>Codelabs</Link>
           <Link to="/projects" className={isActive('/projects')} onClick={closeMenu}>Projects</Link>
-          <Link to="/leaderboard" className={isActive('/leaderboard')} onClick={closeMenu}>Ranking</Link>
           <Link to="/gallery" className={isActive('/gallery')} onClick={closeMenu}>Gallery</Link>
           <Link to="/blog" className={isActive('/blog')} onClick={closeMenu}>Blog</Link>
           <Link to="/team" className={isActive('/team')} onClick={closeMenu}>Team</Link>
-          <Link to="/organizers" className={isActive('/organizers')} onClick={closeMenu}>Organizers</Link>
-          <Link to="/tenure-portal" className={isActive('/tenure-portal')} onClick={closeMenu}>Tenure Portal</Link>
           <Link to="/nominate-organizer" className={isActive('/nominate-organizer')} onClick={closeMenu}>Apply 2026</Link>
           <Link to="/contact" className={isActive('/contact')} onClick={closeMenu}>Contact</Link>
 
