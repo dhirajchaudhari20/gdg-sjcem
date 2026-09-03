@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
 import './Events.css';
@@ -6,6 +6,7 @@ import CountdownTimer from './CountdownTimer';
 import { upcomingEvents, pastEvents } from '../data/eventsData';
 
 const Events = () => {
+    const [showAllPast, setShowAllPast] = useState(false);
     // combine all events to sort dynamically
     const allEvents = useMemo(() => [...upcomingEvents, ...pastEvents], []);
 
@@ -219,7 +220,7 @@ const Events = () => {
 
                 <h2 className="section-title past-title" data-aos="fade-right" data-aos-offset="200">Past Events</h2>
                 <div className="events-list">
-                    {sortedEvents.past.map((event, index) => (
+                    {(showAllPast ? sortedEvents.past : sortedEvents.past.slice(0, 4)).map((event, index) => (
                         <div
                             key={event.id}
                             className="event-row"
@@ -288,6 +289,18 @@ const Events = () => {
                         </div>
                     ))}
                 </div>
+
+                {sortedEvents.past.length > 4 && (
+                    <div style={{ textAlign: 'center', marginTop: '32px' }}>
+                        <button 
+                            className="btn btn-outline"
+                            onClick={() => setShowAllPast(!showAllPast)}
+                            style={{ padding: '12px 36px', borderRadius: '50px', fontWeight: '600' }}
+                        >
+                            {showAllPast ? 'Show Less ▲' : `Show More (${sortedEvents.past.length - 4} More Events) ▼`}
+                        </button>
+                    </div>
+                )}
             </div>
 
 
