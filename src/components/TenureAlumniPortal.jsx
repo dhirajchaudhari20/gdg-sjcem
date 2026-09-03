@@ -212,7 +212,7 @@ const TenureAlumniPortal = () => {
                                     </div>
 
                                     <div className="cert-signature-box">
-                                        <div className="handwritten-sig faculty">Faculty Lead</div>
+                                        <div className="handwritten-sig faculty">DR SUNNY SALL</div>
                                         <div className="sig-divider"></div>
                                         <strong>Faculty Coordinator</strong>
                                         <span>GDG SJCEM Mentor</span>
