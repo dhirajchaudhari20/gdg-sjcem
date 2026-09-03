@@ -47,6 +47,7 @@ import WinnerForm from './components/WinnerForm';
 import WinnerDashboard from './components/WinnerDashboard';
 import OrganizerNominationForm from './components/OrganizerNominationForm';
 import OrganizerApplicationsDashboard from './components/OrganizerApplicationsDashboard';
+import TenureAlumniPortal from './components/TenureAlumniPortal';
 
 const Home = () => (
   <>
@@ -95,6 +96,8 @@ const AnimatedRoutes = () => {
         <Route path="/winner-dashboard" element={<PageTransition><WinnerDashboard /></PageTransition>} />
         <Route path="/nominate-organizer" element={<PageTransition><OrganizerNominationForm /></PageTransition>} />
         <Route path="/organizer-applications" element={<PageTransition><OrganizerApplicationsDashboard /></PageTransition>} />
+        <Route path="/tenure-portal" element={<PageTransition><TenureAlumniPortal /></PageTransition>} />
+        <Route path="/alumni" element={<PageTransition><TenureAlumniPortal /></PageTransition>} />
 
         {/* Codelab Routes */}
         <Route path="/codelab/:id" element={<PageTransition><GoogleCodelab /></PageTransition>} />
