@@ -51,12 +51,20 @@ const About = () => {
                         </div>
                         <Swiper
                             onSwiper={setSwiperRef}
-                            modules={[Navigation, Pagination, Autoplay]}
-                            spaceBetween={30}
-                            slidesPerView={1}
+                            modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
+                            effect={'coverflow'}
+                            grabCursor={true}
                             centeredSlides={true}
+                            slidesPerView={'auto'}
+                            coverflowEffect={{
+                                rotate: 0,
+                                stretch: 0,
+                                depth: 120,
+                                modifier: 2,
+                                slideShadows: false,
+                            }}
                             autoplay={{
-                                delay: 3000,
+                                delay: 3500,
                                 disableOnInteraction: false,
                             }}
                             pagination={{
@@ -65,9 +73,18 @@ const About = () => {
                             }}
                             navigation={true}
                             loop={true}
+                            loopAdditionalSlides={3}
                             className="about-swiper"
                         >
                             {[
+                                "/images/event-1.webp",
+                                "/images/event-2.webp",
+                                "/images/event-3.webp",
+                                "/images/event-4.webp",
+                                "/images/techsprint/kickoff/IMG_7930.JPG",
+                                "/images/techsprint/kickoff/IMG_7955.JPG",
+                                "/images/techsprint/kickoff/IMG_7967.JPG",
+                                "/images/techsprint/kickoff/IMG_8069.JPG",
                                 "https://i.ibb.co/xtMWG5bB/IMG-0354.avif",
                                 "https://i.ibb.co/mFBXVYTS/IMG-0370.avif",
                                 "https://i.ibb.co/ybtt9nh/IMG-0383.avif",
