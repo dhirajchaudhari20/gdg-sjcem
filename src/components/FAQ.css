@@ -1,0 +1,99 @@
+.faq-section {
+    padding: 80px 0;
+    color: var(--text-color);
+    background: transparent;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.faq-item:hover {
+    border-color: #4285F4;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+    transform: translateY(-1px);
+}
+
+.faq-item.active {
+    background: var(--card-bg);
+    border-color: var(--google-blue);
+    box-shadow: 0 8px 16px rgba(66, 133, 244, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 25px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faq-item.active .faq-question {
+    color: #1a73e8;
+}
+
+.arrow {
+    font-size: 0.9rem;
+    color: #5f6368;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.faq-item.active .arrow {
+    transform: rotate(180deg);
+    color: #1a73e8;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--surface-color);
+    border-top: 1px solid transparent;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px !important;
+    /* Force expansion */
+    height: auto !important;
+    /* Fallback */
+    border-top-color: var(--border-color);
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.faq-answer p {
+    padding: 20px 25px;
+    color: var(--text-secondary) !important;
+    /* Force color */
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+    opacity: 1 !important;
+    /* Force opacity */
+    visibility: visible !important;
+    /* Force visibility */
+}

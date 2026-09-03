@@ -1,0 +1,1353 @@
+/* Google Codelab Clone Styles */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400&display=swap');
+
+:root {
+    --gc-blue: #1a73e8;
+    --gc-blue-hover: #1765cc;
+    --gc-text-primary: var(--text-color);
+    /* Mapped to global text color */
+    --gc-text-secondary: var(--text-secondary);
+    /* Mapped to global secondary text */
+    --gc-border-color: var(--border-color);
+    /* Mapped to global border */
+    --gc-bg-hover: var(--hover-bg);
+    /* Mapped to global hover */
+    --gc-bg-active: var(--bg-secondary);
+    /* Mapped */
+    --gc-font-family: 'Roboto', sans-serif;
+    --gc-heading-font: 'Google Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.google-codelab-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: var(--gc-font-family);
+    color: var(--gc-text-primary);
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+/* Top Bar */
+.gc-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 64px;
+    background-color: #fff;
+    border-bottom: 1px solid var(--gc-border-color);
+    /* Google usually has a subtle shadow or just border */
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.30), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    z-index: 1001;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.gc-top-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.gc-back-link {
+    color: var(--gc-text-secondary);
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.gc-back-link:hover {
+    background-color: rgba(95, 99, 104, 0.08);
+}
+
+.gc-codelab-title {
+    font-family: var(--gc-heading-font);
+    font-size: 20px;
+    color: var(--gc-text-secondary);
+    /* Often slightly softer than black */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: .01785714em;
+}
+
+.gc-top-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.gc-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    /* Usually medium weight */
+    color: var(--gc-text-secondary);
+}
+
+.gc-profile-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #673ab7;
+    /* Purple generic */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Main Layout */
+.gc-main-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Sidebar */
+.gc-sidebar {
+    width: 280px;
+    background-color: #fff;
+    border-right: 1px solid var(--gc-border-color);
+    overflow-y: auto;
+    padding: 12px 0;
+    flex-shrink: 0;
+}
+
+.gc-step-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 24px;
+    cursor: pointer;
+    color: var(--gc-text-secondary);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.gc-step-item:hover {
+    background-color: var(--gc-bg-hover);
+    color: var(--gc-text-primary);
+}
+
+.gc-step-item.active {
+    color: var(--gc-blue);
+    font-weight: 500;
+    background-color: var(--gc-bg-active);
+}
+
+.gc-step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--gc-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 12px;
+    background-color: #fff;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.gc-step-item.active .gc-step-number {
+    background-color: var(--gc-blue);
+    color: white;
+    border-color: var(--gc-blue);
+}
+
+/* Content Area */
+.gc-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 60px;
+    max-width: 900px;
+    /* Optimal reading width */
+    margin: 0;
+    /* Align leftish, or margin: 0 auto to center */
+}
+
+/* Make content centered in main area like real codelabs */
+#gc-content-area {
+    padding: 48px 64px;
+}
+
+.gc-step-title {
+    font-family: var(--gc-heading-font);
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 400;
+    color: var(--gc-text-primary);
+    margin-bottom: 40px;
+    letter-spacing: -0.2px;
+}
+
+.gc-step-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gc-text-primary);
+    /* Roboto */
+}
+
+.gc-step-content h3 {
+    font-family: var(--gc-heading-font);
+    font-size: 24px;
+    line-height: 32px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.gc-step-content h4 {
+    font-family: var(--gc-heading-font);
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.gc-step-content p {
+    margin-bottom: 16px;
+}
+
+.gc-step-content ul,
+.gc-step-content ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+}
+
+.gc-step-content li {
+    margin-bottom: 8px;
+}
+
+/* Code Blocks */
+.gc-step-content pre {
+    background-color: #f1f3f4;
+    /* Google's light gray for code */
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    margin: 16px 0 32px;
+    position: relative;
+    border: 1px solid var(--gc-border-color);
+}
+
+.gc-step-content code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+}
+
+/* Custom Alert/Note Boxes - "Blue box" style */
+.gc-info-box {
+    background-color: #e8f0fe;
+    padding: 16px;
+    margin: 24px 0;
+    border-radius: 4px;
+    /* Google boxes are often rounded */
+    /* Often no left border, but bold text inside */
+}
+
+.gc-info-box-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gc-text-primary);
+    display: block;
+}
+
+/* Buttons */
+.btn-gc-primary {
+    background-color: var(--gc-blue);
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    /* slightly smaller padding */
+    border-radius: 4px;
+    font-family: var(--gc-heading-font);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: .0892857143em;
+    text-transform: none;
+    /* or uppercase? Google usually Sentence or Title case for primary buttons in updated MD */
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-gc-primary:hover {
+    background-color: #2d6bcf;
+    /* approximate hover */
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+/* Footer (Nav buttons) */
+.gc-footer {
+    margin-top: 60px;
+    display: flex;
+    justify-content: flex-end;
+    /* Google usually puts Next on right */
+    padding-top: 24px;
+    padding-bottom: 64px;
+}
+
+/* Code Copy Button */
+.gc-copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white;
+    border: 1px solid var(--gc-border-color);
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--gc-text-secondary);
+    transition: all 0.2s;
+}
+
+.gc-copy-btn:hover {
+    background-color: var(--gc-bg-hover);
+    color: var(--gc-text-primary);
+}
+
+/* Toast Notification */
+.gc-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    /* Or center? Google often does snackbars bottom left or center */
+    background-color: #323232;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    z-index: 2000;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+/* =========================================
+   BADGE CARD STYLES
+   ========================================= */
+
+/* BADGE OVERLAY: Fixed positioning to slide up */
+.badge-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Align bottom */
+    padding-bottom: 40px;
+    /* some spacing from bottom edge */
+    pointer-events: none;
+    /* Let clicks pass through if needed, but the card needs pointer events */
+}
+
+/* Enable pointer events on the card itself */
+.badge-overlay .card {
+    pointer-events: auto;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.30), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    padding: 24px;
+    max-width: 600px;
+    width: 90%;
+    /* responsive width */
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+/* .card-content styles handled by parent/children */
+
+.completed-title {
+    font-family: var(--gc-heading-font);
+    font-size: 24px;
+    color: var(--gc-text-primary);
+    margin-bottom: 8px;
+}
+
+.badge-name {
+    color: var(--gc-blue);
+    font-weight: 700;
+}
+
+.completed-text {
+    font-family: var(--gc-font-family);
+    color: var(--gc-text-secondary);
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.illustration-container {
+    position: relative;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 0;
+}
+
+.badge-icon {
+    height: 96px;
+    width: 96px;
+    z-index: 2;
+    position: relative;
+}
+
+.badge-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.badge-icon-counter {
+    /* Optional if we want to show counter */
+    display: none;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    border-top: 1px solid var(--gc-border-color);
+    padding-top: 24px;
+}
+
+.buttons.sharing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--gc-text-secondary);
+    font-size: 14px;
+}
+
+.share-buttons-container {
+    display: flex;
+    gap: 12px;
+}
+
+.share-buttons-container button,
+.share-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-buttons-container button:hover,
+.share-link:hover {
+    background-color: var(--gc-bg-hover);
+}
+
+.share-buttons-container img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+}
+
+.buttons.actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.button.button-primary {
+    background-color: var(--gc-blue);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: var(--gc-heading-font);
+    font-weight: 500;
+}
+
+.button.dismiss {
+    background: none;
+    border: 1px solid var(--gc-border-color);
+    color: var(--gc-blue);
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-family: var(--gc-heading-font);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .gc-sidebar {
+        display: none;
+    }
+
+    #gc-content-area {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gc-top-bar {
+        padding: 0 16px;
+    }
+
+    .gc-codelab-title {
+        font-size: 16px;
+        max-width: 150px;
+        /* Force truncate on very small screens */
+    }
+
+    /* Hide Language on mobile */
+    .gc-top-right .gc-meta-item:nth-child(2) {
+        display: none;
+    }
+
+    /* Adjust timer to be smaller */
+    .gc-top-right .gc-meta-item:nth-child(1) {
+        font-size: 12px;
+    }
+
+    .gc-top-right {
+        gap: 12px;
+    }
+
+    .card {
+        padding: 16px;
+        width: 95%;
+    }
+
+    .badge-icon {
+        width: 72px;
+        height: 72px;
+    }
+
+    .completed-title {
+        font-size: 20px;
+    }
+}
+
+/* Reference List Styling */
+.gc-reference-list {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.gc-reference-list li {
+    margin: 0;
+}
+
+.gc-reference-list a {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: white;
+    border: 1px solid var(--gc-border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--gc-blue);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1);
+}
+
+.gc-reference-list a:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3);
+    transform: translateY(-1px);
+    border-color: var(--gc-blue);
+}
+
+.gc-reference-list a::before {
+    content: '\f0c1';
+    /* FontAwesome link icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 12px;
+    font-size: 16px;
+    color: var(--gc-text-secondary);
+}
+
+.gc-reference-list a:hover::before {
+    color: var(--gc-blue);
+}
+
+/* =========================================
+   RIGHT SIDEBAR (LIVE SESSION)
+   ========================================= */
+.gc-right-sidebar {
+    width: 280px;
+    background-color: #fff;
+    border-left: 1px solid var(--gc-border-color);
+    padding: 24px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.live-header h3 {
+    font-family: var(--gc-heading-font);
+    font-size: 18px;
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.live-header p {
+    margin: 0;
+    color: var(--gc-text-secondary);
+    font-size: 14px;
+}
+
+.vote-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.vote-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border: 1px solid var(--gc-border-color);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vote-btn:hover {
+    background-color: var(--gc-bg-hover);
+}
+
+.vote-btn.active {
+    background-color: var(--gc-bg-active);
+    border-color: var(--gc-blue);
+    color: var(--gc-blue);
+}
+
+.vote-btn .emoji {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.vote-btn .label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.help-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    border: 2px solid #ea4335;
+    /* Red warning color */
+    color: #ea4335;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--gc-heading-font);
+}
+
+.help-btn:hover {
+    background-color: #fce8e6;
+}
+
+.help-btn.active {
+    background-color: #ea4335;
+    color: white;
+}
+
+.live-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.stat-card {
+    background-color: #f8f9fa;
+    padding: 12px 8px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-card .count {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-card .count.green {
+    color: #1e8e3e;
+}
+
+.stat-card .count.red {
+    color: #d93025;
+}
+
+.stat-card .count.orange {
+    color: #e37400;
+}
+
+.stat-card .label {
+    font-size: 11px;
+    color: var(--gc-text-secondary);
+    text-transform: uppercase;
+}
+
+.help-queue h4 {
+    font-size: 14px;
+    margin: 0 0 12px 0;
+    color: var(--gc-text-secondary);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.queue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.queue-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    background-color: #fce8e6;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #c5221f;
+    font-weight: 500;
+}
+
+.queue-item img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .gc-right-sidebar {
+        display: none;
+    }
+}
+
+/* Panel Tabs */
+.panel-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--gc-border-color);
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--gc-text-secondary);
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: var(--gc-blue);
+    background-color: var(--gc-bg-hover);
+}
+
+.tab-btn.active {
+    color: var(--gc-blue);
+    border-bottom-color: var(--gc-blue);
+}
+
+/* Chat View */
+.chat-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Fill remaining space */
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 16px;
+    max-height: 500px;
+    /* Limit height */
+}
+
+.empty-chat {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.empty-chat p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.empty-chat strong {
+    color: var(--gc-blue);
+    font-size: 16px;
+}
+
+.chat-bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-bubble.mine {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+.chat-bubble.theirs {
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: var(--gc-text-primary);
+    border: 1px solid #e8eaed;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-user-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.chat-user-header img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.chat-bubble.mine .chat-user-header img {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.chat-user-header span {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.chat-bubble.mine .chat-user-header span {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.chat-bubble.theirs .chat-user-header span {
+    color: #5f6368;
+}
+
+.chat-image img {
+    max-width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.2s;
+}
+
+.chat-image img:hover {
+    transform: scale(1.02);
+}
+
+.chat-text {
+    margin: 0;
+}
+
+/* Chat Input */
+.chat-input-area {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gc-border-color);
+}
+
+.image-preview {
+    position: relative;
+    margin-bottom: 12px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 8px;
+    display: inline-block;
+}
+
+.image-preview img {
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 8px;
+    display: block;
+}
+
+.image-preview button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.image-preview button:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.chat-input-form {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.chat-input-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.chat-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e8eaed;
+    border-radius: 24px;
+    font-size: 14px;
+    font-family: var(--gc-body-font);
+    resize: none;
+    transition: all 0.2s;
+    background: #f8f9fa;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: var(--gc-blue);
+    background: white;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.15);
+}
+
+.chat-input::placeholder {
+    color: #9aa0a6;
+}
+
+.chat-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #f8f9fa;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.icon-btn:hover {
+    background: #e8eaed;
+    transform: scale(1.05);
+}
+
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+.icon-btn.send-btn {
+    background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+.icon-btn.send-btn:hover {
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+    transform: scale(1.05);
+}
+
+.icon-btn.send-btn:disabled {
+    background: #e8eaed;
+    color: #9aa0a6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Connection Status Badge */
+.live-header {
+    position: relative;
+}
+
+.connection-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.connection-badge.connected {
+    background: #e6f4ea;
+    color: #1e8e3e;
+}
+
+.connection-badge.connecting {
+    background: #fef7e0;
+    color: #e37400;
+}
+
+.connection-badge.error {
+    background: #fce8e6;
+    color: #d93025;
+}
+
+.connection-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Error Alert */
+.error-alert {
+    background: #fce8e6;
+    border: 1px solid #f28b82;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    color: #d93025;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.error-alert::before {
+    content: '⚠️';
+    font-size: 16px;
+}
+
+/* Session Status Card */
+.session-status {
+    background: linear-gradient(135deg, #e8f0fe 0%, #d2e3fc 100%);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--gc-blue);
+}
+
+.session-status.warning {
+    background: linear-gradient(135deg, #fef7e0 0%, #feefc3 100%);
+    border-left-color: #e37400;
+}
+
+.session-status h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.session-status p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* Stuck Users List */
+.stuck-users {
+    background: #fff3e0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.stuck-users h5 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e37400;
+    text-transform: uppercase;
+}
+
+.stuck-users ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.stuck-users li {
+    padding: 6px 0;
+    font-size: 13px;
+    color: #5f6368;
+    border-bottom: 1px solid #ffe0b2;
+}
+
+.stuck-users li:last-child {
+    border-bottom: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .chat-bubble {
+        max-width: 90%;
+    }
+
+    .chat-input {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+}
+
+/* Loading State */
+.chat-loading {
+    display: flex;
+    gap: 4px;
+    padding: 12px;
+    justify-content: center;
+}
+
+.chat-loading span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9aa0a6;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.chat-loading span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.chat-loading span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+}
+
+/* --- Mobile Chat "Pop-out" (Bottom Sheet) --- */
+@media (max-width: 900px) {
+    .live-session-wrapper {
+        display: none;
+        /* Hidden by default on mobile */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 85vh;
+        /* Takes up most of the screen */
+        background: white;
+        z-index: 2000;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        flex-direction: column;
+        animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 0;
+        /* Let children handle padding */
+        overflow: hidden;
+    }
+
+    .live-session-wrapper.mobile-visible {
+        display: flex;
+        /* Show when toggled */
+    }
+
+    /* Adjust the internal panel to fit */
+    .live-session-wrapper .gc-right-sidebar {
+        display: flex !important;
+        /* Override default mobile hidden state */
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        padding: 16px;
+        /* Add some padding back */
+    }
+
+    /* Close Button */
+    .mobile-close-chat {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        background: rgba(0, 0, 0, 0.05);
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2001;
+        color: #5f6368;
+    }
+
+    /* Mobile Chat Toggle Button (Floating FAB) */
+    .gc-mobile-chat-toggle {
+        display: flex;
+        /* Ensure it's visible */
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background-color: var(--gc-blue);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+        font-size: 24px;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .gc-mobile-chat-toggle:active {
+        transform: scale(0.95);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
