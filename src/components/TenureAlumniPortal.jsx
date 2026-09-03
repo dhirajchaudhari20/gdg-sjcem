@@ -91,10 +91,10 @@ const TenureAlumniPortal = () => {
                             <span className="sig-role">GDG Chapter Lead / Organizer</span>
                         </div>
                         <div className="sig-item">
-                            <div className="digital-signature-text faculty">Faculty Advisor</div>
+                            <div className="digital-signature-text faculty">Dr. Sunny Sall</div>
                             <div className="sig-line"></div>
-                            <span className="sig-title">SJCEM Faculty Lead</span>
-                            <span className="sig-role">Faculty Organizer</span>
+                            <span className="sig-title">Dr. Sunny Sall</span>
+                            <span className="sig-role">Faculty Coordinator & Mentor</span>
                         </div>
                     </div>
                 </div>
