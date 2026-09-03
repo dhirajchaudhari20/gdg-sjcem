@@ -402,6 +402,19 @@
     border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
+.btn-danger-sm {
+    background: rgba(239, 68, 68, 0.18);
+    color: #F87171;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-danger-sm:hover {
+    background: rgba(239, 68, 68, 0.35);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
 .status-selector {
     background: rgba(30, 41, 59, 0.9);
     color: white;

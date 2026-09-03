@@ -340,7 +340,7 @@ const OrganizerApplicationsDashboard = () => {
                                         <td>
                                             <div className="action-buttons-group">
                                                 <button className="btn-sm btn-info" onClick={() => setSelectedApp(app)}>
-                                                    👁️ View Details
+                                                    👁️ View
                                                 </button>
                                                 <select 
                                                     className="status-selector" 
@@ -352,6 +352,9 @@ const OrganizerApplicationsDashboard = () => {
                                                     <option value="Selected">Selected 🎉</option>
                                                     <option value="Rejected">Not Shortlisted</option>
                                                 </select>
+                                                <button className="btn-sm btn-danger-sm" onClick={() => handleDelete(app.id)} title="Delete Application">
+                                                    🗑️ Delete
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
