@@ -1,4 +1,141 @@
-export const upcomingEvents = [
+export const upcomingEvents = [{
+        id: 129748,
+        date: '21 Sep 2026',
+        type: 'Workshop',
+        title: 'AI-Infused Mobile App Development Workshop',
+        description: 'Learn how to integrate AI capabilities into mobile applications to build intelligent, responsive user experiences.',
+        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
+        showTimer: false,
+        registrations: 'Free Registration',
+        teamSize: 'Individual',
+        location: 'GDG on Campus SJCEM Autonomous, Palghar, India',
+        registrationStatus: {
+            message: 'Free Registration • GDG on Campus SJCEM',
+            type: 'info'
+        },
+        buttons: [
+            {
+                text: 'View details',
+                link: '#',
+                style: 'primary'
+            }
+        ]
+    },
+    {
+        id: 129749,
+        date: '24 Sep 2026',
+        type: 'Workshop',
+        title: 'Web Development Basics with Firebase',
+        description: 'Get started with web development fundamentals integrated with Firebase for backend services and hosting.',
+        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
+        showTimer: false,
+        registrations: 'Free Registration',
+        teamSize: 'Individual',
+        location: 'GDG on Campus SJCEM Autonomous, Palghar, India',
+        registrationStatus: {
+            message: 'Free Registration • GDG on Campus SJCEM',
+            type: 'info'
+        },
+        buttons: [
+            {
+                text: 'View details',
+                link: '#',
+                style: 'primary'
+            }
+        ]
+    },
+    {
+        id: 129750,
+        date: '25 Sep 2026',
+        type: 'Hands-on Session',
+        title: 'Explore AI-Powered Web Development',
+        description: 'Invites developers to learn and integrate AI into web projects. Participants will enjoy an introduction to AI tools, a hands-on Google AI session, and building a chatbot. Elevate your skills and join a community of future-ready tech innovators.',
+        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+        showTimer: false,
+        registrations: 'Free Registration',
+        teamSize: 'Individual',
+        location: 'St. John College of Engineering and Management, Palghar, India',
+        registrationStatus: {
+            message: 'Free Registration • SJCEM Campus',
+            type: 'urgent'
+        },
+        buttons: [
+            {
+                text: 'View details',
+                link: '#',
+                style: 'primary'
+            }
+        ]
+    },
+    {
+        id: 129751,
+        date: '26 Sep 2026',
+        type: 'Beginners Workshop',
+        title: "Kickstart with Android: Beginners' Workshop",
+        description: 'Ideal for aspiring developers eager to dive into app creation. Set up Android Studio, build a basic app in Kotlin, and learn to launch on Google Play. Perfect for those new to coding or seeking to expand skills. Bring your laptop!',
+        image: 'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=1200&q=80',
+        showTimer: false,
+        registrations: 'Free Registration',
+        teamSize: 'Individual',
+        location: 'GDG on Campus SJCEM Autonomous, Palghar, India',
+        registrationStatus: {
+            message: 'Free Registration • SJCEM Campus',
+            type: 'info'
+        },
+        buttons: [
+            {
+                text: 'View details',
+                link: '#',
+                style: 'primary'
+            }
+        ]
+    },
+    {
+        id: 129752,
+        date: '27 Sep 2026',
+        type: 'Bootcamp',
+        title: 'Firebase App Development Bootcamp',
+        description: 'Join the Firebase App Development Bootcamp for an immersive, hands-on experience in building scalable mobile apps. Ideal for beginner and intermediate developers, the session covers Firebase architecture, user authentication, and real-time data management.',
+        image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
+        showTimer: false,
+        registrations: 'Free Registration',
+        teamSize: 'Individual',
+        location: 'GDG on Campus SJCEM Autonomous, Palghar, India',
+        registrationStatus: {
+            message: 'Free Registration • SJCEM Campus',
+            type: 'info'
+        },
+        buttons: [
+            {
+                text: 'View details',
+                link: '#',
+                style: 'primary'
+            }
+        ]
+    },
+    {
+        id: 129753,
+        date: '30 Sep 2026',
+        type: 'Bootcamp',
+        title: 'Cloud Computing Bootcamp: Unleash the Cloud',
+        description: "Experience the Cloud Computing Bootcamp at St. John College of Engineering and Management. Designed for students eager to excel in today's digital world, this event covers Google Cloud fundamentals with hands-on web application deployment and insights into cloud storage.",
+        image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
+        showTimer: false,
+        registrations: 'Free Registration',
+        teamSize: 'Individual',
+        location: 'St. John College of Engineering and Management, Palghar, India',
+        registrationStatus: {
+            message: 'Free Registration • SJCEM Campus',
+            type: 'info'
+        },
+        buttons: [
+            {
+                text: 'View details',
+                link: '#',
+                style: 'primary'
+            }
+        ]
+    },
     {
         id: 129747,
         date: '7 Sep 2026',
