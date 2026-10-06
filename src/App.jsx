@@ -55,6 +55,7 @@ const Home = () => (
     <Hero />
     <About />
     <Events />
+    <Organizers />
     <Gallery preview={true} />
     <Newsletter />
   </>

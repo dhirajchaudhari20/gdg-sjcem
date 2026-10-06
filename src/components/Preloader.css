@@ -1,4 +1,4 @@
-/* GDG Logo Preloader Styles - Premium Dark Glassmorphism & Glow */
+/* Premium Minimal Preloader Styles */
 
 .preloader {
     position: fixed;
@@ -6,191 +6,101 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #080c14;
+    background: #080808;
     z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .preloader.fade-out {
     opacity: 0;
-    transform: scale(1.05);
     pointer-events: none;
+    transform: scale(1.02);
 }
 
-.preloader-bg-glow {
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(66, 133, 244, 0.25) 0%, rgba(234, 67, 53, 0.15) 35%, rgba(251, 188, 5, 0.08) 60%, transparent 80%);
-    filter: blur(50px);
-    animation: pulseGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes pulseGlow {
-    0% { transform: scale(0.9); opacity: 0.7; }
-    100% { transform: scale(1.15); opacity: 1; }
-}
-
-.loader-content {
-    position: relative;
-    z-index: 2;
+.preloader-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    width: 100%;
+    max-width: 300px;
 }
 
-/* Logo & Orbit Container */
-.logo-ring-wrapper {
+.logo-pulse-container {
     position: relative;
-    width: 130px;
-    height: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 28px;
-}
-
-.logo-box {
     width: 100px;
     height: 100px;
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 26px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(16px);
-    animation: floatLogo 2.5s ease-in-out infinite alternate;
+    margin-bottom: 40px;
 }
 
-@keyframes floatLogo {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-8px); }
+.preloader-logo-minimal {
+    width: 80px;
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0 0 15px rgba(66, 133, 244, 0.2));
+    animation: pulseMinimal 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.preloader-logo-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(66, 133, 244, 0.4));
-}
-
-/* Orbiting Google Color Dots */
-.orbit-dot {
+.preloader-ring {
     position: absolute;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    margin-top: -6px;
-    margin-left: -6px;
-}
-
-.dot-blue {
-    background: #4285F4;
-    box-shadow: 0 0 14px #4285F4;
-    animation: orbit1 2s linear infinite;
-}
-
-.dot-red {
-    background: #EA4335;
-    box-shadow: 0 0 14px #EA4335;
-    animation: orbit2 2s linear infinite;
-}
-
-.dot-yellow {
-    background: #FBBC05;
-    box-shadow: 0 0 14px #FBBC05;
-    animation: orbit3 2s linear infinite;
-}
-
-.dot-green {
-    background: #34A853;
-    box-shadow: 0 0 14px #34A853;
-    animation: orbit4 2s linear infinite;
-}
-
-@keyframes orbit1 {
-    0% { transform: rotate(0deg) translate(68px) rotate(0deg); }
-    100% { transform: rotate(360deg) translate(68px) rotate(-360deg); }
-}
-
-@keyframes orbit2 {
-    0% { transform: rotate(90deg) translate(68px) rotate(-90deg); }
-    100% { transform: rotate(450deg) translate(68px) rotate(-450deg); }
-}
-
-@keyframes orbit3 {
-    0% { transform: rotate(180deg) translate(68px) rotate(-180deg); }
-    100% { transform: rotate(540deg) translate(68px) rotate(-540deg); }
-}
-
-@keyframes orbit4 {
-    0% { transform: rotate(270deg) translate(68px) rotate(-270deg); }
-    100% { transform: rotate(630deg) translate(68px) rotate(-630deg); }
-}
-
-/* Typography */
-.brand-text-container {
-    margin-bottom: 24px;
-}
-
-.preloader-title {
-    font-family: 'Outfit', 'Google Sans', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #4285F4 0%, #EA4335 33%, #FBBC05 66%, #34A853 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textShimmer 3s linear infinite;
-    letter-spacing: -0.3px;
-    margin-bottom: 6px;
-}
-
-@keyframes textShimmer {
-    to { background-position: 200% center; }
-}
-
-.preloader-subtitle {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.92rem;
-    color: #94a3b8;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-/* Bottom Progress Bar */
-.google-bar-loader {
-    display: flex;
-    gap: 6px;
-    width: 140px;
-    height: 4px;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.bar-segment {
-    flex: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    border-radius: 2px;
-    animation: barPulse 1.2s ease-in-out infinite alternate;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top-color: #4285F4;
+    border-right-color: #EA4335;
+    border-bottom-color: #FBBC05;
+    border-left-color: #34A853;
+    animation: spinRing 1.5s linear infinite;
 }
 
-.bar-blue { background: #4285F4; animation-delay: 0.1s; }
-.bar-red { background: #EA4335; animation-delay: 0.25s; }
-.bar-yellow { background: #FBBC05; animation-delay: 0.4s; }
-.bar-green { background: #34A853; animation-delay: 0.55s; }
+.preloader-progress-wrapper {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    position: relative;
+}
 
-@keyframes barPulse {
-    0% { opacity: 0.3; transform: scaleY(0.6); }
-    100% { opacity: 1; transform: scaleY(1.4); }
+.preloader-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.preloader-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.preloader-percentage {
+    font-weight: 600;
+    color: #fff;
+}
+
+@keyframes spinRing {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulseMinimal {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.95); opacity: 0.8; }
 }
